@@ -1,1 +1,3 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAnYXN0cm8vY29uZmlnJzsKCmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7IG91dHB1dDogJ3N0YXRpYycgfSk7Cg==
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({ output: 'static' });
