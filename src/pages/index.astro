@@ -68,8 +68,6 @@ const services = [
         <article><span class="benefit-icon">⌂</span><h3>Paquetes de hogar<br />inteligente personalizables</h3><p>Diseñamos un sistema de seguridad y automatización que se ajusta a tu hogar.</p></article>
       </section>
 
-      <section class="statement"><h2>Instalación profesional de cámaras de seguridad y automatización residencial</h2><p>Nos encargamos de instalarla, configurarla y dejarla lista para que tú solo la disfrutes.</p></section>
-
       <section class="section" id="soluciones"><div class="section-head"><p class="eyebrow">Nuestras soluciones</p><h2>Servicio de cámaras de seguridad y automatización<br /><span>para casas en CDMX y Estado de México.</span></h2></div><div class="service-grid">{services.map((service) => <article class="service"><span class="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><a href={`/servicios/${service.slug}`} aria-label={`Ver solución: ${service.title}`}>Ver solución</a></article>)}</div></section>
 
       <section class="black-section" id="proceso"><div><p class="eyebrow red">La instalación SILO</p><h2>Cómo instalamos cámaras de seguridad, timbres y cerraduras inteligentes</h2></div><div class="steps"><div><b>01</b><h3>Escuchamos</h3><p>Entendemos tu casa, tus rutinas y lo que quieres resolver.</p></div><div><b>02</b><h3>Diseñamos</h3><p>Te recomendamos una solución según tus espacios y necesidades.</p></div><div><b>03</b><h3>Instalamos</h3><p>Configuramos todo para que tu sistema quede listo para usar.</p></div></div></section>
@@ -101,6 +99,10 @@ const services = [
 :global(html), :global(body), :global(body *) { font-family: 'Inter', sans-serif; }
   .benefit-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4vw;padding:88px 5vw;border-bottom:1px solid #e3e3e3}.benefit-icon{display:block;font-size:35px;line-height:1;color:#090909;margin-bottom:40px}.benefit-strip h3{font-size:clamp(22px,2vw,34px);line-height:1.18;letter-spacing:-1.6px;margin:0 0 24px}.benefit-strip p{font-size:14px;line-height:1.7;color:#555;max-width:310px;margin:0}@media(max-width:800px){.benefit-strip{grid-template-columns:1fr 1fr;padding:60px 7vw;gap:48px 28px}.benefit-icon{margin-bottom:25px}.benefit-strip h3{font-size:21px;margin-bottom:13px}.benefit-strip p{font-size:12px}}
   h1,h2,h3{font-weight:600!important}h1{font-size:clamp(38px,5vw,72px)!important;line-height:1.05!important;letter-spacing:-3px!important}h2{font-size:clamp(28px,3vw,48px)!important;line-height:1.12!important;letter-spacing:-2px!important}
+</style>
+<style>
+  .text-link{text-decoration:underline;text-underline-offset:4px}
+  @media(max-width:800px){.topbar{justify-content:flex-start}.topbar .header-call{margin-left:auto}.topbar .menu{margin-left:8px}}
 </style>
 <style>
   @media(max-width:800px){:global(body){padding-bottom:0}.mobile-quote{display:none!important}.topbar .header-call{display:inline-flex;align-items:center;justify-content:center;padding:10px 13px;border-radius:999px;background:#e61e32;color:#fff;font-size:10px;white-space:nowrap}.topbar{gap:10px}.menu{font-size:20px}}
