@@ -32,6 +32,13 @@ const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', na
   .logo{display:inline-flex;width:43px;height:52px;background:url('/images/silo-logo.png') center/contain no-repeat;font-size:0}.logo span{display:none}
   .menu,.mobile-nav{display:none}@media(max-width:700px){.call{display:none}.menu{display:block;border:0;background:transparent;color:#090909;font-size:22px;cursor:pointer}.mobile-nav{position:fixed;z-index:45;top:70px;left:0;right:0;padding:12px 7vw 22px;background:#fff;border-bottom:1px solid #ddd;box-shadow:0 12px 22px rgba(0,0,0,.08)}.mobile-nav.open{display:grid}.mobile-nav a{padding:15px 0;border-bottom:1px solid #eee;font-size:13px;font-weight:600}.mobile-nav a:last-child{color:#e61e32;border-bottom:0}}
 </style>
+<script is:inline>
+  const serviceTitle = document.querySelector('h1')?.textContent?.trim();
+  const serviceHeading = document.querySelector('.content h2');
+  if (serviceTitle && serviceHeading) serviceHeading.textContent = `Instalación de ${serviceTitle} para tu hogar`;
+  const catalogHeading = document.querySelector('.catalog h2');
+  if (catalogHeading) catalogHeading.textContent = 'Las mejores cámaras de seguridad para interior y exterior';
+</script>
 <style>
   .mobile-quote{display:none}
   @media(max-width:700px){:global(body){padding-bottom:76px}.mobile-quote{display:flex;position:fixed;z-index:60;bottom:14px;left:7vw;right:7vw;align-items:center;justify-content:center;padding:16px 20px;border-radius:999px;background:linear-gradient(180deg,#f34a5c,#e61e32 48%,#bd1023);box-shadow:0 8px 18px rgba(0,0,0,.24);color:#fff;font-size:13px;font-weight:700}}
