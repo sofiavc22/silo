@@ -32,3 +32,21 @@ const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', na
   .logo{display:inline-flex;width:43px;height:52px;background:url('/images/silo-logo.png') center/contain no-repeat;font-size:0}.logo span{display:none}
   .menu,.mobile-nav{display:none}@media(max-width:700px){.call{display:none}.menu{display:block;border:0;background:transparent;color:#090909;font-size:22px;cursor:pointer}.mobile-nav{position:fixed;z-index:45;top:70px;left:0;right:0;padding:12px 7vw 22px;background:#fff;border-bottom:1px solid #ddd;box-shadow:0 12px 22px rgba(0,0,0,.08)}.mobile-nav.open{display:grid}.mobile-nav a{padding:15px 0;border-bottom:1px solid #eee;font-size:13px;font-weight:600}.mobile-nav a:last-child{color:#e61e32;border-bottom:0}}
 </style>
+<style>
+  .mobile-quote{display:none}
+  @media(max-width:700px){:global(body){padding-bottom:76px}.mobile-quote{display:flex;position:fixed;z-index:60;bottom:14px;left:7vw;right:7vw;align-items:center;justify-content:center;padding:16px 20px;border-radius:999px;background:linear-gradient(180deg,#f34a5c,#e61e32 48%,#bd1023);box-shadow:0 8px 18px rgba(0,0,0,.24);color:#fff;font-size:13px;font-weight:700}}
+</style>
+<script>
+  const quoteUrl = 'https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20una%20instalación';
+  const call = document.querySelector('.call');
+  if (call) { call.href = quoteUrl; call.textContent = 'Cotizar ahora'; }
+  const mobileNav = document.querySelector('.mobile-nav');
+  mobileNav?.querySelector('a:last-child')?.remove();
+  if (mobileNav && !document.querySelector('.mobile-quote')) {
+    const quote = document.createElement('a');
+    quote.className = 'mobile-quote';
+    quote.href = quoteUrl;
+    quote.textContent = 'Cotizar ahora';
+    document.body.append(quote);
+  }
+</script>
