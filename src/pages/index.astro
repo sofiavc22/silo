@@ -47,7 +47,7 @@ const services = [
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> SEGURIDAD · CONTROL · TRANQUILIDAD</p>
-          <h1>Tu casa más<br /><em>inteligente y segura.</em></h1>
+          <h1>Instalación de cámaras de seguridad y automatización residencial</h1>
           <p class="lead">Instalamos dispositivos premium para proteger y automatizar tu hogar.</p>
           <div class="hero-actions">
             <a class="button button-red" href={`https://wa.me/52${phone}?text=Hola%20SILO,%20quiero%20cotizar%20una%20instalaci%C3%B3n`}>Solicitar instalación</a>
@@ -68,7 +68,7 @@ const services = [
         <article><span class="benefit-icon">⌂</span><h3>Paquetes de hogar<br />inteligente personalizables</h3><p>Diseñamos un sistema de seguridad y automatización que se ajusta a tu hogar.</p></article>
       </section>
 
-      <section class="statement"><p class="eyebrow">SILO / SMART LIVING</p><h2>Instalación profesional de cámaras de seguridad y automatización residencial</h2><p>Nos encargamos de instalarla, configurarla y dejarla lista para que tú solo la disfrutes.</p></section>
+      <section class="statement"><h2>Instalación profesional de cámaras de seguridad y automatización residencial</h2><p>Nos encargamos de instalarla, configurarla y dejarla lista para que tú solo la disfrutes.</p></section>
 
       <section class="section" id="soluciones"><div class="section-head"><p class="eyebrow">Nuestras soluciones</p><h2>Servicio de cámaras de seguridad y automatización<br /><span>para casas en CDMX y Estado de México.</span></h2></div><div class="service-grid">{services.map((service) => <article class="service"><span class="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><a href={`/servicios/${service.slug}`} aria-label={`Ver solución: ${service.title}`}>Ver solución</a></article>)}</div></section>
 
