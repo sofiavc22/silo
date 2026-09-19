@@ -71,7 +71,7 @@ const services = [
       <section class="section" id="soluciones"><div class="section-head"><p class="eyebrow">Nuestras soluciones</p><h2>Servicio de cámaras de seguridad y automatización<br /><span>para casas en CDMX y Estado de México.</span></h2></div><div class="service-grid">{services.map((service) => <article class="service"><span class="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><a href={`/servicios/${service.slug}`} aria-label={`Ver solución: ${service.title}`}>Ver solución</a></article>)}</div></section>
 
       <figure class="doorbell-scene">
-        <img src="/images/silo-timbre-visitante.png" width="1254" height="1254" loading="lazy" decoding="async" alt="Una persona revisa desde el interior de su hogar al visitante en su celular; el recuadro muestra el timbre inteligente Nest instalado en la entrada." />
+        <img src="/images/silo-timbre-visitante.webp" width="1100" height="1100" loading="eager" fetchpriority="high" decoding="async" alt="Una persona revisa desde el interior de su hogar al visitante en su celular; el recuadro muestra el timbre inteligente Nest instalado en la entrada." />
       </figure>
 
       <section class="black-section" id="proceso"><div><p class="eyebrow red">La instalación SILO</p><h2>Cómo instalamos cámaras de seguridad, timbres y cerraduras inteligentes</h2></div><div class="steps"><div><b>01</b><h3>Escuchamos</h3><p>Entendemos tu casa, tus rutinas y lo que quieres resolver.</p></div><div><b>02</b><h3>Diseñamos</h3><p>Te recomendamos una solución según tus espacios y necesidades.</p></div><div><b>03</b><h3>Instalamos</h3><p>Configuramos todo para que tu sistema quede listo para usar.</p></div></div></section>
