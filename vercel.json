@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/servicios/camaras-ring-nest",
+      "destination": "/servicios/instalacion-de-camaras-de-seguridad",
+      "permanent": true
+    }
+  ]
+}
