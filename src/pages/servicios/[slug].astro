@@ -140,6 +140,48 @@ const serviceSchema = {
   areaServed: ["Ciudad de México", "Estado de México"],
   serviceType: data.title,
 };
+const cameraFaqs = [
+  {
+    "question": "¿Qué cámaras de seguridad instalan?",
+    "answer": "Instalamos cámaras para interior y exterior, tanto alámbricas como inalámbricas. Solo trabajamos con marcas premium y confiables: TP-Link, Google Nest y Amazon Ring."
+  },
+  {
+    "question": "¿Puedo ver las cámaras de seguridad desde mi celular?",
+    "answer": "Sí. Configuramos las cámaras y sus grabaciones en tus dispositivos móviles compatibles para que puedas revisar tu hogar, ver video en vivo y recibir alertas desde la aplicación."
+  },
+  {
+    "question": "¿Las cámaras necesitan Wi‑Fi?",
+    "answer": "Sí, para enviar alertas, ver la transmisión en vivo y consultar las grabaciones desde la aplicación. Antes de instalar, revisamos que la señal llegue correctamente a cada punto."
+  },
+  {
+    "question": "¿Las cámaras graban todo el tiempo o solo cuando detectan movimiento?",
+    "answer": "Las cámaras alámbricas pueden configurarse para grabar 24/7, según el modelo y el servicio elegido. Las cámaras inalámbricas graban eventos cuando detectan movimiento, personas u otra actividad. Nuestro servicio incluye la suscripción de almacenamiento en la nube para guardar los eventos importantes y poder consultarlos después."
+  },
+  {
+    "question": "¿Incluyen instalación y configuración?",
+    "answer": "Sí. Instalamos las cámaras, realizamos el cableado o montaje necesario, configuramos la aplicación y dejamos el sistema listo para usarse en tus dispositivos móviles."
+  },
+  {
+    "question": "¿Dónde conviene instalar cámaras de seguridad?",
+    "answer": "Normalmente recomendamos cubrir la puerta principal, cochera, accesos laterales, patio y áreas comunes. Revisamos tu casa para recomendar los puntos que necesitan mayor cobertura."
+  },
+  {
+    "question": "¿Las cámaras de seguridad tienen visión nocturna?",
+    "answer": "Sí. Los equipos que manejamos cuentan con visión nocturna para que puedas revisar los accesos de tu casa incluso con poca luz."
+  },
+  {
+    "question": "¿Son compatibles con Amazon Alexa y Google Home?",
+    "answer": "Sí. Los equipos compatibles se pueden configurar con Amazon Alexa y Google Home para consultar cámaras y controlar funciones disponibles con comandos de voz."
+  },
+  {
+    "question": "¿Puedo agregar más cámaras después?",
+    "answer": "Sí. Podemos ampliar tu sistema cuando necesites proteger nuevas áreas de tu hogar."
+  },
+  {
+    "question": "¿Cuánto cuesta instalar cámaras de seguridad?",
+    "answer": "Con nosotros, la instalación de una sola cámara comienza desde $3,000 MXN, con instalación incluida. El precio final depende del número de cámaras, los espacios que necesitas proteger y el tipo de equipo. Seleccionamos y probamos equipos duraderos, con excelente imagen y aplicaciones fáciles de usar."
+  }
+];
 ---
 
 <!doctype html>
@@ -163,6 +205,17 @@ const serviceSchema = {
       type="application/ld+json"
       set:html={JSON.stringify(serviceSchema)}
     ></script>
+    {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: cameraFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      })}></script>
+    )}
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -321,7 +374,24 @@ const serviceSchema = {
           ))}
         </section>
       )}
-      <CoverageAndCta />
+      <CoverageAndCta>
+        {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && (
+          <section class="camera-faq" aria-labelledby="camera-faq-title">
+            <div>
+              <p class="eyebrow">Preguntas frecuentes</p>
+              <h2 id="camera-faq-title">Preguntas frecuentes sobre instalación de cámaras de seguridad</h2>
+            </div>
+            <div class="camera-faq-list">
+              {cameraFaqs.map((faq) => (
+                <details>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+      </CoverageAndCta>
     </main>
     <footer>
       <a class="logo" href="/">
@@ -851,4 +921,19 @@ const serviceSchema = {
 </style>
 <style>
   @media(max-width:700px){:global(body){padding-bottom:0}.mobile-quote{display:none!important}.call{display:inline-flex!important;align-items:center;justify-content:center;padding:10px 13px;border-radius:999px;background:#e61e32;color:#fff;font-size:10px;white-space:nowrap}.menu{font-size:20px}}
+  .camera-faq { padding: 110px 7vw; display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; border-top: 1px solid #ddd; background: #fff; }
+  .camera-faq .eyebrow { color: #666; }
+  .camera-faq h2 { margin: 0; }
+  .camera-faq-list details { border-top: 1px solid #ccc; padding: 20px 0; }
+  .camera-faq-list details:last-child { border-bottom: 1px solid #ccc; }
+  .camera-faq-list summary { cursor: pointer; list-style: none; font-size: 14px; font-weight: 700; }
+  .camera-faq-list summary::-webkit-details-marker { display: none; }
+  .camera-faq-list summary::after { content: '+'; float: right; color: #e61e32; font-size: 20px; line-height: .7; }
+  .camera-faq-list details[open] summary::after { content: '−'; }
+  .camera-faq-list p { margin: 16px 32px 0 0; color: #666; font-size: 13px; line-height: 1.7; }
+  @media (max-width: 700px) {
+    .camera-faq { display: block; padding: 80px 7vw; }
+    .camera-faq-list { margin-top: 45px; }
+  }
+
 </style>
