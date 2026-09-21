@@ -113,8 +113,8 @@ export function getStaticPaths() {
       params: { slug: "timbres-inteligentes" },
       props: {
         data: {
-          title: "Timbres inteligentes",
-          intro: "Tu puerta te avisa quién llegó.",
+          title: "Instalación de timbres inteligentes para tu hogar",
+          intro: "Ve, escucha y responde a tus visitas desde donde estés.",
           body: "Instalamos timbres inteligentes Ring y Nest para que puedas ver, escuchar y responder a tus visitas aunque no estés en casa. Una forma más cómoda de controlar el acceso a tu hogar.",
           points: [
             "Video en la entrada principal",
@@ -217,6 +217,40 @@ const cameraFaqs = [
     "answer": "Con nosotros, la instalación de una sola cámara comienza desde $3,000 MXN, con instalación incluida. El precio final depende del número de cámaras, los espacios que necesitas proteger y el tipo de equipo. Seleccionamos y probamos equipos duraderos, con excelente imagen y aplicaciones fáciles de usar."
   }
 ];
+const doorbellFaqs = [
+  {
+    "question": "¿Qué timbres inteligentes instalan?",
+    "answer": "Instalamos timbres inteligentes para casas y departamentos. Te ayudamos a elegir un equipo según tu puerta, el tipo de conexión disponible y las funciones que quieres usar desde tu celular."
+  },
+  {
+    "question": "¿Puedo ver y hablar con quien toca desde mi celular?",
+    "answer": "Sí. Configuramos el timbre en tus dispositivos móviles para que puedas recibir una alerta, ver a la persona en la entrada y hablar con ella desde la aplicación."
+  },
+  {
+    "question": "¿Los timbres inteligentes necesitan Wi‑Fi?",
+    "answer": "Sí. El Wi‑Fi permite recibir alertas, ver video en vivo y responder a tus visitas desde la aplicación. Antes de instalar, revisamos que la señal llegue correctamente a tu entrada."
+  },
+  {
+    "question": "¿Funcionan aunque no esté en casa?",
+    "answer": "Sí. Puedes recibir alertas y responder desde tu celular estés donde estés, siempre que el timbre tenga conexión a internet."
+  },
+  {
+    "question": "¿Los timbres inteligentes graban video?",
+    "answer": "Sí. Según el modelo y el servicio de almacenamiento elegido, pueden guardar eventos como movimiento o cuando alguien toca el timbre para que los revises después."
+  },
+  {
+    "question": "¿Son compatibles con Amazon Alexa y Google Home?",
+    "answer": "Sí. Los equipos compatibles pueden configurarse con Amazon Alexa y Google Home para consultar video y controlar funciones disponibles con comandos de voz."
+  },
+  {
+    "question": "¿Pueden instalar un timbre inteligente en mi puerta actual?",
+    "answer": "En la mayoría de los casos sí. Revisamos el espacio de instalación, la conexión eléctrica y la señal Wi‑Fi para recomendarte la opción adecuada para tu entrada."
+  },
+  {
+    "question": "¿Incluyen instalación y configuración?",
+    "answer": "Sí. Instalamos el timbre, realizamos el montaje o conexión necesaria, configuramos la aplicación y dejamos el equipo listo para usarse en tus dispositivos móviles."
+  }
+];
 ---
 
 <!doctype html>
@@ -268,6 +302,17 @@ const cameraFaqs = [
         ],
       })}
     ></script>
+    {Astro.params.slug === 'timbres-inteligentes' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: doorbellFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      })}></script>
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"
@@ -430,6 +475,22 @@ const cameraFaqs = [
             </div>
             <div class="camera-faq-list">
               {cameraFaqs.map((faq) => (
+                <details>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+        {Astro.params.slug === 'timbres-inteligentes' && (
+          <section class="camera-faq" aria-labelledby="doorbell-faq-title">
+            <div>
+              <p class="eyebrow">Preguntas frecuentes</p>
+              <h2 id="doorbell-faq-title">Preguntas frecuentes sobre instalación de timbres inteligentes</h2>
+            </div>
+            <div class="camera-faq-list">
+              {doorbellFaqs.map((faq) => (
                 <details>
                   <summary>{faq.question}</summary>
                   <p>{faq.answer}</p>
