@@ -131,10 +131,10 @@ export function getStaticPaths() {
       },
     },
     {
-      params: { slug: "instalacion-cerraduras-inteligentes" },
+      params: { slug: "cerraduras-digitales" },
       props: {
         data: {
-          title: "Cerraduras inteligentes",
+          title: "Instalación de cerraduras digitales para tu hogar",
           intro: "Entra a tu casa sin buscar las llaves.",
           body: "Instalamos cerraduras inteligentes Yale para hacer más sencillo y seguro el acceso a tu hogar. Te ayudamos a elegir el modelo, instalarlo y dejarlo configurado para tu rutina.",
           points: [
@@ -336,7 +336,7 @@ const doorbellFaqs = [
         })),
       })}></script>
     )}
-    {Astro.params.slug === 'instalacion-cerraduras-inteligentes' && (
+    {Astro.params.slug === 'cerraduras-digitales' && (
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -366,7 +366,7 @@ const doorbellFaqs = [
       <nav aria-label="Navegación principal">
         <a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras</a>
         <a href="/servicios/timbres-inteligentes">Timbres</a>
-        <a href="/servicios/instalacion-cerraduras-inteligentes">Cerraduras</a>
+        <a href="/servicios/cerraduras-digitales">Cerraduras</a>
         <a href="/servicios/automatizacion-residencial">Automatización</a>
         <a href="/#zonas">Cobertura</a>
       </nav>
@@ -385,7 +385,7 @@ const doorbellFaqs = [
     <nav class="mobile-nav" aria-label="Navegación móvil">
       <a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras de seguridad</a>
       <a href="/servicios/timbres-inteligentes">Timbres inteligentes</a>
-      <a href="/servicios/instalacion-cerraduras-inteligentes">Cerraduras inteligentes</a>
+      <a href="/servicios/cerraduras-digitales">Cerraduras inteligentes</a>
       <a href="/servicios/automatizacion-residencial">
         Automatización residencial
       </a>
@@ -414,7 +414,7 @@ const doorbellFaqs = [
       <section class="content">
         <div>
           <p class="eyebrow">Pensado para tu hogar</p>
-          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : `Instalación de ${data.title} para tu hogar`}</h2>
+          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : Astro.params.slug === 'cerraduras-digitales' ? 'Cerraduras digitales para tu hogar' : `Instalación de ${data.title} para tu hogar`}</h2>
           <p>{data.body}</p>
         </div>
         <div class="points">
@@ -430,11 +430,11 @@ const doorbellFaqs = [
         <section class="catalog">
           <div class="catalog-head">
             <p class="eyebrow">Equipos disponibles</p>
-            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : Astro.params.slug === 'instalacion-cerraduras-inteligentes' ? 'Cerraduras inteligentes disponibles para tu hogar' : 'Las mejores cámaras de seguridad para interior y exterior'}</h2>
+            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : Astro.params.slug === 'cerraduras-digitales' ? 'Cerraduras digitales disponibles para tu hogar' : 'Las mejores cámaras de seguridad para interior y exterior'}</h2>
             <p>
               {Astro.params.slug === 'timbres-inteligentes'
                 ? 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas confiables para ver, escuchar y responder a tus visitas desde donde estés.'
-                : Astro.params.slug === 'instalacion-cerraduras-inteligentes'
+                : Astro.params.slug === 'cerraduras-digitales'
                   ? 'Trabajamos con Yale y TP-Link para darte opciones de acceso inteligente, configuración sencilla y un acabado limpio en tu puerta.'
                   : 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas premium para proteger tu hogar con excelente imagen, aplicaciones confiables y equipos pensados para interior y exterior.'}
             </p>
@@ -484,14 +484,14 @@ const doorbellFaqs = [
                       <div class="product-image">
                         <img
                           src={product.image}
-                          alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : Astro.params.slug === 'instalacion-cerraduras-inteligentes' ? 'Cerradura inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
+                          alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : Astro.params.slug === 'cerraduras-digitales' ? 'Cerradura inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
                           loading="lazy"
                         />
                       </div>
                       <p>{product.brand}</p>
                       <h4>{product.name}</h4>
                       <a
-                        href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'instalacion-cerraduras-inteligentes' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
+                        href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'cerraduras-digitales' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
                       >
                         Cotizar instalación
                       </a>
@@ -519,7 +519,7 @@ const doorbellFaqs = [
             </div>
           </section>
         )}
-        {Astro.params.slug === 'instalacion-cerraduras-inteligentes' && (
+        {Astro.params.slug === 'cerraduras-digitales' && (
           <section class="camera-faq" aria-labelledby="lock-faq-title">
             <div>
               <p class="eyebrow">Preguntas frecuentes</p>
