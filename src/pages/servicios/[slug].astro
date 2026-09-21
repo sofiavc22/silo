@@ -1139,8 +1139,7 @@ const doorbellFaqs = [
   }
 
   .call,
-  .button,
-  .product-card a {
+  .button {
     align-items: center;
     background: #e61e32;
     border-radius: 0;
@@ -1154,9 +1153,26 @@ const doorbellFaqs = [
     padding: 17px 21px;
   }
   .call:hover,
-  .button:hover,
-  .product-card a:hover {
+  .button:hover {
     background: #090909;
+    color: #fff;
+  }
+
+  .product-card a {
+    align-items: center;
+    background: linear-gradient(180deg, #3d3d3d, #050505);
+    border-radius: 999px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .15), inset 0 1px 1px rgba(255, 255, 255, .23);
+    color: #fff;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 500;
+    justify-content: center;
+    min-height: auto;
+    padding: 11px 16px;
+  }
+  .product-card a:hover {
+    background: #e61e32;
     color: #fff;
   }
 
