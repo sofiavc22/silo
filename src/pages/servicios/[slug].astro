@@ -1113,4 +1113,57 @@ const doorbellFaqs = [
     .capability-grid { grid-template-columns: 1fr; }
   }
 
+
+  /* Controles de catálogo y CTA: misma familia visual que el inicio */
+  .brand-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .brand-links a {
+    align-items: center;
+    border: 1px solid #090909;
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+  }
+  .brand-links a:hover {
+    background: #e61e32;
+    border-color: #e61e32;
+    color: #fff;
+  }
+
+  .call,
+  .button,
+  .product-card a {
+    align-items: center;
+    background: #e61e32;
+    border-radius: 0;
+    box-shadow: none;
+    color: #fff;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 52px;
+    padding: 17px 21px;
+  }
+  .call:hover,
+  .button:hover,
+  .product-card a:hover {
+    background: #090909;
+    color: #fff;
+  }
+
+  @media (max-width: 700px) {
+    .brand-links { gap: 9px; margin-top: 24px; }
+    .brand-links a { min-height: 40px; padding: 0 14px; }
+    .call { min-height: 42px; padding: 10px 13px; }
+  }
+
 </style>
