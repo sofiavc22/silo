@@ -353,12 +353,18 @@ const cameraFaqs = [
             <p class="eyebrow">Equipos disponibles</p>
             <h2>Las mejores cámaras de seguridad para interior y exterior</h2>
             <p>
-              Te ayudamos a elegir el modelo y realizamos la instalación y
-              configuración completa.
+              Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas
+              premium para proteger tu hogar con excelente imagen,
+              aplicaciones confiables y equipos pensados para interior y exterior.
             </p>
+            <div class="brand-links" aria-label="Ir a equipos por marca">
+              <a href="#ring">Ring</a>
+              <a href="#nest">Google Nest</a>
+              <a href="#tp-link">TP-Link</a>
+            </div>
           </div>
           {["Ring", "Nest", "TP-Link"].map((brand) => (
-            <div class="brand-group">
+            <div class="brand-group" id={brand === "Ring" ? "ring" : brand === "Nest" ? "nest" : "tp-link"}>
               <h3>{brand}</h3>
               {brand === "Ring" ? (
                 <div class="brand-includes">
@@ -378,7 +384,6 @@ const cameraFaqs = [
                     <li>Gemini Live en bocinas y pantallas</li>
                     <li>Creación sencilla de automatizaciones</li>
                     <li>Detección de rostros conocidos y sonidos</li>
-                    <li>Detección de la puerta de la cochera</li>
                     <li>Llamadas de emergencia</li>
                   </ul>
                 </div>
@@ -725,6 +730,9 @@ const cameraFaqs = [
     color: #666;
     max-width: 530px;
   }
+  .brand-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .brand-links a { display: inline-flex; align-items: center; justify-content: center; min-width: 92px; padding: 11px 17px; border: 1px solid #bbb; border-radius: 999px; font-size: 11px; font-weight: 700; transition: border-color .2s ease, color .2s ease, background .2s ease; }
+  .brand-links a:hover { background: #e61e32; border-color: #e61e32; color: #fff; }
   .brand-group {
     margin: 0 5vw 85px;
   }
@@ -799,6 +807,9 @@ const cameraFaqs = [
     }
     .catalog-head {
       margin-bottom: 55px;
+    }
+    .brand-links {
+      margin-top: 23px;
     }
     .brand-group {
       margin-bottom: 60px;
