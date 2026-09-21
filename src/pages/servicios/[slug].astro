@@ -387,7 +387,7 @@ const doorbellFaqs = [
       <section class="content">
         <div>
           <p class="eyebrow">Pensado para tu hogar</p>
-          <h2>Instalación de {data.title} para tu hogar</h2>
+          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : `Instalación de ${data.title} para tu hogar`}</h2>
           <p>{data.body}</p>
         </div>
         <div class="points">
@@ -411,7 +411,7 @@ const doorbellFaqs = [
             </p>
             <div class="brand-links" aria-label="Ir a equipos por marca">
               {catalogBrands.map((brand) => (
-                <a href="#${brandAnchor(brand)}">{brand === 'Nest' ? 'Google Nest' : brand}</a>
+                <a href={`#${brandAnchor(brand)}`}>{brand === 'Nest' ? 'Google Nest' : brand}</a>
               ))}
             </div>
           </div>
