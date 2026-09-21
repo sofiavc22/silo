@@ -7,12 +7,17 @@
     },
     {
       "source": "/servicios/cerraduras-yale",
-      "destination": "/servicios/cerraduras-digitales",
+      "destination": "/servicios/instalacion-cerraduras-digitales",
       "permanent": true
     },
     {
       "source": "/servicios/instalacion-cerraduras-inteligentes",
       "destination": "/servicios/cerraduras-digitales",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/cerraduras-digitales",
+      "destination": "/servicios/instalacion-cerraduras-digitales",
       "permanent": true
     }
   ]

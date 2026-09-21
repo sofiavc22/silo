@@ -5,7 +5,7 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '');
 const services = [
   { number: '01', title: 'Cámaras de seguridad', slug: 'instalacion-de-camaras-de-seguridad', text: 'Protege interiores y exteriores y revisa tu casa desde el celular.' },
   { number: '02', title: 'Timbres inteligentes', slug: 'timbres-inteligentes', text: 'Mira quién está en tu puerta y responde estés donde estés.' },
-  { number: '03', title: 'Cerraduras inteligentes', slug: 'cerraduras-digitales', text: 'Controla el acceso a tu hogar con mayor seguridad y comodidad.' },
+  { number: '03', title: 'Cerraduras inteligentes', slug: 'instalacion-cerraduras-digitales', text: 'Controla el acceso a tu hogar con mayor seguridad y comodidad.' },
   { number: '04', title: 'Automatización residencial', slug: 'automatizacion-residencial', text: 'Conecta tu casa y controla luces, accesos y dispositivos fácilmente.' },
 ];
 ---
@@ -33,14 +33,14 @@ const services = [
     <header class="topbar">
       <a class="logo" href="#inicio" aria-label="SILO inicio"><img src="/images/silo-logo.png" alt="SILO" /></a>
       <nav aria-label="Navegación principal">
-        <div class="nav-dropdown"><button type="button" aria-haspopup="true">Soluciones <span>⌄</span></button><div class="dropdown-menu"><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras para interior</a><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras para exterior</a><a href="/servicios/timbres-inteligentes">Timbres inteligentes</a><a href="/servicios/cerraduras-digitales">Cerraduras inteligentes</a><a href="/servicios/automatizacion-residencial">Automatización residencial</a></div></div>
+        <div class="nav-dropdown"><button type="button" aria-haspopup="true">Soluciones <span>⌄</span></button><div class="dropdown-menu"><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras para interior</a><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras para exterior</a><a href="/servicios/timbres-inteligentes">Timbres inteligentes</a><a href="/servicios/instalacion-cerraduras-digitales">Cerraduras inteligentes</a><a href="/servicios/automatizacion-residencial">Automatización residencial</a></div></div>
         <a href="#proceso">Cómo funciona</a>
         <a href="#zonas">Cobertura</a>
       </nav>
       <a class="header-call" href={`https://wa.me/52${phone}?text=Hola%20SILO,%20quiero%20cotizar%20una%20instalación`}>Cotizar ahora</a>
       <button class="menu" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
     </header>
-    <nav class="mobile-nav" aria-label="Navegación móvil"><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras de seguridad</a><a href="/servicios/timbres-inteligentes">Timbres inteligentes</a><a href="/servicios/cerraduras-digitales">Cerraduras inteligentes</a><a href="/servicios/automatizacion-residencial">Automatización residencial</a><a href="#proceso">Cómo funciona</a><a href="#zonas">Cobertura</a></nav>
+    <nav class="mobile-nav" aria-label="Navegación móvil"><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras de seguridad</a><a href="/servicios/timbres-inteligentes">Timbres inteligentes</a><a href="/servicios/instalacion-cerraduras-digitales">Cerraduras inteligentes</a><a href="/servicios/automatizacion-residencial">Automatización residencial</a><a href="#proceso">Cómo funciona</a><a href="#zonas">Cobertura</a></nav>
     <a class="mobile-quote" href={`https://wa.me/52${phone}?text=Hola%20SILO,%20quiero%20cotizar%20una%20instalación`}>Cotizar ahora</a>
 
     <main id="inicio">
