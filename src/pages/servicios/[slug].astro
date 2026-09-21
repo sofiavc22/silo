@@ -143,6 +143,11 @@ export function getStaticPaths() {
             "Instalación profesional",
             "Diseño premium para tu puerta",
           ],
+          catalog: [
+            { brand: "Yale", name: "Cerradura digital con manija", image: "/images/locks/yale-manija.webp" },
+            { brand: "Yale", name: "Cerradura digital con jaladera", image: "/images/locks/yale-jaladera.jpg" },
+            { brand: "TP-Link", name: "Cerradura digital", image: "/images/locks/tplink-digital.webp" },
+          ],
         },
       },
     },
@@ -223,6 +228,13 @@ const cameraFaqs = [
     "question": "¿Cuánto cuesta instalar cámaras de seguridad?",
     "answer": "Con nosotros, la instalación de una sola cámara comienza desde $3,000 MXN, todo incluido. El precio final depende del número de cámaras, los espacios que necesitas proteger y el tipo de equipo. Seleccionamos y probamos equipos duraderos, con excelente imagen y aplicaciones fáciles de usar."
   }
+];
+const lockFaqs = [
+  { "question": "¿Qué cerraduras inteligentes instalan?", "answer": "Instalamos cerraduras digitales Yale y TP-Link para casas y departamentos. Revisamos tu puerta y te recomendamos un modelo compatible con el tipo de acceso que buscas." },
+  { "question": "¿Puedo abrir la cerradura desde mi celular?", "answer": "Sí, en los modelos compatibles. Configuramos la aplicación para que puedas administrar accesos y usar las funciones disponibles desde tus dispositivos móviles." },
+  { "question": "¿Funcionan si se va la luz?", "answer": "Los modelos cuentan con métodos de respaldo según el equipo, como baterías o llave mecánica. Te explicamos cómo usarlo correctamente al terminar la instalación." },
+  { "question": "¿Incluyen instalación y configuración?", "answer": "Sí. Revisamos la compatibilidad, instalamos la cerradura, configuramos el acceso y dejamos todo listo para usarse." },
+  { "question": "¿Cuánto cuesta instalar una cerradura inteligente?", "answer": "La instalación de una cerradura inteligente comienza desde $6,000 MXN, todo incluido. El precio final depende del modelo, el tipo de puerta y las adaptaciones necesarias." },
 ];
 const doorbellFaqs = [
   {
@@ -324,6 +336,17 @@ const doorbellFaqs = [
         })),
       })}></script>
     )}
+    {Astro.params.slug === 'cerraduras-yale' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: lockFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      })}></script>
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"
@@ -407,11 +430,13 @@ const doorbellFaqs = [
         <section class="catalog">
           <div class="catalog-head">
             <p class="eyebrow">Equipos disponibles</p>
-            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : 'Las mejores cámaras de seguridad para interior y exterior'}</h2>
+            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : Astro.params.slug === 'cerraduras-yale' ? 'Cerraduras inteligentes disponibles para tu hogar' : 'Las mejores cámaras de seguridad para interior y exterior'}</h2>
             <p>
               {Astro.params.slug === 'timbres-inteligentes'
                 ? 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas confiables para ver, escuchar y responder a tus visitas desde donde estés.'
-                : 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas premium para proteger tu hogar con excelente imagen, aplicaciones confiables y equipos pensados para interior y exterior.'}
+                : Astro.params.slug === 'cerraduras-yale'
+                  ? 'Trabajamos con Yale y TP-Link para darte opciones de acceso inteligente, configuración sencilla y un acabado limpio en tu puerta.'
+                  : 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas premium para proteger tu hogar con excelente imagen, aplicaciones confiables y equipos pensados para interior y exterior.'}
             </p>
             <div class="brand-links" aria-label="Ir a equipos por marca">
               {catalogBrands.map((brand) => (
@@ -459,14 +484,14 @@ const doorbellFaqs = [
                       <div class="product-image">
                         <img
                           src={product.image}
-                          alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
+                          alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : Astro.params.slug === 'cerraduras-yale' ? 'Cerradura inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
                           loading="lazy"
                         />
                       </div>
                       <p>{product.brand}</p>
                       <h4>{product.name}</h4>
                       <a
-                        href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
+                        href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'cerraduras-yale' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
                       >
                         Cotizar instalación
                       </a>
@@ -486,6 +511,22 @@ const doorbellFaqs = [
             </div>
             <div class="camera-faq-list">
               {cameraFaqs.map((faq) => (
+                <details>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+        {Astro.params.slug === 'cerraduras-yale' && (
+          <section class="camera-faq" aria-labelledby="lock-faq-title">
+            <div>
+              <p class="eyebrow">Preguntas frecuentes</p>
+              <h2 id="lock-faq-title">Preguntas frecuentes sobre cerraduras inteligentes</h2>
+            </div>
+            <div class="camera-faq-list">
+              {lockFaqs.map((faq) => (
                 <details>
                   <summary>{faq.question}</summary>
                   <p>{faq.answer}</p>
