@@ -70,6 +70,41 @@ export function getStaticPaths() {
               name: "Interior inalámbrica",
               image: "/images/cameras/nest-interior-inalambrica.webp",
             },
+            {
+              brand: "TP-Link",
+              name: "Exterior alámbrica 1080p",
+              image: "/images/cameras/tplink-exterior-alambrica-1080p.webp",
+            },
+            {
+              brand: "TP-Link",
+              name: "Exterior alámbrica 2K",
+              image: "/images/cameras/tplink-exterior-alambrica-2k.webp",
+            },
+            {
+              brand: "TP-Link",
+              name: "Exterior alámbrica 3K",
+              image: "/images/cameras/tplink-exterior-alambrica-3k.webp",
+            },
+            {
+              brand: "TP-Link",
+              name: "Exterior alámbrica doble lente 2K",
+              image: "/images/cameras/tplink-exterior-alambrica-doble-lente-2k.webp",
+            },
+            {
+              brand: "TP-Link",
+              name: "Exterior inalámbrica solar 2K",
+              image: "/images/cameras/tplink-exterior-inalambrica-solar-2k.webp",
+            },
+            {
+              brand: "TP-Link",
+              name: "Interior alámbrica 2K",
+              image: "/images/cameras/tplink-interior-alambrica-2k.webp",
+            },
+            {
+              brand: "TP-Link",
+              name: "Interior alámbrica 3K",
+              image: "/images/cameras/tplink-interior-alambrica-3k.webp",
+            },
           ],
         },
       },
@@ -322,7 +357,7 @@ const cameraFaqs = [
               configuración completa.
             </p>
           </div>
-          {["Ring", "Nest"].map((brand) => (
+          {["Ring", "Nest", "TP-Link"].map((brand) => (
             <div class="brand-group">
               <h3>{brand}</h3>
               {brand === "Ring" ? (
@@ -335,7 +370,7 @@ const cameraFaqs = [
                     <li>Modos de dispositivo y más</li>
                   </ul>
                 </div>
-              ) : (
+              ) : brand === "Nest" ? (
                 <div class="brand-includes">
                   <p>Incluye con suscripción Google Home Premium</p>
                   <ul>
@@ -347,7 +382,7 @@ const cameraFaqs = [
                     <li>Llamadas de emergencia</li>
                   </ul>
                 </div>
-              )}
+              ) : null}
               <div class="product-grid">
                 {data.catalog
                   .filter((product) => product.brand === brand)
