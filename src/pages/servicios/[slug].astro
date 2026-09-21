@@ -553,21 +553,21 @@ const doorbellFaqs = [
           </div>
           <div class="automation-grid">
             {[
-              ['Iluminación inteligente','Automatizamos luces, interruptores y ambientes para que se enciendan, apaguen o cambien según tu rutina.'],
-              ['Clima','Podemos integrar el control de aire acondicionado y equipos compatibles para mantener la temperatura que prefieres.'],
-              ['Cerraduras inteligentes','Instalamos accesos inteligentes para que puedas abrir, cerrar y administrar el acceso a tu casa.'],
-              ['Cámaras de seguridad','Integramos cámaras para que puedas revisar tu casa y recibir alertas desde tu celular.'],
-              ['Timbres inteligentes','Instalamos timbres con video para que puedas ver y hablar con quien está en tu puerta.'],
-              ['Enchufes inteligentes','Automatizamos aparatos y dispositivos para encenderlos, apagarlos o programarlos fácilmente.'],
-              ['Persianas y cortinas','Podemos automatizar persianas compatibles para abrirlas o cerrarlas por horario, luz o rutina.'],
-              ['Sensores','Integramos sensores de movimiento, apertura, presencia o fugas para activar acciones y recibir alertas.'],
-              ['Limpieza automática','Podemos integrar robots aspiradora compatibles dentro de las rutinas de tu hogar.'],
-              ['Control por voz','Conectamos dispositivos compatibles con asistentes de voz para controlar funciones sin usar las manos.'],
-              ['Entretenimiento','Podemos integrar televisión, audio y otros equipos compatibles para crear escenas y rutinas.'],
-              ['Todo funcionando en conjunto','Diseñamos automatizaciones para que diferentes dispositivos respondan juntos, en lugar de funcionar como equipos aislados.'],
-            ].map(([title,description]) => (
+              ['https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=82','Iluminación inteligente','Automatizamos luces, interruptores y ambientes para que se enciendan, apaguen o cambien según tu rutina.'],
+              ['https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=82','Clima','Podemos integrar el control de aire acondicionado y equipos compatibles para mantener la temperatura que prefieres.'],
+              ['/images/locks/yale-manija.webp','Cerraduras inteligentes','Instalamos accesos inteligentes para que puedas abrir, cerrar y administrar el acceso a tu casa.'],
+              ['/images/cameras/tplink-exterior-alambrica-2k.webp','Cámaras de seguridad','Integramos cámaras para que puedas revisar tu casa y recibir alertas desde tu celular.'],
+              ['/images/doorbells/ring-con-cable.webp','Timbres inteligentes','Instalamos timbres con video para que puedas ver y hablar con quien está en tu puerta.'],
+              ['https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=900&q=82','Enchufes inteligentes','Automatizamos aparatos y dispositivos para encenderlos, apagarlos o programarlos fácilmente.'],
+              ['https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=900&q=82','Persianas y cortinas','Podemos automatizar persianas compatibles para abrirlas o cerrarlas por horario, luz o rutina.'],
+              ['https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=82','Sensores','Integramos sensores de movimiento, apertura, presencia o fugas para activar acciones y recibir alertas.'],
+              ['https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=900&q=82','Limpieza automática','Podemos integrar robots aspiradora compatibles dentro de las rutinas de tu hogar.'],
+              ['https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=900&q=82','Control por voz','Conectamos dispositivos compatibles con asistentes de voz para controlar funciones sin usar las manos.'],
+              ['https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=900&q=82','Entretenimiento','Podemos integrar televisión, audio y otros equipos compatibles para crear escenas y rutinas.'],
+              ['https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=82','Todo funcionando en conjunto','Diseñamos automatizaciones para que diferentes dispositivos respondan juntos, en lugar de funcionar como equipos aislados.'],
+            ].map(([image,title,description]) => (
               <article class="automation-card">
-                
+                <div class="automation-card-visual"><img src={image} alt={title} loading="lazy" /></div>
                 <div class="automation-card-copy">
                   <h3>{title}</h3>
                   <p>{description}</p>
@@ -1160,7 +1160,7 @@ const doorbellFaqs = [
   }
 
 
-  .automation-options{padding:110px 7vw;background:#fff;border-top:1px solid #ddd}.automation-options-head{max-width:760px;margin:0 auto 62px;text-align:center}.automation-options-head .eyebrow{color:#e61e32}.automation-options-head h2{margin:0 0 20px}.automation-options-head>p:last-child{margin:0 auto;color:#666;font-size:15px;line-height:1.7;max-width:680px}.automation-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1280px;margin:0 auto}.automation-card{overflow:hidden;border:1px solid #e5e5e5;border-radius:18px;background:#f8f8f7}.automation-card-copy{padding:20px}.automation-card h3{margin:0 0 9px;font-size:16px!important;letter-spacing:-.3px!important}.automation-card p{margin:0;color:#666;font-size:12px;line-height:1.6}.automation-benefits{display:grid;grid-template-columns:repeat(4,1fr);max-width:1280px;margin:24px auto 0;padding:28px;border-radius:18px;background:#f5f5f3}.automation-benefits div{padding:0 22px;border-right:1px solid #ddd}.automation-benefits div:last-child{border:0}.automation-benefits b,.automation-benefits span{display:block}.automation-benefits b{font-size:13px;margin-bottom:6px}.automation-benefits span{font-size:11px;line-height:1.5;color:#666}@media(max-width:900px){.automation-grid{grid-template-columns:repeat(2,1fr)}.automation-benefits{grid-template-columns:repeat(2,1fr);gap:24px}.automation-benefits div{border:0;padding:0}}@media(max-width:560px){.automation-options{padding:78px 7vw}.automation-options-head{margin-bottom:42px;text-align:left}.automation-grid{grid-template-columns:1fr 1fr;gap:10px}.automation-card{border-radius:14px}.automation-card-copy{padding:15px}.automation-card h3{font-size:14px!important}.automation-card p{font-size:11px}.automation-benefits{grid-template-columns:1fr;padding:24px;margin-top:18px;gap:20px}}
+  .automation-options{padding:110px 7vw;background:#fff;border-top:1px solid #ddd}.automation-options-head{max-width:760px;margin:0 auto 62px;text-align:center}.automation-options-head .eyebrow{color:#e61e32}.automation-options-head h2{margin:0 0 20px}.automation-options-head>p:last-child{margin:0 auto;color:#666;font-size:15px;line-height:1.7;max-width:680px}.automation-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1280px;margin:0 auto}.automation-card{overflow:hidden;border:1px solid #e5e5e5;border-radius:18px;background:#f8f8f7}.automation-card-visual{height:180px;overflow:hidden;background:#eee}.automation-card-visual img{width:100%;height:100%;display:block;object-fit:cover}.automation-card-copy{padding:20px}.automation-card h3{margin:0 0 9px;font-size:16px!important;letter-spacing:-.3px!important}.automation-card p{margin:0;color:#666;font-size:12px;line-height:1.6}.automation-benefits{display:grid;grid-template-columns:repeat(4,1fr);max-width:1280px;margin:24px auto 0;padding:28px;border-radius:18px;background:#f5f5f3}.automation-benefits div{padding:0 22px;border-right:1px solid #ddd}.automation-benefits div:last-child{border:0}.automation-benefits b,.automation-benefits span{display:block}.automation-benefits b{font-size:13px;margin-bottom:6px}.automation-benefits span{font-size:11px;line-height:1.5;color:#666}@media(max-width:900px){.automation-grid{grid-template-columns:repeat(2,1fr)}.automation-benefits{grid-template-columns:repeat(2,1fr);gap:24px}.automation-benefits div{border:0;padding:0}}@media(max-width:560px){.automation-options{padding:78px 7vw}.automation-options-head{margin-bottom:42px;text-align:left}.automation-grid{grid-template-columns:1fr 1fr;gap:10px}.automation-card{border-radius:14px}.automation-card-visual{height:120px}.automation-card-copy{padding:15px}.automation-card h3{font-size:14px!important}.automation-card p{font-size:11px}.automation-benefits{grid-template-columns:1fr;padding:24px;margin-top:18px;gap:20px}}
 
   /* Controles de catálogo y CTA: misma familia visual que el inicio */
   .brand-links {
