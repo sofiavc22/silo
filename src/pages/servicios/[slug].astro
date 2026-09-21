@@ -156,14 +156,14 @@ export function getStaticPaths() {
       params: { slug: "automatizacion-residencial" },
       props: {
         data: {
-          title: "Automatización residencial",
-          intro: "Haz que tu casa responda a ti.",
-          body: "Conectamos tus dispositivos para que puedas controlar funciones de tu hogar desde tu celular o con comandos de voz. Creamos una solución ordenada, fácil de usar y adaptada a tu espacio.",
+          title: "Instalación de casa inteligente y automatización residencial en México",
+          intro: "Automatizamos desde una habitación hasta una casa completa.",
+          body: "Convertimos casas existentes en hogares inteligentes y también participamos desde la etapa de diseño de una casa nueva. Instalamos y configuramos iluminación, enchufes, sensores y otros dispositivos conectados para crear automatizaciones útiles, fáciles de controlar y pensadas para tu rutina.",
           points: [
-            "Control por voz con Alexa",
-            "Rutinas para tu hogar",
-            "Dispositivos conectados",
-            "Configuración personalizada",
+            "Automatización de iluminación",
+            "Enchufes y dispositivos inteligentes",
+            "Sensores y rutinas automáticas",
+            "Proyectos para casas existentes o desde diseño",
           ],
         },
       },
@@ -185,7 +185,7 @@ const serviceSchema = {
     name: "SILO",
     telephone: "+52 672 267 1419",
   },
-  areaServed: ["Ciudad de México", "Estado de México"],
+  areaServed: Astro.params.slug === "automatizacion-residencial" ? "México" : ["Ciudad de México", "Estado de México"],
   serviceType: data.title,
 };
 const cameraFaqs = [
@@ -237,6 +237,17 @@ const lockFaqs = [
   { "question": "¿Incluyen instalación y configuración?", "answer": "Sí. Revisamos la compatibilidad, instalamos la cerradura, configuramos el acceso y dejamos todo listo para usarse." },
   { "question": "¿Cuánto cuesta instalar una cerradura inteligente?", "answer": "La instalación de una cerradura inteligente comienza desde $6,000 MXN, todo incluido. El precio final depende del modelo, el tipo de puerta y las adaptaciones necesarias." },
 ];
+const automationFaqs = [
+  { "question": "¿Qué se puede automatizar en una casa?", "answer": "Podemos automatizar iluminación, enchufes, sensores, rutinas y otros dispositivos compatibles. El proyecto puede comenzar con funciones sencillas y crecer hasta integrar distintas áreas de la casa." },
+  { "question": "¿Pueden convertir una casa existente en una casa inteligente?", "answer": "Sí. Revisamos la instalación y las necesidades de la casa para proponer una solución que aproveche la infraestructura existente y añada automatización de forma ordenada." },
+  { "question": "¿Pueden participar desde el diseño de una casa nueva?", "answer": "Sí. Podemos integrarnos desde la etapa de diseño para planear ubicaciones, conexiones, dispositivos y automatizaciones antes de que la obra esté terminada." },
+  { "question": "¿Instalan iluminación inteligente?", "answer": "Sí. Podemos automatizar luces, interruptores y escenas para controlar distintos ambientes desde el celular, con voz o mediante rutinas programadas, según los equipos elegidos." },
+  { "question": "¿Instalan enchufes y sensores inteligentes?", "answer": "Sí. Instalamos enchufes y sensores compatibles para automatizar acciones, detectar movimiento o condiciones específicas y crear rutinas adaptadas al uso de la casa." },
+  { "question": "¿La casa inteligente se puede controlar desde el celular?", "answer": "Sí. Configuramos los dispositivos compatibles para que puedas controlar funciones desde aplicaciones móviles y, cuando el sistema lo permite, mediante asistentes de voz." },
+  { "question": "¿Tengo que automatizar toda la casa desde el principio?", "answer": "No. Podemos comenzar con una habitación o con las funciones que más utilizas y diseñar el sistema para ampliarlo después." },
+  { "question": "¿Trabajan proyectos de automatización residencial en todo México?", "answer": "Sí. Para proyectos de casa inteligente y automatización residencial ofrecemos cobertura nacional. Revisamos primero el alcance del proyecto para coordinar la instalación." },
+];
+
 const doorbellFaqs = [
   {
     "question": "¿Qué timbres inteligentes instalan?",
@@ -285,7 +296,7 @@ const doorbellFaqs = [
     <title>{data.title} | SILO</title>
     <meta
       name="description"
-      content={`${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
+      content={Astro.params.slug === 'automatizacion-residencial' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
     />
     {pageUrl && <link rel="canonical" href={pageUrl} />}
     <meta property="og:locale" content="es_MX" />
@@ -348,6 +359,17 @@ const doorbellFaqs = [
         })),
       })}></script>
     )}
+    {Astro.params.slug === 'automatizacion-residencial' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: automationFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      })}></script>
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"
@@ -383,7 +405,7 @@ const doorbellFaqs = [
       <section class="content">
         <div>
           <p class="eyebrow">Pensado para tu hogar</p>
-          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerraduras digitales para tu hogar' : `Instalación de ${data.title} para tu hogar`}</h2>
+          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerraduras digitales para tu hogar' : Astro.params.slug === 'automatizacion-residencial' ? 'Automatización de iluminación, enchufes y sensores para tu hogar' : `Instalación de ${data.title} para tu hogar`}</h2>
           <p>{data.body}</p>
         </div>
         <div class="points">
@@ -522,7 +544,7 @@ const doorbellFaqs = [
           ))}
         </section>
       )}
-      <CoverageAndCta>
+      <CoverageAndCta national={Astro.params.slug === 'automatizacion-residencial'}>
         {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && (
           <section class="camera-faq" aria-labelledby="camera-faq-title">
             <div>
@@ -555,6 +577,22 @@ const doorbellFaqs = [
             </div>
           </section>
         )}
+        {Astro.params.slug === 'automatizacion-residencial' && (
+          <section class="camera-faq" aria-labelledby="automation-faq-title">
+            <div>
+              <p class="eyebrow">Preguntas frecuentes</p>
+              <h2 id="automation-faq-title">Preguntas frecuentes sobre casa inteligente y automatización residencial</h2>
+            </div>
+            <div class="camera-faq-list">
+              {automationFaqs.map((faq) => (
+                <details>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
         {Astro.params.slug === 'timbres-inteligentes' && (
           <section class="camera-faq" aria-labelledby="doorbell-faq-title">
             <div>
@@ -577,7 +615,7 @@ const doorbellFaqs = [
       <a class="logo" href="/">
         SILO<span>.</span>
       </a>
-      <span>CDMX · Estado de México</span>
+      <span>{Astro.params.slug === 'automatizacion-residencial' ? 'Cobertura nacional · México' : 'CDMX · Estado de México'}</span>
     </footer>
     <script>
       const menuButton = document.querySelector(".menu");
