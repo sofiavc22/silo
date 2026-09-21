@@ -4,6 +4,11 @@
       "source": "/servicios/camaras-ring-nest",
       "destination": "/servicios/instalacion-de-camaras-de-seguridad",
       "permanent": true
+    },
+    {
+      "source": "/servicios/cerraduras-yale",
+      "destination": "/servicios/instalacion-cerraduras-inteligentes",
+      "permanent": true
     }
   ]
 }
