@@ -1,20 +1,30 @@
 ---
 const phone = '6722671419';
+interface Props { national?: boolean }
+const { national = false } = Astro.props;
 ---
 
 <section class="coverage-block">
   <div>
     <p class="eyebrow">Cobertura</p>
-    <h2>Instalamos en Ciudad de México y <em>Estado de México.</em></h2>
+    <h2>{national ? <>Instalamos proyectos de casa inteligente en <em>todo México.</em></> : <>Instalamos en Ciudad de México y <em>Estado de México.</em></>}</h2>
   </div>
-  <div class="locations">
-    <p>Estado de México</p>
-    <small>Instalamos en los 125 municipios del Estado de México:</small>
-    <div><a href="/zonas/huixquilucan">Huixquilucan</a><a href="/zonas/naucalpan">Naucalpan</a><a href="/zonas/metepec">Metepec</a><a href="/zonas/toluca">Toluca</a><a href="/zonas/tlalnepantla">Tlalnepantla</a></div>
-    <p>Ciudad de México</p>
-    <small>Instalamos en las 16 alcaldías de Ciudad de México:</small>
-    <div><a href="/zonas/miguel-hidalgo">Miguel Hidalgo</a><a href="/zonas/benito-juarez">Benito Juárez</a><a href="/zonas/cuauhtemoc">Cuauhtémoc</a><a href="/zonas/alvaro-obregon">Álvaro Obregón</a><a href="/zonas/coyoacan">Coyoacán</a></div>
-  </div>
+  {national ? (
+    <div class="locations">
+      <p>Cobertura nacional</p>
+      <small>Atendemos proyectos de automatización residencial en cualquier estado de México. Coordinamos contigo el alcance, la planeación y la instalación según las necesidades de tu casa.</small>
+      <div><span>Casas existentes</span><span>Casas nuevas</span><span>Proyectos desde diseño</span><span>Automatización por etapas</span></div>
+    </div>
+  ) : (
+    <div class="locations">
+      <p>Estado de México</p>
+      <small>Instalamos en los 125 municipios del Estado de México:</small>
+      <div><a href="/zonas/huixquilucan">Huixquilucan</a><a href="/zonas/naucalpan">Naucalpan</a><a href="/zonas/metepec">Metepec</a><a href="/zonas/toluca">Toluca</a><a href="/zonas/tlalnepantla">Tlalnepantla</a></div>
+      <p>Ciudad de México</p>
+      <small>Instalamos en las 16 alcaldías de Ciudad de México:</small>
+      <div><a href="/zonas/miguel-hidalgo">Miguel Hidalgo</a><a href="/zonas/benito-juarez">Benito Juárez</a><a href="/zonas/cuauhtemoc">Cuauhtémoc</a><a href="/zonas/alvaro-obregon">Álvaro Obregón</a><a href="/zonas/coyoacan">Coyoacán</a></div>
+    </div>
+  )}
 </section>
 <slot />
 <section class="next-step">
@@ -26,5 +36,5 @@ const phone = '6722671419';
 </section>
 
 <style>
-  .coverage-block{padding:100px 7vw;display:grid;grid-template-columns:1fr 1fr;gap:8vw;border-top:1px solid #ddd;background:#fff}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:800;color:#666;margin:0 0 25px}.coverage-block h2,.next-step h2{font-size:clamp(28px,3vw,48px);line-height:1.12;letter-spacing:-2px;margin:0;font-weight:600}.coverage-block h2 em{color:#e61e32;font-style:normal}.locations>p{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;border-top:1px solid #ccc;padding-top:18px;margin:0}.locations>p:not(:first-child){margin-top:34px}.locations small{display:block;margin:0 0 16px;font-size:12px;line-height:1.6;color:#777}.locations>div{display:flex;flex-wrap:wrap;gap:8px}.locations a{border:1px solid #ddd;padding:10px 12px;font-size:11px;font-weight:600;color:#090909;text-decoration:none}.locations a:hover{border-color:#e61e32;color:#e61e32}.next-step{background:#fff;color:#090909;text-align:center;padding:125px 20px;border-top:1px solid #ddd;border-bottom:1px solid #ddd}.next-step .eyebrow{color:#e61e32;margin-bottom:24px}.next-step h2{color:#090909;font-size:clamp(36px,4.2vw,64px)!important;line-height:1.04!important;letter-spacing:-.06em!important;max-width:900px;margin:0 auto 20px}.next-step h2 span{color:#e61e32}.next-step>p:not(.eyebrow){font-size:16px;line-height:1.6;color:#090909;margin:0 auto 30px;max-width:620px}.next-step .button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 28px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:linear-gradient(180deg,#f34a5c,#e61e32 48%,#bd1023);box-shadow:0 8px 13px rgba(0,0,0,.16),inset 0 1px 1px rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:700}.next-step .button:hover{background:#bd1023;color:#fff}.next-step-phone{display:block;font-size:14px;font-weight:800;margin-top:22px;color:#090909;text-decoration:none}@media(max-width:800px){.coverage-block{display:block;padding:75px 7vw}.locations{margin-top:40px}.next-step{padding:84px 7vw}.next-step h2{font-size:clamp(36px,10vw,52px)!important}.next-step>p:not(.eyebrow){font-size:15px}}
+  .coverage-block{padding:100px 7vw;display:grid;grid-template-columns:1fr 1fr;gap:8vw;border-top:1px solid #ddd;background:#fff}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:800;color:#666;margin:0 0 25px}.coverage-block h2,.next-step h2{font-size:clamp(28px,3vw,48px);line-height:1.12;letter-spacing:-2px;margin:0;font-weight:600}.coverage-block h2 em{color:#e61e32;font-style:normal}.locations>p{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;border-top:1px solid #ccc;padding-top:18px;margin:0}.locations>p:not(:first-child){margin-top:34px}.locations small{display:block;margin:0 0 16px;font-size:12px;line-height:1.6;color:#777}.locations>div{display:flex;flex-wrap:wrap;gap:8px}.locations a,.locations span{border:1px solid #ddd;padding:10px 12px;font-size:11px;font-weight:600;color:#090909;text-decoration:none}.locations a:hover{border-color:#e61e32;color:#e61e32}.next-step{background:#fff;color:#090909;text-align:center;padding:125px 20px;border-top:1px solid #ddd;border-bottom:1px solid #ddd}.next-step .eyebrow{color:#e61e32;margin-bottom:24px}.next-step h2{color:#090909;font-size:clamp(36px,4.2vw,64px)!important;line-height:1.04!important;letter-spacing:-.06em!important;max-width:900px;margin:0 auto 20px}.next-step h2 span{color:#e61e32}.next-step>p:not(.eyebrow){font-size:16px;line-height:1.6;color:#090909;margin:0 auto 30px;max-width:620px}.next-step .button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 28px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:linear-gradient(180deg,#f34a5c,#e61e32 48%,#bd1023);box-shadow:0 8px 13px rgba(0,0,0,.16),inset 0 1px 1px rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:700}.next-step .button:hover{background:#bd1023;color:#fff}.next-step-phone{display:block;font-size:14px;font-weight:800;margin-top:22px;color:#090909;text-decoration:none}@media(max-width:800px){.coverage-block{display:block;padding:75px 7vw}.locations{margin-top:40px}.next-step{padding:84px 7vw}.next-step h2{font-size:clamp(36px,10vw,52px)!important}.next-step>p:not(.eyebrow){font-size:15px}}
 </style>
