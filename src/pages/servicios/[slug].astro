@@ -122,6 +122,11 @@ export function getStaticPaths() {
             "Alertas cuando alguien toca",
             "Compatibilidad con Alexa según el modelo",
           ],
+          catalog: [
+            { brand: "Ring", name: "Timbre inteligente con cable", image: "/images/doorbells/ring-con-cable.webp" },
+            { brand: "Nest", name: "Timbre inteligente con cable", image: "/images/doorbells/nest-con-cable.jpg" },
+            { brand: "TP-Link", name: "Timbre inteligente con cable", image: "/images/doorbells/tplink-con-cable.webp" },
+          ],
         },
       },
     },
@@ -160,6 +165,8 @@ export function getStaticPaths() {
   ];
 }
 const { data } = Astro.props;
+const catalogBrands = data.catalog ? [...new Set(data.catalog.map((product) => product.brand))] : [];
+const brandAnchor = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 const siteUrl = Astro.site?.toString().replace(/\/$/, "");
 const pageUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : undefined;
 const serviceSchema = {
@@ -214,7 +221,7 @@ const cameraFaqs = [
   },
   {
     "question": "¿Cuánto cuesta instalar cámaras de seguridad?",
-    "answer": "Con nosotros, la instalación de una sola cámara comienza desde $3,000 MXN, con instalación incluida. El precio final depende del número de cámaras, los espacios que necesitas proteger y el tipo de equipo. Seleccionamos y probamos equipos duraderos, con excelente imagen y aplicaciones fáciles de usar."
+    "answer": "Con nosotros, la instalación de una sola cámara comienza desde $3,000 MXN, todo incluido. El precio final depende del número de cámaras, los espacios que necesitas proteger y el tipo de equipo. Seleccionamos y probamos equipos duraderos, con excelente imagen y aplicaciones fáciles de usar."
   }
 ];
 const doorbellFaqs = [
@@ -396,22 +403,22 @@ const doorbellFaqs = [
         <section class="catalog">
           <div class="catalog-head">
             <p class="eyebrow">Equipos disponibles</p>
-            <h2>Las mejores cámaras de seguridad para interior y exterior</h2>
+            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : 'Las mejores cámaras de seguridad para interior y exterior'}</h2>
             <p>
-              Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas
-              premium para proteger tu hogar con excelente imagen,
-              aplicaciones confiables y equipos pensados para interior y exterior.
+              {Astro.params.slug === 'timbres-inteligentes'
+                ? 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas confiables para ver, escuchar y responder a tus visitas desde donde estés.'
+                : 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas premium para proteger tu hogar con excelente imagen, aplicaciones confiables y equipos pensados para interior y exterior.'}
             </p>
             <div class="brand-links" aria-label="Ir a equipos por marca">
-              <a href="#ring">Ring</a>
-              <a href="#nest">Google Nest</a>
-              <a href="#tp-link">TP-Link</a>
+              {catalogBrands.map((brand) => (
+                <a href="#${brandAnchor(brand)}">{brand === 'Nest' ? 'Google Nest' : brand}</a>
+              ))}
             </div>
           </div>
-          {["Ring", "Nest", "TP-Link"].map((brand) => (
-            <div class="brand-group" id={brand === "Ring" ? "ring" : brand === "Nest" ? "nest" : "tp-link"}>
+          {catalogBrands.map((brand) => (
+            <div class="brand-group" id={brandAnchor(brand)}>
               <h3>{brand}</h3>
-              {brand === "Ring" ? (
+              {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && brand === "Ring" ? (
                 <div class="brand-includes">
                   <p>Incluye suscripción Ring Protect</p>
                   <ul>
@@ -421,7 +428,7 @@ const doorbellFaqs = [
                     <li>Modos de dispositivo y más</li>
                   </ul>
                 </div>
-              ) : brand === "Nest" ? (
+              ) : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && brand === "Nest" ? (
                 <div class="brand-includes">
                   <p>Incluye suscripción Google Home Premium</p>
                   <ul>
@@ -432,14 +439,14 @@ const doorbellFaqs = [
                     <li>Llamadas de emergencia</li>
                   </ul>
                 </div>
-              ) : (
+              ) : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && brand === "TP-Link" ? (
                 <div class="brand-includes">
                   <p>Incluye con tu instalación TP-Link</p>
                   <ul>
                     <li>Tarjeta microSD de 512 GB para almacenamiento local</li>
                   </ul>
                 </div>
-              )}
+              ) : null}
               <div class="product-grid">
                 {data.catalog
                   .filter((product) => product.brand === brand)
@@ -448,14 +455,14 @@ const doorbellFaqs = [
                       <div class="product-image">
                         <img
                           src={product.image}
-                          alt={`Cámara ${product.brand} ${product.name}`}
+                          alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
                           loading="lazy"
                         />
                       </div>
                       <p>{product.brand}</p>
                       <h4>{product.name}</h4>
                       <a
-                        href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20la%20cámara%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
+                        href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
                       >
                         Cotizar instalación
                       </a>
