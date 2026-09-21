@@ -1,4 +1,5 @@
 ---
+import SiteHeader from '../components/SiteHeader.astro';
 const phone = '6722671419';
 const phoneLabel = '672 267 1419';
 const siteUrl = Astro.site?.toString().replace(/\/$/, '');
@@ -30,17 +31,7 @@ const services = [
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="topbar">
-      <a class="logo" href="#inicio" aria-label="SILO inicio"><img src="/images/silo-logo.png" alt="SILO" /></a>
-      <nav aria-label="Navegación principal">
-        <div class="nav-dropdown"><button type="button" aria-haspopup="true">Soluciones <span>⌄</span></button><div class="dropdown-menu"><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras para interior</a><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras para exterior</a><a href="/servicios/timbres-inteligentes">Timbres inteligentes</a><a href="/servicios/instalacion-cerraduras-digitales">Cerraduras inteligentes</a><a href="/servicios/automatizacion-residencial">Automatización residencial</a></div></div>
-        <a href="#proceso">Cómo funciona</a>
-        <a href="#zonas">Cobertura</a>
-      </nav>
-      <a class="header-call" href={`https://wa.me/52${phone}?text=Hola%20SILO,%20quiero%20cotizar%20una%20instalación`}>Cotizar ahora</a>
-      <button class="menu" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    </header>
-    <nav class="mobile-nav" aria-label="Navegación móvil"><a href="/servicios/instalacion-de-camaras-de-seguridad">Cámaras de seguridad</a><a href="/servicios/timbres-inteligentes">Timbres inteligentes</a><a href="/servicios/instalacion-cerraduras-digitales">Cerraduras inteligentes</a><a href="/servicios/automatizacion-residencial">Automatización residencial</a><a href="#proceso">Cómo funciona</a><a href="#zonas">Cobertura</a></nav>
+    <SiteHeader home />
 
     <main id="inicio">
       <section class="hero">
