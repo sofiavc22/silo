@@ -362,7 +362,7 @@ const cameraFaqs = [
               <h3>{brand}</h3>
               {brand === "Ring" ? (
                 <div class="brand-includes">
-                  <p>Incluye con suscripción Ring Protect</p>
+                  <p>Incluye suscripción Ring Protect</p>
                   <ul>
                     <li>Hasta 180 días de reproducción de video</li>
                     <li>Alertas de personas, paquetes y vehículos</li>
@@ -372,7 +372,7 @@ const cameraFaqs = [
                 </div>
               ) : brand === "Nest" ? (
                 <div class="brand-includes">
-                  <p>Incluye con suscripción Google Home Premium</p>
+                  <p>Incluye suscripción Google Home Premium</p>
                   <ul>
                     <li>30 días de historial de video de eventos</li>
                     <li>Gemini Live en bocinas y pantallas</li>
@@ -382,7 +382,14 @@ const cameraFaqs = [
                     <li>Llamadas de emergencia</li>
                   </ul>
                 </div>
-              ) : null}
+              ) : (
+                <div class="brand-includes">
+                  <p>Incluye con tu instalación TP-Link</p>
+                  <ul>
+                    <li>Tarjeta microSD de 512 GB para almacenamiento local</li>
+                  </ul>
+                </div>
+              )}
               <div class="product-grid">
                 {data.catalog
                   .filter((product) => product.brand === brand)
