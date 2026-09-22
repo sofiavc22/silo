@@ -75,26 +75,41 @@ export function getStaticPaths() {
               brand: "TP-Link",
               name: "Exterior alámbrica 1080p",
               image: "/images/cameras/tplink-exterior-alambrica-1080p.webp",
+              price: "$3,399 MXN",
+              connection: "Conexión por cable",
+              features: ["1080p", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
               brand: "TP-Link",
               name: "Exterior alámbrica 2K",
               image: "/images/cameras/tplink-exterior-alambrica-2k.webp",
+              price: "$3,599 MXN",
+              connection: "Conexión por cable",
+              features: ["Resolución 2K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
               brand: "TP-Link",
               name: "Exterior alámbrica 3K",
               image: "/images/cameras/tplink-exterior-alambrica-3k.webp",
+              price: "$3,699 MXN",
+              connection: "Conexión por cable",
+              features: ["Resolución 3K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
               brand: "TP-Link",
               name: "Exterior alámbrica doble lente 2K",
               image: "/images/cameras/tplink-exterior-alambrica-doble-lente-2k.webp",
+              price: "$3,999 MXN",
+              connection: "Conexión inalámbrica",
+              features: ["Doble lente 2K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
               brand: "TP-Link",
               name: "Exterior inalámbrica solar 2K",
               image: "/images/cameras/tplink-exterior-inalambrica-solar-2k.webp",
+              price: "$4,299 MXN",
+              connection: "Conexión inalámbrica",
+              features: ["Resolución 2K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
               brand: "TP-Link",
@@ -472,13 +487,13 @@ const doorbellFaqs = [
         <section class="catalog">
           <div class="catalog-head">
             <p class="eyebrow">Equipos disponibles</p>
-            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerraduras digitales disponibles para tu hogar' : 'Las mejores cámaras de seguridad para interior y exterior'}</h2>
+            <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Timbres inteligentes disponibles para tu hogar' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerraduras digitales disponibles para tu hogar' : 'Cámaras de seguridad con instalación incluida'}</h2>
             <p>
               {Astro.params.slug === 'timbres-inteligentes'
                 ? 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas confiables para ver, escuchar y responder a tus visitas desde donde estés.'
                 : Astro.params.slug === 'instalacion-cerraduras-digitales'
                   ? 'Trabajamos con Yale y TP-Link para darte opciones de acceso inteligente, configuración sencilla y un acabado limpio en tu puerta.'
-                  : 'Trabajamos con TP-Link, Google Nest y Amazon Ring: tres marcas premium para proteger tu hogar con excelente imagen, aplicaciones confiables y equipos pensados para interior y exterior.'}
+                  : 'Elige la cámara que mejor se adapta a tu hogar. En los equipos con precio publicado, el total ya incluye la instalación de una cámara, configuración y memoria de almacenamiento.'}
             </p>
             <div class="brand-links" aria-label="Ir a equipos por marca">
               {catalogBrands.map((brand) => (
@@ -532,10 +547,24 @@ const doorbellFaqs = [
                       </div>
                       <p>{product.brand}</p>
                       <h4>{product.name}</h4>
+                      {product.price && (
+                        <div class="installed-price">
+                          <strong>{product.price}</strong>
+                          <span>Instalación de 1 cámara incluida</span>
+                        </div>
+                      )}
+                      {product.features && (
+                        <div class="product-specs">
+                          <p>{product.connection}</p>
+                          <ul>
+                            {product.features.map((feature) => <li>{feature}</li>)}
+                          </ul>
+                        </div>
+                      )}
                       <a
                         href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
                       >
-                        Cotizar instalación
+                        Solicitar cotización
                       </a>
                     </article>
                   ))}
@@ -1001,6 +1030,51 @@ const doorbellFaqs = [
   .product-card a:hover {
     background: #e61e32;
   }
+  .installed-price {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: grid;
+    gap: 4px;
+    margin: 0 0 17px;
+    padding: 13px 0;
+  }
+  .installed-price strong {
+    color: #e61e32;
+    font-size: 22px;
+    letter-spacing: -1px;
+  }
+  .installed-price span {
+    color: #555;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .product-specs {
+    margin: 0 0 18px;
+  }
+  .product-specs > p {
+    color: #090909;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0 0 11px;
+    text-transform: none;
+  }
+  .product-specs ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .product-specs li {
+    background: #f3f3f3;
+    border-radius: 999px;
+    color: #3f3f3f;
+    font-size: 10px;
+    line-height: 1.25;
+    padding: 6px 8px;
+  }
   @media (max-width: 700px) {
     .catalog {
       padding: 80px 7vw;
@@ -1031,6 +1105,8 @@ const doorbellFaqs = [
       padding: 10px 12px;
       font-size: 10px;
     }
+    .installed-price strong { font-size: 19px; }
+    .product-specs li { font-size: 9px; padding: 5px 7px; }
   }
   .brand-includes {
     background: #f7f7f7;
