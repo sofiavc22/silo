@@ -534,46 +534,26 @@ const doorbellFaqs = [
           <h2 id="camera-capabilities-title">¿Qué puedes hacer con las cámaras?</h2>
           <div class="capability-grid">
             <article class="capability">
-              <div class="capability-visual" aria-hidden="true">
-                <svg viewBox="0 0 120 120" fill="none">
-                  <rect x="31" y="24" width="45" height="60" rx="8" />
-                  <circle cx="53.5" cy="49" r="9" />
-                  <path d="M40 71h27" />
-                  <path class="capability-accent" d="M83 34c7 6 7 16 0 22M89 28c11 10 11 25 0 35" />
-                </svg>
+              <div class="capability-visual">
+                <img src="/images/camera-capabilities/notificaciones-v2.jpg" alt="Notificación de movimiento en una cámara de seguridad" loading="lazy" />
               </div>
               <p>Recibe notificaciones cuando tus cámaras detecten movimiento.</p>
             </article>
             <article class="capability">
-              <div class="capability-visual" aria-hidden="true">
-                <svg viewBox="0 0 120 120" fill="none">
-                  <rect x="34" y="20" width="52" height="80" rx="8" />
-                  <path d="M43 36h34v39H43z" />
-                  <path d="M57 79h7" />
-                  <path class="capability-accent" d="M50 61c4-9 12-14 20-14s16 5 20 14M56 49c2-5 6-8 11-8s9 3 11 8" />
-                </svg>
+              <div class="capability-visual">
+                <img src="/images/camera-capabilities/en-vivo.jpg" alt="Tableta mostrando cámaras de seguridad en vivo" loading="lazy" />
               </div>
               <p>Ve tu hogar en vivo desde la app cuando lo necesites.</p>
             </article>
             <article class="capability">
-              <div class="capability-visual" aria-hidden="true">
-                <svg viewBox="0 0 120 120" fill="none">
-                  <path d="M30 31h60v41H56l-14 13V72H30z" />
-                  <path d="M52 45v12M68 45v12" />
-                  <path d="M45 57c3 7 9 11 15 11s12-4 15-11" />
-                  <path class="capability-accent" d="M68 85c6-4 11-9 14-16" />
-                </svg>
+              <div class="capability-visual">
+                <img src="/images/camera-capabilities/audio-bidireccional.jpg" alt="Persona frente a una cámara en la entrada de una casa" loading="lazy" />
               </div>
               <p>Habla con quien esté frente a la cámara mediante comunicación bidireccional.</p>
             </article>
             <article class="capability">
-              <div class="capability-visual" aria-hidden="true">
-                <svg viewBox="0 0 120 120" fill="none">
-                  <path d="M31 38h58v49H31z" />
-                  <path d="M43 27h34v11H43z" />
-                  <path d="M46 55h28M46 65h20" />
-                  <path class="capability-accent" d="M81 78l7 7 14-18" />
-                </svg>
+              <div class="capability-visual">
+                <img src="/images/camera-capabilities/videos-eventos.jpg" alt="Reproducción de un video de seguridad en un teléfono" loading="lazy" />
               </div>
               <p>Los videos de eventos de movimiento se guardan en la app durante varios meses, según el dispositivo que elijas.</p>
             </article>
@@ -1478,9 +1458,9 @@ const doorbellFaqs = [
   .camera-capabilities h2 { color: #111; font-size: clamp(2.25rem, 4.5vw, 4rem); font-weight: 650; letter-spacing: -.07em; line-height: 1; margin: 0 auto 64px; max-width: 760px; text-align: center; }
   .capability-grid { display: grid; gap: 28px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: 1280px; }
   .capability { color: #4a4a4a; text-align: center; }
-  .capability-visual { align-items: center; background: #fff; border-radius: 50%; display: flex; height: 184px; justify-content: center; margin: 0 auto 28px; width: 184px; }
-  .capability-visual svg { height: 98px; stroke: #3d3d3d; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; width: 98px; }
-  .capability-visual .capability-accent { stroke: #e61e32; }
+  .capability-visual { aspect-ratio: 4 / 3; background: #e9e9e9; border: 1px solid rgba(0, 0, 0, .08); border-radius: 18px; box-shadow: 0 13px 28px rgba(0, 0, 0, .12); margin: 0 auto 28px; max-width: 280px; overflow: hidden; width: 100%; }
+  .capability-visual img { display: block; height: 100%; object-fit: cover; object-position: center; transition: transform .35s ease; width: 100%; }
+  .capability:hover .capability-visual img { transform: scale(1.04); }
   .capability p { font-size: 1.08rem; line-height: 1.55; margin: 0 auto; max-width: 260px; }
 
   @media (max-width: 900px) { .capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 52px; } }
