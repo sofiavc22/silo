@@ -43,9 +43,12 @@ export function getStaticPaths() {
             },
             {
               brand: "Ring",
-              name: "Exterior inalámbrica con luces y sirena",
+              name: "Exterior inalámbrica 1080p con luces y sirena",
               image:
                 "/images/cameras/ring-exterior-inalambrica-luces-sirena-negra.webp",
+              price: "$6,400 MXN",
+              power: "Baterías",
+              features: ["1080p", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "Ángulo de 140°", "Almacenamiento en la nube incluido", "Alexa y Google Home"],
             },
             {
               brand: "Ring",
@@ -195,6 +198,7 @@ const { data } = Astro.props;
 const isCameraCatalog = Astro.params.slug === "instalacion-de-camaras-de-seguridad";
 const catalogBrands = data.catalog ? [...new Set(data.catalog.map((product) => product.brand))] : [];
 const brandAnchor = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const productIdentifier = (product) => brandAnchor(`${product.brand}-${product.name}-${product.image}`);
 const featureSpecification = (feature) => {
   const value = feature.toLowerCase();
   if (value === "1080p") return ["Resolución", "1080p"];
@@ -590,11 +594,11 @@ const doorbellFaqs = [
                         <div class="installed-price">
                           <span class="price-value">{product.price}</span>
                           <span>Instalación de 1 cámara todo incluido</span>
-                          {product.features && <button class="details-link" type="button" data-dialog-id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`}>Ver detalles</button>}
+                          {product.features && <button class="details-link" type="button" data-dialog-id={`details-${productIdentifier(product)}`}>Ver detalles</button>}
                         </div>
                       )}
                       {product.features && !product.price && (
-                        <button class="details-link details-link-standalone" type="button" data-dialog-id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`}>Ver detalles</button>
+                        <button class="details-link details-link-standalone" type="button" data-dialog-id={`details-${productIdentifier(product)}`}>Ver detalles</button>
                       )}
                       <a
                         href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
@@ -602,12 +606,12 @@ const doorbellFaqs = [
                         Solicitar instalación
                       </a>
                       {product.features && (
-                        <dialog class="product-dialog" id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`} aria-labelledby={`details-title-${brandAnchor(`${product.brand}-${product.name}`)}`}>
+                        <dialog class="product-dialog" id={`details-${productIdentifier(product)}`} aria-labelledby={`details-title-${productIdentifier(product)}`}>
                           <form method="dialog"><button class="dialog-close" aria-label="Cerrar detalles">×</button></form>
                           <div class="dialog-product-image"><img src={product.image} alt={`Cámara ${product.brand} ${product.name}`} /></div>
                           <div class="dialog-copy">
                             <p>{product.brand}</p>
-                            <h3 id={`details-title-${brandAnchor(`${product.brand}-${product.name}`)}`}>{product.name}</h3>
+                            <h3 id={`details-title-${productIdentifier(product)}`}>{product.name}</h3>
                             {product.price && <><span class="dialog-price">{product.price}</span><span class="dialog-installation">Instalación de 1 cámara todo incluido</span></>}
                             <table class="specification-table">
                               <tbody>
