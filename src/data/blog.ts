@@ -9,6 +9,7 @@ export type BlogPost = {
   intro: string;
   sections: { heading: string; paragraphs: string[]; list?: string[] }[];
   faqs: { question: string; answer: string }[];
+  relatedServices: { href: string; label: string }[];
 };
 
 export const blogPosts: BlogPost[] = [
@@ -63,6 +64,11 @@ export const blogPosts: BlogPost[] = [
           'Antes de instalar, en SILO revisamos los puntos que quieres proteger y te recomendamos una distribución funcional. La idea no es poner cámaras por todos lados, sino cubrir bien los lugares importantes.',
         ],
       },
+    ],
+    relatedServices: [
+      { href: '/servicios/instalacion-de-camaras-de-seguridad', label: 'Ver cámaras de seguridad' },
+      { href: '/servicios/timbres-inteligentes', label: 'Ver timbres inteligentes' },
+      { href: '/servicios/instalacion-cerraduras-digitales', label: 'Conocer cerraduras digitales' },
     ],
     faqs: [
       { question: '¿Puedo instalar una cámara en la calle?', answer: 'La cámara debe enfocarse principalmente en tu propiedad y sus accesos. Puedes captar una parte de la vía pública de forma incidental, pero conviene evitar apuntar directamente a casas vecinas o espacios privados de otras personas.' },
@@ -121,6 +127,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+    relatedServices: [
+      { href: '/servicios/instalacion-de-camaras-de-seguridad', label: 'Comparar cámaras con instalación' },
+      { href: '/servicios/automatizacion-residencial', label: 'Explorar casa inteligente' },
+      { href: '/servicios/timbres-inteligentes', label: 'Ver timbres inteligentes' },
+    ],
     faqs: [
       { question: '¿Las cámaras inalámbricas necesitan Wi-Fi?', answer: 'Sí. El Wi-Fi permite ver video en vivo, recibir alertas y consultar grabaciones desde la aplicación. Antes de instalar revisamos que la señal llegue bien al punto elegido.' },
       { question: '¿Qué pasa si se va la luz?', answer: 'Depende del modelo y de la red Wi-Fi. Las cámaras con batería pueden seguir encendidas, pero para enviar alertas o verlas a distancia también necesitas que el internet funcione.' },
@@ -178,6 +189,11 @@ export const blogPosts: BlogPost[] = [
           'Atendemos instalaciones en Ciudad de México y Estado de México. Te orientamos desde el inicio para que elijas una opción que cuide bien tu hogar y se ajuste a lo que necesitas.',
         ],
       },
+    ],
+    relatedServices: [
+      { href: '/servicios/instalacion-de-camaras-de-seguridad', label: 'Ver catálogo de cámaras' },
+      { href: '/servicios/timbres-inteligentes', label: 'Complementar con un timbre inteligente' },
+      { href: '/servicios/instalacion-cerraduras-digitales', label: 'Conocer cerraduras digitales' },
     ],
     faqs: [
       { question: '¿El precio incluye configuración en el celular?', answer: 'Sí. Configuramos la aplicación en tus dispositivos móviles compatibles y dejamos el sistema listo para usarse.' },
