@@ -213,7 +213,7 @@ const productIdentifier = (product) => brandAnchor(`${product.brand}-${product.n
 const productPrice = (product) => Number((product.price || "").replace(/[^0-9]/g, "")) || 0;
 const featureSpecification = (feature) => {
   const value = feature.toLowerCase();
-  if (/^\\d+(?:\\.\\d+)?\\s?(mp|k)$/i.test(feature)) return ["Resolución", feature];
+  if (/^\d+(?:\.\d+)?\s?(mp|k)$/i.test(feature)) return ["Resolución", feature];
   if (value === "1080p") return ["Resolución", "1080p"];
   if (value.startsWith("resolución")) return ["Resolución", feature.replace(/^Resolución\s*/i, "")];
   if (value.includes("doble lente")) return ["Lentes y resolución", feature];
