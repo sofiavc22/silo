@@ -8,7 +8,7 @@ export function getStaticPaths() {
       params: { slug: "instalacion-de-camaras-de-seguridad" },
       props: {
         data: {
-          title: "Cámaras de seguridad para interior y exterior",
+          title: "Instalación de cámaras de seguridad para interior y exterior",
           intro: "Ve lo que sucede en tu hogar, estés donde estés.",
           body: "Instalamos y configuramos cámaras de seguridad para que puedas recibir alertas, revisar tu propiedad y consultar lo que ocurre desde tu celular. Diseñamos la ubicación de cada cámara para cubrir los accesos y espacios que más te importan.",
           points: [
@@ -141,7 +141,7 @@ export function getStaticPaths() {
       params: { slug: "timbres-inteligentes" },
       props: {
         data: {
-          title: "Instalación de timbres inteligentes para tu hogar",
+          title: "Instalación de timbres inteligentes para casas y departamentos",
           intro: "Ve, escucha y responde a tus visitas desde donde estés.",
           body: "Instalamos timbres inteligentes Ring y Nest para que puedas ver, escuchar y responder a tus visitas aunque no estés en casa. Una forma más cómoda de controlar el acceso a tu hogar.",
           points: [
@@ -299,6 +299,66 @@ const automationFaqs = [
   { "question": "¿Tengo que automatizar toda la casa desde el principio?", "answer": "No. Podemos comenzar con una habitación o con las funciones que más utilizas y diseñar el sistema para ampliarlo después." },
   { "question": "¿Trabajan proyectos de automatización residencial en todo México?", "answer": "Sí. Para proyectos de casa inteligente y automatización residencial ofrecemos cobertura nacional. Revisamos primero el alcance del proyecto para coordinar la instalación." },
 ];
+
+const seoContentBySlug = {
+  "instalacion-de-camaras-de-seguridad": {
+    heading: "Instalación de cámaras de seguridad para interior y exterior",
+    paragraphs: [
+      "La instalación de cámaras de seguridad para interior y exterior debe comenzar por los puntos que realmente quieres proteger. No todas las casas necesitan el mismo número de equipos ni el mismo tipo de cámara. Una entrada principal, la cochera, un acceso lateral y el patio suelen requerir vistas distintas. Por eso revisamos el espacio, la iluminación, el alcance de tu red y la altura de montaje antes de recomendar una opción. Así evitamos puntos ciegos, cables innecesarios y equipos que no se adaptan a la zona donde los necesitas.",
+      "Para exterior, puedes elegir cámaras alámbricas, inalámbricas o solares según la alimentación disponible. Las cámaras con cable son ideales para áreas con movimiento frecuente, como portones y cocheras. Las opciones con batería o panel solar ayudan cuando no hay una conexión eléctrica cercana. También importa la resolución, el ángulo, la visión nocturna a color, la sirena y el almacenamiento. Trabajamos con TP-Link, Google Nest y Amazon Ring para ofrecer alternativas que se adapten a tu casa y a lo que buscas vigilar.",
+      "El precio publicado de los equipos seleccionados incluye la cámara, instalación, material, almacenamiento, configuración en dispositivos móviles y un año de garantía por escrito. Al terminar, dejamos la aplicación configurada para que puedas revisar video en vivo, recibir alertas y consultar los eventos capturados por el dispositivo. Si ya tienes una cámara, también podemos orientarte para ampliar la cobertura con equipos compatibles y mantener una instalación ordenada.",
+      "SILO realiza instalación de cámaras de seguridad en Ciudad de México y Estado de México. Si quieres proteger tu puerta principal, complementar un timbre inteligente o integrar una cerradura digital, te ayudamos a planear un sistema completo para tu hogar. Cuéntanos qué áreas quieres cubrir y te recomendamos una solución práctica antes de instalar."
+    ],
+    links: [
+      ["/servicios/timbres-inteligentes", "Ver timbres inteligentes"],
+      ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"],
+      ["/servicios/automatizacion-residencial", "Explorar casa inteligente"]
+    ]
+  },
+  "timbres-inteligentes": {
+    heading: "Instalación de timbres inteligentes para tu entrada",
+    paragraphs: [
+      "La instalación de timbres inteligentes es una forma práctica de saber quién llega a tu casa, recibir avisos cuando alguien toca y revisar movimientos frente a la puerta. Es una solución especialmente útil para paquetes, visitas o entradas que quedan fuera de vista desde el interior. Antes de instalar, revisamos el espacio disponible, la conexión eléctrica si eliges un modelo con cable y la calidad del Wi-Fi en la entrada. Así el timbre queda colocado a una altura que permite ver claramente a las personas.",
+      "Trabajamos con timbres inteligentes Ring, Google Nest y TP-Link. Cada uno tiene funciones diferentes: algunos se conectan con cable, otros usan batería y varios permiten video en vivo, comunicación bidireccional y almacenamiento de eventos. Te ayudamos a elegir tomando en cuenta tu puerta, la alimentación disponible y cómo quieres usarlo. No se trata solo de instalar un equipo; buscamos que tenga una imagen útil y que la aplicación sea fácil de consultar todos los días.",
+      "Nuestro servicio incluye el montaje o conexión necesaria, el material de instalación y la configuración en dispositivos móviles compatibles. Al terminar, revisamos contigo las alertas, la vista en vivo y las funciones básicas del modelo que hayas elegido. Si ya tienes cámaras de seguridad, un timbre puede complementar muy bien la cobertura de tu entrada y darte una vista directa de quien llega a tu puerta.",
+      "Instalamos timbres inteligentes en Ciudad de México y Estado de México. También podemos integrar una cerradura digital o una cámara de seguridad en la misma visita para que los accesos de tu casa funcionen de forma más completa. Escríbenos y cuéntanos cómo es tu entrada para recomendarte una opción compatible."
+    ],
+    links: [
+      ["/servicios/instalacion-de-camaras-de-seguridad", "Ver cámaras de seguridad"],
+      ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"],
+      ["/servicios/automatizacion-residencial", "Explorar casa inteligente"]
+    ]
+  },
+  "instalacion-cerraduras-digitales": {
+    heading: "Instalación de cerraduras digitales para casas y departamentos",
+    paragraphs: [
+      "La instalación de cerraduras digitales puede hacer más cómodo y seguro el acceso a una casa o departamento. Dependiendo del modelo, puedes abrir con código, huella digital, tarjeta y llave física de respaldo. Antes de elegir una cerradura, revisamos el tipo de puerta, el sentido de apertura, el grosor y el espacio disponible. Estos detalles son importantes para que el equipo quede bien instalado, funcione suave y mantenga una apariencia limpia en tu entrada.",
+      "Trabajamos con cerraduras digitales Yale y TP-Link para ofrecer opciones con distintos tipos de acceso y diseño. Algunas son ideales para puertas principales; otras funcionan mejor en accesos de departamentos o puertas con jaladera. Te orientamos según la rutina de tu familia y el nivel de seguridad que buscas. La recomendación no se basa solo en la marca: también consideramos quién usará la cerradura, cuántos accesos necesitas administrar y cómo está construida tu puerta.",
+      "La instalación incluye la revisión de compatibilidad, el montaje profesional y la configuración de los métodos de acceso disponibles. Al finalizar, te explicamos cómo usar la cerradura, crear códigos y conservar la llave de respaldo. El precio de una instalación de cerradura inteligente comienza desde $6,000 MXN, todo incluido, y puede variar según el modelo y las adaptaciones necesarias para la puerta.",
+      "Instalamos cerraduras digitales en Ciudad de México y Estado de México. Si además quieres ver quién llega o proteger la entrada, podemos combinar tu cerradura con un timbre inteligente o cámaras de seguridad. Cuéntanos qué tipo de puerta tienes y te ayudamos a elegir una opción que realmente funcione para tu hogar."
+    ],
+    links: [
+      ["/servicios/timbres-inteligentes", "Ver timbres inteligentes"],
+      ["/servicios/instalacion-de-camaras-de-seguridad", "Ver cámaras de seguridad"],
+      ["/servicios/automatizacion-residencial", "Explorar casa inteligente"]
+    ]
+  },
+  "automatizacion-residencial": {
+    heading: "Instalación de casa inteligente y automatización residencial en México",
+    paragraphs: [
+      "La instalación de casa inteligente y automatización residencial puede empezar con algo sencillo, como iluminar una sala, controlar un enchufe o recibir una alerta de un sensor. También puede crecer hasta integrar distintas áreas de una casa completa. Lo importante es diseñar las funciones alrededor de tu rutina: qué luces usas, qué accesos quieres supervisar, qué aparatos te gustaría programar y qué situaciones quieres que se resuelvan solas. No necesitas automatizar todo desde el primer día para empezar a disfrutarlo.",
+      "En SILO instalamos iluminación inteligente, enchufes, sensores, cámaras, timbres, cerraduras y dispositivos compatibles. Podemos transformar una casa ya habitada o participar desde la etapa de diseño de una casa nueva. Cuando el proyecto se planea antes de la construcción, definimos ubicaciones, conexiones y espacios para que la instalación quede más limpia. En una casa existente, buscamos aprovechar la infraestructura disponible y elegir equipos que no compliquen el uso diario.",
+      "Una automatización residencial bien hecha no se trata de llenar la casa de aplicaciones. La meta es que los dispositivos funcionen juntos: que una luz se encienda al detectar movimiento, que ciertas funciones se apaguen al salir o que puedas crear escenas para llegar, dormir o salir de viaje. Configuramos las aplicaciones y las rutinas según los equipos elegidos, y dejamos el sistema listo para que sea fácil de entender por todas las personas que viven en casa.",
+      "Ofrecemos proyectos de casa inteligente y automatización residencial en todo México. Podemos orientarte si buscas una instalación sencilla o un proyecto completo desde diseño. También integramos cámaras de seguridad, timbres inteligentes y cerraduras digitales para que tu hogar sea más cómodo, seguro y conectado."
+    ],
+    links: [
+      ["/servicios/instalacion-de-camaras-de-seguridad", "Ver cámaras de seguridad"],
+      ["/servicios/timbres-inteligentes", "Ver timbres inteligentes"],
+      ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"]
+    ]
+  }
+};
+const seoContent = seoContentBySlug[Astro.params.slug as keyof typeof seoContentBySlug];
 
 const doorbellFaqs = [
   {
@@ -705,6 +765,19 @@ const doorbellFaqs = [
             <div><b>Mayor seguridad</b><span>Mantente al tanto de lo que sucede en casa.</span></div>
             <div><b>Control sencillo</b><span>Integramos todo para que sea fácil de usar.</span></div>
           </div>
+        </section>
+      )}
+      {seoContent && (
+        <section class="seo-content" aria-labelledby="seo-content-title">
+          <div class="seo-content-main">
+            <p class="eyebrow">Guía para elegir</p>
+            <h2 id="seo-content-title">{seoContent.heading}</h2>
+            {seoContent.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <aside class="seo-content-links">
+            <p>También te puede interesar</p>
+            {seoContent.links.map(([href, label]) => <a href={href}>{label}<span>→</span></a>)}
+          </aside>
         </section>
       )}
       <CoverageAndCta national={Astro.params.slug === 'automatizacion-residencial'}>
@@ -1494,5 +1567,16 @@ const doorbellFaqs = [
     .brand-links a { min-height: 40px; padding: 0 14px; }
     .call { min-height: 42px; padding: 10px 13px; }
   }
+
+  .seo-content { background: #f7f7f5; border-top: 1px solid #ddd; display: grid; gap: 8vw; grid-template-columns: minmax(0, 1.45fr) minmax(235px, .55fr); padding: 100px 12vw; }
+  .seo-content-main { max-width: 760px; }
+  .seo-content h2 { margin: 14px 0 28px; }
+  .seo-content-main > p:not(.eyebrow) { color: #565656; font-size: 16px; line-height: 1.8; margin: 0 0 21px; }
+  .seo-content-links { align-self: start; border-top: 1px solid #aaa; padding-top: 18px; }
+  .seo-content-links p { font-size: 11px; font-weight: 800; letter-spacing: 1px; margin: 0 0 13px; text-transform: uppercase; }
+  .seo-content-links a { align-items: center; border-bottom: 1px solid #d3d3d3; display: flex; font-size: 14px; font-weight: 700; justify-content: space-between; padding: 15px 0; }
+  .seo-content-links a:hover { color: #e61e32; }
+  .seo-content-links span { color: #e61e32; font-size: 18px; }
+  @media (max-width: 700px) { .seo-content { display: block; padding: 75px 7vw; } .seo-content-main > p:not(.eyebrow) { font-size: 15px; } .seo-content-links { margin-top: 45px; } }
 
 </style>
