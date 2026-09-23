@@ -20,9 +20,11 @@ export function getStaticPaths() {
           catalog: [
             {
               brand: "Ring",
-              name: "Exterior alámbrica con reflectores y sirena",
+              name: "Exterior alámbrica 1080p con reflectores y sirena",
               image:
                 "/images/cameras/ring-exterior-alambrica-reflectores-sirena.webp",
+              power: "Cable",
+              features: ["1080p", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "Ángulo de 140°", "Almacenamiento en la nube incluido", "Alexa y Google Home"],
             },
             {
               brand: "Ring",
@@ -31,9 +33,11 @@ export function getStaticPaths() {
             },
             {
               brand: "Ring",
-              name: "Exterior inalámbrica con luces y sirena",
+              name: "Exterior inalámbrica 1080p con luces y sirena",
               image:
                 "/images/cameras/ring-exterior-inalambrica-luces-sirena-blanca.webp",
+              power: "Baterías",
+              features: ["1080p", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "Ángulo de 140°", "Almacenamiento en la nube incluido", "Alexa y Google Home"],
             },
             {
               brand: "Ring",
@@ -76,7 +80,7 @@ export function getStaticPaths() {
               name: "Exterior alámbrica 1080p",
               image: "/images/cameras/tplink-exterior-alambrica-1080p.webp",
               price: "$3,399 MXN",
-              connection: "Conexión por cable",
+              power: "Cable",
               features: ["1080p", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
@@ -84,7 +88,7 @@ export function getStaticPaths() {
               name: "Exterior alámbrica 2K",
               image: "/images/cameras/tplink-exterior-alambrica-2k.webp",
               price: "$3,599 MXN",
-              connection: "Conexión por cable",
+              power: "Cable",
               features: ["Resolución 2K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
@@ -92,7 +96,7 @@ export function getStaticPaths() {
               name: "Exterior alámbrica 3K",
               image: "/images/cameras/tplink-exterior-alambrica-3k.webp",
               price: "$3,699 MXN",
-              connection: "Conexión por cable",
+              power: "Cable",
               features: ["Resolución 3K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
@@ -100,7 +104,7 @@ export function getStaticPaths() {
               name: "Exterior doble lente 2K",
               image: "/images/cameras/tplink-exterior-alambrica-doble-lente-2k.webp",
               price: "$3,999 MXN",
-              connection: "Conexión inalámbrica",
+              power: "Baterías",
               features: ["Doble lente 2K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
@@ -108,7 +112,7 @@ export function getStaticPaths() {
               name: "Exterior inalámbrica solar 2K",
               image: "/images/cameras/tplink-exterior-inalambrica-solar-2k.webp",
               price: "$4,299 MXN",
-              connection: "Conexión inalámbrica",
+              power: "Baterías",
               features: ["Resolución 2K", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "360°", "Memoria incluida", "Alexa y Google Home"],
             },
             {
@@ -551,8 +555,11 @@ const doorbellFaqs = [
                         <div class="installed-price">
                           <span class="price-value">{product.price}</span>
                           <span>Instalación de 1 cámara todo incluido</span>
-                          <button class="details-link" type="button" data-dialog-id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`}>Ver detalles</button>
+                          {product.features && <button class="details-link" type="button" data-dialog-id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`}>Ver detalles</button>}
                         </div>
+                      )}
+                      {product.features && !product.price && (
+                        <button class="details-link details-link-standalone" type="button" data-dialog-id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`}>Ver detalles</button>
                       )}
                       <a
                         href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
@@ -566,9 +573,8 @@ const doorbellFaqs = [
                           <div class="dialog-copy">
                             <p>{product.brand}</p>
                             <h3 id={`details-title-${brandAnchor(`${product.brand}-${product.name}`)}`}>{product.name}</h3>
-                            <span class="dialog-price">{product.price}</span>
-                            <span class="dialog-installation">Instalación de 1 cámara todo incluido</span>
-                            <p class="dialog-connection">{product.connection}</p>
+                            {product.price && <><span class="dialog-price">{product.price}</span><span class="dialog-installation">Instalación de 1 cámara todo incluido</span></>}
+                            <p class="dialog-connection">Alimentación: {product.power}</p>
                             <ul>{product.features.map((feature) => <li>{feature}</li>)}</ul>
                             <a href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20solicitar%20la%20instalación%20de%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}>Solicitar instalación</a>
                           </div>
@@ -1066,6 +1072,7 @@ const doorbellFaqs = [
     font-weight: 700;
   }
   .details-link { background: transparent; border: 0; color: #090909; cursor: pointer; font-size: 10px; justify-self: start; padding: 0; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+  .details-link-standalone { margin: 0 0 17px; }
   .product-dialog { border: 0; border-radius: 18px; box-shadow: 0 24px 80px rgba(0, 0, 0, .28); color: #090909; max-width: min(820px, calc(100vw - 32px)); padding: 0; width: 100%; }
   .product-dialog::backdrop { background: rgba(9, 9, 9, .62); }
   .product-dialog form { position: absolute; right: 14px; top: 14px; z-index: 2; }
