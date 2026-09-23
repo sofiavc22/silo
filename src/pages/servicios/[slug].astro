@@ -78,6 +78,7 @@ export function getStaticPaths() {
               name: "Exterior alámbrica 4 MP",
               image: "/images/cameras/aqara-exterior-alambrica-4mp.jpg",
               price: "$7,299 MXN",
+              recommended: true,
               power: "Cable",
               features: ["4 MP", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "Ángulo de 133°", "Almacenamiento en la nube incluido", "Alexa, Google Home y Apple Home"],
             },
@@ -227,7 +228,7 @@ const featureSpecification = (feature) => {
 };
 const catalogGroups = data.catalog
   ? isCameraCatalog
-    ? [{ id: "catalogo-de-camaras", products: data.catalog }]
+    ? [{ id: "catalogo-de-camaras", products: [...data.catalog].sort((a, b) => Number(Boolean(b.recommended)) - Number(Boolean(a.recommended))) }]
     : catalogBrands.map((brand) => ({
         id: brandAnchor(brand),
         brand,
@@ -656,6 +657,7 @@ const doorbellFaqs = [
                 {group.products.map((product) => (
                     <article class:list={['product-card', { 'camera-product-card': isCameraCatalog }]} data-camera-card={isCameraCatalog ? "true" : undefined} data-brand={product.brand} data-power={product.power || "Sin especificar"} data-price={productPrice(product)}>
                       <div class="product-image">
+                        {product.recommended && <span class="product-recommendation">La más recomendada</span>}
                         <img
                           src={product.image}
                           alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerradura inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
@@ -1585,5 +1587,8 @@ const doorbellFaqs = [
     .camera-product-actions { gap: 6px; grid-template-columns: 1fr; }
     .camera-product-card .details-link, .camera-product-card a { min-height: 34px; }\n    .camera-product-card a { padding: 7px 8px; }
   }
+
+
+  .camera-product-card .product-recommendation { background: #e61e32; border-radius: 999px; color: #fff; font-size: 8px; font-weight: 800; left: 8px; letter-spacing: .35px; padding: 6px 9px; position: absolute; text-transform: uppercase; top: 8px; z-index: 1; }
 
 </style>
