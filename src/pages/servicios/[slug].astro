@@ -647,16 +647,6 @@ const doorbellFaqs = [
                 {group.products.map((product) => (
                     <article class:list={['product-card', { 'camera-product-card': isCameraCatalog }]} data-camera-card={isCameraCatalog ? "true" : undefined} data-brand={product.brand} data-power={product.power || "Sin especificar"} data-price={productPrice(product)}>
                       <div class="product-image">
-                        {isCameraCatalog && (
-                          <span class="warranty-badge">
-                            <span class="warranty-medallion">
-                              <em>Garantía</em>
-                              <strong>1</strong>
-                              <span>Año</span>
-                              <small>Por escrito</small>
-                            </span>
-                          </span>
-                        )}
                         <img
                           src={product.image}
                           alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerradura inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
