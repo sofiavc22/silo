@@ -541,11 +541,7 @@ const doorbellFaqs = [
             )}
             {isCameraCatalog && (
               <div class="marketplace-controls" data-marketplace-controls>
-                <div class="marketplace-controls-header">
-                  <div>
-                    <b>Encuentra tu cámara ideal</b>
-                    <p>Filtra por marca o alimentación y compara opciones.</p>
-                  </div>
+                <div class="marketplace-toolbar">
                   <div class="marketplace-sort">
                     <label for="camera-sort">Ordenar</label>
                     <select id="camera-sort" data-camera-sort>
@@ -570,6 +566,7 @@ const doorbellFaqs = [
                     <button class="filter-chip" type="button" data-filter-power="Baterías">Baterías</button>
                     <button class="filter-chip" type="button" data-filter-power="Solar">Solar</button>
                   </div>
+                </div>
                 </div>
                 <div class="marketplace-meta"><span data-camera-count></span><button class="clear-filters" type="button" data-clear-filters>Limpiar filtros</button></div>
               </div>
@@ -1125,19 +1122,17 @@ const doorbellFaqs = [
     color: #666;
     max-width: 530px;
   }
-  .marketplace-controls { background: #f5f5f3; border: 1px solid #e1e1dd; border-radius: 18px; display: grid; gap: 21px; margin-top: 34px; padding: 25px 27px 20px; }
-  .marketplace-controls-header { align-items: flex-start; display: flex; gap: 24px; justify-content: space-between; }
-  .marketplace-controls-header b { display: block; font-size: 15px; letter-spacing: -.35px; margin-bottom: 5px; }
-  .marketplace-controls-header p { color: #666; font-size: 11px; line-height: 1.45; margin: 0; }
-  .marketplace-sort { align-items: center; display: flex; flex-shrink: 0; gap: 9px; }
-  .marketplace-sort label, .filter-group > span { color: #555; font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
-  .marketplace-sort select { appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%23090909' stroke-width='2'/%3E%3C/svg%3E") right 12px center/14px no-repeat; border: 1px solid #d2d2ce; border-radius: 10px; box-shadow: 0 1px 1px rgba(0,0,0,.03); color: #090909; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; padding: 10px 37px 10px 12px; }
-  .filter-group { align-items: center; display: flex; flex-wrap: wrap; gap: 12px; }
-  .filter-options { display: flex; flex-wrap: wrap; gap: 7px; }
-  .filter-chip { background: #fff; border: 1px solid #d3d3cf; border-radius: 999px; color: #363636; cursor: pointer; font: inherit; font-size: 10px; font-weight: 700; padding: 8px 12px; transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease, transform .18s ease; }
-  .filter-chip:hover { border-color: #e61e32; color: #e61e32; transform: translateY(-1px); }
-  .filter-chip.active { background: linear-gradient(180deg, #f34457, #df1830); border-color: #df1830; box-shadow: 0 4px 8px rgba(230, 30, 50, .2); color: #fff; }
-  .marketplace-meta { align-items: center; border-top: 1px solid #deded9; display: flex; gap: 16px; justify-content: space-between; padding-top: 16px; }
+  .marketplace-controls { border-bottom: 1px solid #dedede; border-top: 1px solid #dedede; display: grid; gap: 14px; margin-top: 34px; padding: 17px 0 13px; }
+  .marketplace-toolbar { align-items: center; display: flex; flex-wrap: wrap; gap: 13px 23px; }
+  .marketplace-sort { align-items: center; display: flex; flex-shrink: 0; gap: 8px; }
+  .marketplace-sort label, .filter-group > span { color: #777; font-size: 9px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+  .marketplace-sort select { appearance: none; background: #f7f7f7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%23090909' stroke-width='2'/%3E%3C/svg%3E") right 10px center/13px no-repeat; border: 0; border-radius: 7px; color: #090909; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; padding: 9px 32px 9px 10px; }
+  .filter-group { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter-options { display: flex; flex-wrap: wrap; gap: 5px; }
+  .filter-chip { background: transparent; border: 0; border-radius: 6px; color: #555; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; padding: 8px 9px; transition: background .18s ease, color .18s ease; }
+  .filter-chip:hover { background: #f1f1f1; color: #090909; }
+  .filter-chip.active { background: #090909; color: #fff; }
+  .marketplace-meta { align-items: center; display: flex; gap: 16px; justify-content: space-between; }
   .marketplace-meta span { color: #666; font-size: 11px; font-weight: 600; }
   .clear-filters { background: transparent; border: 0; color: #e61e32; cursor: pointer; font: inherit; font-size: 11px; font-weight: 800; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
   .brand-group {
@@ -1155,6 +1150,9 @@ const doorbellFaqs = [
     gap: 26px;
   }
   .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     min-width: 0;
   }
   .product-image {
@@ -1191,6 +1189,7 @@ const doorbellFaqs = [
     font-size: 17px;
     line-height: 1.3;
     margin: 0 0 18px;
+    min-height: 44px;
     font-weight: 600;
   }
   .product-card a {
@@ -1206,6 +1205,7 @@ const doorbellFaqs = [
     box-shadow:
       0 6px 10px rgba(0, 0, 0, 0.15),
       inset 0 1px 1px rgba(255, 255, 255, 0.23);
+    margin-top: auto;
   }
   .product-card a:hover {
     background: #e61e32;
@@ -1262,11 +1262,11 @@ const doorbellFaqs = [
     .catalog-head {
       margin-bottom: 55px;
     }
-    .marketplace-controls { gap: 17px; margin-top: 27px; padding: 20px 18px 17px; }
-    .marketplace-controls-header { align-items: stretch; flex-direction: column; gap: 16px; }
-    .marketplace-sort { align-items: center; flex-direction: row; gap: 8px; justify-content: space-between; }
-    .filter-group { align-items: flex-start; flex-direction: column; gap: 8px; }
-    .filter-chip { font-size: 10px; padding: 7px 10px; }
+    .marketplace-controls { gap: 13px; margin-top: 27px; padding: 15px 0 12px; }
+    .marketplace-toolbar { align-items: flex-start; flex-direction: column; gap: 11px; }
+    .marketplace-sort { width: 100%; }
+    .filter-group { align-items: flex-start; flex-direction: column; gap: 5px; }
+    .filter-chip { font-size: 10px; padding: 7px 8px; }
     .brand-group {
       margin-bottom: 60px;
     }
@@ -1286,6 +1286,7 @@ const doorbellFaqs = [
     .warranty-medallion small { font-size: 3px; letter-spacing: .2px; margin-top: 2px; }
     .product-card h4 {
       font-size: 15px;
+      min-height: 59px;
     }
     .product-card a {
       padding: 10px 12px;
