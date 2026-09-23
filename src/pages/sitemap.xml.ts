@@ -4,6 +4,8 @@ const pages = [
   { path: '', priority: '1.0', changefreq: 'weekly' },
   { path: 'nosotros', priority: '0.6', changefreq: 'monthly' },
   { path: 'contacto', priority: '0.8', changefreq: 'monthly' },
+  { path: 'blog', priority: '0.8', changefreq: 'weekly' },
+  ...['donde-instalar-camaras-de-seguridad-casa', 'camaras-alambricas-vs-inalambricas', 'cuanto-cuesta-instalar-camaras-seguridad-cdmx-edomex'].map((slug) => ({ path: `blog/${slug}`, priority: '0.7', changefreq: 'monthly' })),
   ...['instalacion-de-camaras-de-seguridad', 'timbres-inteligentes', 'instalacion-cerraduras-digitales', 'automatizacion-residencial'].map((slug) => ({ path: `servicios/${slug}`, priority: '0.9', changefreq: 'monthly' })),
   ...['huixquilucan', 'naucalpan', 'metepec', 'toluca', 'tlalnepantla', 'miguel-hidalgo', 'benito-juarez', 'cuauhtemoc', 'alvaro-obregon', 'coyoacan'].map((slug) => ({ path: `zonas/${slug}`, priority: '0.8', changefreq: 'monthly' })),
 ];
