@@ -555,6 +555,12 @@ const doorbellFaqs = [
                 {group.products.map((product) => (
                     <article class="product-card">
                       <div class="product-image">
+                        {isCameraCatalog && (
+                          <span class="warranty-badge">
+                            <strong>1 año</strong>
+                            <span>Garantía<br />por escrito</span>
+                          </span>
+                        )}
                         <img
                           src={product.image}
                           alt={`${Astro.params.slug === 'timbres-inteligentes' ? 'Timbre inteligente' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerradura inteligente' : 'Cámara'} ${product.brand} ${product.name}`}
@@ -1024,7 +1030,11 @@ const doorbellFaqs = [
     align-items: center;
     justify-content: center;
     padding: 18px;
+    position: relative;
   }
+  .warranty-badge { align-items: center; background: #e61e32; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 3px 10px rgba(0, 0, 0, .16); color: #fff; display: flex; flex-direction: column; height: 82px; justify-content: center; line-height: 1.05; position: absolute; right: 11px; text-align: center; top: 11px; width: 82px; z-index: 1; }
+  .warranty-badge strong { font-size: 16px; letter-spacing: -.8px; }
+  .warranty-badge span { font-size: 8px; font-weight: 700; margin-top: 3px; text-transform: uppercase; }
   .product-image img {
     width: 100%;
     height: 100%;
@@ -1123,6 +1133,9 @@ const doorbellFaqs = [
       height: 185px;
       padding: 12px;
     }
+    .warranty-badge { height: 62px; right: 7px; top: 7px; width: 62px; }
+    .warranty-badge strong { font-size: 13px; }
+    .warranty-badge span { font-size: 6px; }
     .product-card h4 {
       font-size: 15px;
     }
