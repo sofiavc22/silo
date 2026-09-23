@@ -190,8 +190,18 @@ export function getStaticPaths() {
   ];
 }
 const { data } = Astro.props;
+const isCameraCatalog = Astro.params.slug === "instalacion-de-camaras-de-seguridad";
 const catalogBrands = data.catalog ? [...new Set(data.catalog.map((product) => product.brand))] : [];
 const brandAnchor = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const catalogGroups = data.catalog
+  ? isCameraCatalog
+    ? [{ id: "catalogo-de-camaras", products: data.catalog }]
+    : catalogBrands.map((brand) => ({
+        id: brandAnchor(brand),
+        brand,
+        products: data.catalog.filter((product) => product.brand === brand),
+      }))
+  : [];
 const siteUrl = Astro.site?.toString().replace(/\/$/, "");
 const pageUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : undefined;
 const serviceSchema = {
@@ -499,16 +509,18 @@ const doorbellFaqs = [
                   ? 'Trabajamos con Yale y TP-Link para darte opciones de acceso inteligente, configuración sencilla y un acabado limpio en tu puerta.'
                   : 'Elige la cámara que mejor se adapta a tu hogar. En los equipos con precio publicado, el total ya incluye la instalación de una cámara, configuración y memoria de almacenamiento.'}
             </p>
-            <div class="brand-links" aria-label="Ir a equipos por marca">
-              {catalogBrands.map((brand) => (
-                <a href={`#${brandAnchor(brand)}`}>{brand === 'Nest' ? 'Google Nest' : brand}</a>
-              ))}
-            </div>
+            {!isCameraCatalog && (
+              <div class="brand-links" aria-label="Ir a equipos por marca">
+                {catalogBrands.map((brand) => (
+                  <a href={`#${brandAnchor(brand)}`}>{brand === 'Nest' ? 'Google Nest' : brand}</a>
+                ))}
+              </div>
+            )}
           </div>
-          {catalogBrands.map((brand) => (
-            <div class="brand-group" id={brandAnchor(brand)}>
-              <h3>{brand}</h3>
-              {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && brand === "Ring" ? (
+          {catalogGroups.map((group) => (
+            <div class:list={["brand-group", { "marketplace-group": isCameraCatalog }]} id={group.id}>
+              {group.brand && <h3>{group.brand}</h3>}
+              {!isCameraCatalog && group.brand === "Ring" ? (
                 <div class="brand-includes">
                   <p>Incluye suscripción Ring Protect</p>
                   <ul>
@@ -518,7 +530,7 @@ const doorbellFaqs = [
                     <li>Modos de dispositivo y más</li>
                   </ul>
                 </div>
-              ) : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && brand === "Nest" ? (
+              ) : !isCameraCatalog && group.brand === "Nest" ? (
                 <div class="brand-includes">
                   <p>Incluye suscripción Google Home Premium</p>
                   <ul>
@@ -529,7 +541,7 @@ const doorbellFaqs = [
                     <li>Llamadas de emergencia</li>
                   </ul>
                 </div>
-              ) : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && brand === "TP-Link" ? (
+              ) : !isCameraCatalog && group.brand === "TP-Link" ? (
                 <div class="brand-includes">
                   <p>Incluye con tu instalación TP-Link</p>
                   <ul>
@@ -538,9 +550,7 @@ const doorbellFaqs = [
                 </div>
               ) : null}
               <div class="product-grid">
-                {data.catalog
-                  .filter((product) => product.brand === brand)
-                  .map((product) => (
+                {group.products.map((product) => (
                     <article class="product-card">
                       <div class="product-image">
                         <img
@@ -1072,7 +1082,7 @@ const doorbellFaqs = [
     font-weight: 700;
   }
   .details-link { background: transparent; border: 0; color: #090909; cursor: pointer; font-size: 10px; justify-self: start; padding: 0; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
-  .details-link-standalone { margin: 0 0 17px; }
+  .details-link-standalone { display: block; margin: 0 0 17px; }
   .product-dialog { border: 0; border-radius: 18px; box-shadow: 0 24px 80px rgba(0, 0, 0, .28); color: #090909; max-width: min(820px, calc(100vw - 32px)); padding: 0; width: 100%; }
   .product-dialog::backdrop { background: rgba(9, 9, 9, .62); }
   .product-dialog form { position: absolute; right: 14px; top: 14px; z-index: 2; }
