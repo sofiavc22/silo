@@ -74,6 +74,14 @@ export function getStaticPaths() {
               features: ["1080p", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "Ángulo de 180°", "Almacenamiento en la nube incluido", "Alexa y Google Home"],
             },
             {
+              brand: "Aqara",
+              name: "Exterior alámbrica 4 MP",
+              image: "/images/cameras/aqara-exterior-alambrica-4mp.jpg",
+              price: "$7,299 MXN",
+              power: "Cable",
+              features: ["4 MP", "Visión nocturna a color", "Audio bidireccional", "Alarma integrada", "Ángulo de 133°", "Almacenamiento en la nube incluido", "Alexa, Google Home y Apple Home"],
+            },
+            {
               brand: "Nest",
               name: "Exterior inalámbrica",
               image: "/images/cameras/nest-exterior-inalambrica.webp",
@@ -205,6 +213,7 @@ const productIdentifier = (product) => brandAnchor(`${product.brand}-${product.n
 const productPrice = (product) => Number((product.price || "").replace(/[^0-9]/g, "")) || 0;
 const featureSpecification = (feature) => {
   const value = feature.toLowerCase();
+  if (/^\\d+(?:\\.\\d+)?\\s?(mp|k)$/i.test(feature)) return ["Resolución", feature];
   if (value === "1080p") return ["Resolución", "1080p"];
   if (value.startsWith("resolución")) return ["Resolución", feature.replace(/^Resolución\s*/i, "")];
   if (value.includes("doble lente")) return ["Lentes y resolución", feature];
@@ -213,7 +222,7 @@ const featureSpecification = (feature) => {
   if (value.includes("alarma")) return ["Alarma", "Sí, integrada"];
   if (value.includes("ángulo") || value.includes("360")) return ["Ángulo", feature.replace(/^Ángulo de\s*/i, "")];
   if (value.includes("memoria") || value.includes("almacenamiento")) return ["Almacenamiento", feature];
-  if (value.includes("alexa") || value.includes("google home")) return ["Compatible con", "Alexa y Google Home"];
+  if (value.includes("alexa") || value.includes("google home") || value.includes("apple home")) return ["Compatible con", feature];
   return ["Características", feature];
 };
 const catalogGroups = data.catalog
