@@ -348,7 +348,7 @@ const doorbellFaqs = [
     <title>{data.title} | SILO</title>
     <meta
       name="description"
-      content={Astro.params.slug === 'automatizacion-residencial' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
+      content={Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalamos cámaras de seguridad para exterior e interior. Incluye equipo, instalación, material, configuración en dispositivos móviles y garantía por escrito.' : Astro.params.slug === 'automatizacion-residencial' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
     />
     {pageUrl && <link rel="canonical" href={pageUrl} />}
     <meta property="og:locale" content="es_MX" />
