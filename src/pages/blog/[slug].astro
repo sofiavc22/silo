@@ -1,0 +1,58 @@
+---
+import SiteHeader from '../../components/SiteHeader.astro';
+import CoverageAndCta from '../../components/CoverageAndCta.astro';
+import { blogPosts } from '../../data/blog';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '');
+const pageUrl = siteUrl ? `${siteUrl}/blog/${post.slug}` : undefined;
+const articleSchema = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: post.title,
+  description: post.description, datePublished: post.datePublished, dateModified: post.datePublished,
+  mainEntityOfPage: pageUrl, author: { '@type': 'Organization', name: 'SILO' }, publisher: { '@type': 'Organization', name: 'SILO' },
+};
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: post.faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) };
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
+    <title>{post.title} | SILO</title>
+    <meta name="description" content={post.description} />
+    {pageUrl && <link rel="canonical" href={pageUrl} />}
+    <meta property="og:type" content="article" /><meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={`${post.title} | SILO`} /><meta property="og:description" content={post.description} />
+    {pageUrl && <meta property="og:url" content={pageUrl} />}
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <SiteHeader />
+    <main>
+      <article>
+        <header class="article-head">
+          <a class="back" href="/blog">← Volver al blog</a>
+          <p class="meta">{post.category} <span>·</span> {post.readTime} <span>·</span> {post.dateLabel}</p>
+          <h1>{post.title}</h1><p class="intro">{post.intro}</p>
+        </header>
+        <div class="article-body">
+          {post.sections.map((section) => (
+            <section><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}{section.list && <ul>{section.list.map((item) => <li>{item}</li>)}</ul>}</section>
+          ))}
+        </div>
+        <aside class="article-cta"><p class="eyebrow">¿LISTA PARA PROTEGER TU CASA?</p><h2>Te ayudamos a elegir e instalar la cámara correcta.</h2><p>Cuéntanos qué espacios quieres cubrir y te recomendamos una solución para tu hogar.</p><a href="https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20una%20instalaci%C3%B3n">Solicitar instalación</a></aside>
+        <section class="faq"><p class="eyebrow">PREGUNTAS FRECUENTES</p><h2>Resolvemos tus dudas</h2>{post.faqs.map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>
+      </article>
+      <CoverageAndCta />
+    </main>
+  </body>
+</html>
+<style>
+  :global(*){box-sizing:border-box}:global(body){margin:0;font-family:Inter,Arial,sans-serif;color:#090909}:global(a){color:inherit;text-decoration:none}.article-head{padding:92px 12vw 72px;border-bottom:1px solid #ddd}.back{color:#e61e32;font-size:13px;font-weight:800}.meta,.eyebrow{color:#e61e32;font-size:11px;font-weight:800;letter-spacing:1.6px}.meta{margin-top:46px}.meta span{color:#999;margin:0 5px}.article-head h1{max-width:900px;margin:21px 0;font-size:clamp(43px,6vw,78px);line-height:1;letter-spacing:-3.8px}.intro{max-width:700px;color:#575757;font-size:20px;line-height:1.55}.article-body{max-width:760px;margin:0 auto;padding:82px 0 36px}.article-body section{margin-bottom:55px}.article-body h2,.faq h2,.article-cta h2{font-size:32px;line-height:1.13;letter-spacing:-1.5px}.article-body p,.faq p,.article-cta p{font-size:17px;line-height:1.75;color:#505050}.article-body ul{padding-left:22px}.article-body li{margin:13px 0;color:#505050;font-size:16px;line-height:1.55}.article-cta{max-width:920px;margin:30px auto 95px;padding:56px;background:#f4f4f2}.article-cta h2{max-width:650px;margin:15px 0}.article-cta>p:not(.eyebrow){max-width:600px}.article-cta a{display:inline-flex;margin-top:16px;padding:15px 23px;border-radius:999px;background:linear-gradient(180deg,#f34a5c,#e61e32 48%,#bd1023);color:#fff;font-size:13px;font-weight:800;box-shadow:0 8px 13px rgba(0,0,0,.16)}.faq{max-width:760px;margin:0 auto;padding:0 0 105px}.faq h2{margin:14px 0 30px}.faq details{border-top:1px solid #cfcfcf;padding:20px 0}.faq details:last-child{border-bottom:1px solid #cfcfcf}.faq summary{cursor:pointer;font-size:16px;font-weight:700;list-style:none}.faq summary::after{content:'+';float:right;color:#e61e32;font-size:22px}.faq details[open] summary::after{content:'−'}@media(max-width:800px){.article-head{padding:75px 7vw 50px}.article-head h1{letter-spacing:-2.5px}.article-body,.faq{margin:0;padding-left:7vw;padding-right:7vw}.article-body{padding-top:58px}.article-body h2{font-size:28px}.article-body p,.faq p{font-size:16px}.article-cta{margin:20px 7vw 65px;padding:34px 28px}.article-cta h2{font-size:28px}}
+</style>
