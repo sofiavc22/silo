@@ -549,23 +549,31 @@ const doorbellFaqs = [
                       <h4>{product.name}</h4>
                       {product.price && (
                         <div class="installed-price">
-                          <strong>{product.price}</strong>
-                          <span>Instalación de 1 cámara incluida</span>
-                        </div>
-                      )}
-                      {product.features && (
-                        <div class="product-specs">
-                          <p>{product.connection}</p>
-                          <ul>
-                            {product.features.map((feature) => <li>{feature}</li>)}
-                          </ul>
+                          <span class="price-value">{product.price}</span>
+                          <span>Instalación de 1 cámara todo incluido</span>
+                          <button class="details-link" type="button" data-dialog-id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`}>Ver detalles</button>
                         </div>
                       )}
                       <a
                         href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20${Astro.params.slug === 'timbres-inteligentes' ? 'el timbre' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'la cerradura' : 'la cámara'}%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}
                       >
-                        Solicitar cotización
+                        Solicitar instalación
                       </a>
+                      {product.features && (
+                        <dialog class="product-dialog" id={`details-${brandAnchor(`${product.brand}-${product.name}`)}`} aria-labelledby={`details-title-${brandAnchor(`${product.brand}-${product.name}`)}`}>
+                          <form method="dialog"><button class="dialog-close" aria-label="Cerrar detalles">×</button></form>
+                          <div class="dialog-product-image"><img src={product.image} alt={`Cámara ${product.brand} ${product.name}`} /></div>
+                          <div class="dialog-copy">
+                            <p>{product.brand}</p>
+                            <h3 id={`details-title-${brandAnchor(`${product.brand}-${product.name}`)}`}>{product.name}</h3>
+                            <span class="dialog-price">{product.price}</span>
+                            <span class="dialog-installation">Instalación de 1 cámara todo incluido</span>
+                            <p class="dialog-connection">{product.connection}</p>
+                            <ul>{product.features.map((feature) => <li>{feature}</li>)}</ul>
+                            <a href={`https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20solicitar%20la%20instalación%20de%20${encodeURIComponent(`${product.brand} ${product.name}`)}`}>Solicitar instalación</a>
+                          </div>
+                        </dialog>
+                      )}
                     </article>
                   ))}
               </div>
@@ -696,6 +704,12 @@ const doorbellFaqs = [
         link.addEventListener("click", () => {
           mobileNav.classList.remove("open");
           menuButton?.setAttribute("aria-expanded", "false");
+        });
+      });
+      document.querySelectorAll(".details-link").forEach((button) => {
+        button.addEventListener("click", () => {
+          const dialog = document.getElementById(button.dataset.dialogId);
+          dialog?.showModal();
         });
       });
     </script>
@@ -1038,9 +1052,10 @@ const doorbellFaqs = [
     margin: 0 0 17px;
     padding: 13px 0;
   }
-  .installed-price strong {
-    color: #e61e32;
+  .price-value {
+    color: #090909;
     font-size: 22px;
+    font-weight: 400;
     letter-spacing: -1px;
   }
   .installed-price span {
@@ -1048,33 +1063,22 @@ const doorbellFaqs = [
     font-size: 10px;
     font-weight: 700;
   }
-  .product-specs {
-    margin: 0 0 18px;
-  }
-  .product-specs > p {
-    color: #090909;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0;
-    margin: 0 0 11px;
-    text-transform: none;
-  }
-  .product-specs ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .product-specs li {
-    background: #f3f3f3;
-    border-radius: 999px;
-    color: #3f3f3f;
-    font-size: 10px;
-    line-height: 1.25;
-    padding: 6px 8px;
-  }
+  .details-link { align-self: start; background: transparent; border: 0; color: #090909; cursor: pointer; font-size: 10px; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+  .product-dialog { border: 0; border-radius: 18px; box-shadow: 0 24px 80px rgba(0, 0, 0, .28); color: #090909; max-width: min(820px, calc(100vw - 32px)); padding: 0; width: 100%; }
+  .product-dialog::backdrop { background: rgba(9, 9, 9, .62); }
+  .product-dialog form { position: absolute; right: 14px; top: 14px; z-index: 2; }
+  .dialog-close { align-items: center; background: #fff; border: 1px solid #ddd; border-radius: 50%; cursor: pointer; display: flex; font-size: 25px; height: 38px; justify-content: center; line-height: 1; padding: 0; width: 38px; }
+  .dialog-product-image { background: #f7f7f7; min-height: 380px; padding: 35px; }
+  .dialog-product-image img { display: block; height: 310px; margin: 0 auto; max-width: 100%; object-fit: contain; width: 100%; mix-blend-mode: multiply; }
+  .dialog-copy { padding: 34px 38px 40px; }
+  .dialog-copy > p:first-of-type { color: #e61e32; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; margin: 0 0 8px; text-transform: uppercase; }
+  .dialog-copy h3 { font-size: clamp(24px, 3vw, 34px) !important; letter-spacing: -1.5px !important; line-height: 1.08; margin: 0 0 20px; }
+  .dialog-price { display: block; font-size: 25px; font-weight: 400; letter-spacing: -1px; }
+  .dialog-installation { color: #555; display: block; font-size: 11px; font-weight: 700; margin-top: 5px; }
+  .dialog-connection { color: #090909 !important; font-size: 12px !important; font-weight: 800; letter-spacing: 0 !important; margin: 27px 0 12px !important; text-transform: none !important; }
+  .dialog-copy ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 30px; padding: 0; }
+  .dialog-copy li { background: #f3f3f3; border-radius: 999px; color: #3f3f3f; font-size: 10px; line-height: 1.25; padding: 6px 8px; }
+  .dialog-copy a { align-items: center; background: linear-gradient(180deg, #3d3d3d, #050505); border-radius: 999px; box-shadow: 0 6px 10px rgba(0,0,0,.15), inset 0 1px 1px rgba(255,255,255,.23); color: #fff; display: inline-flex; font-size: 11px; font-weight: 500; justify-content: center; padding: 12px 17px; }
   @media (max-width: 700px) {
     .catalog {
       padding: 80px 7vw;
@@ -1105,8 +1109,10 @@ const doorbellFaqs = [
       padding: 10px 12px;
       font-size: 10px;
     }
-    .installed-price strong { font-size: 19px; }
-    .product-specs li { font-size: 9px; padding: 5px 7px; }
+    .price-value { font-size: 19px; }
+    .dialog-product-image { min-height: 260px; padding: 22px; }
+    .dialog-product-image img { height: 220px; }
+    .dialog-copy { padding: 26px 24px 30px; }
   }
   .brand-includes {
     background: #f7f7f7;
