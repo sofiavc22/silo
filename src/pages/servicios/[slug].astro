@@ -202,6 +202,7 @@ const isCameraCatalog = Astro.params.slug === "instalacion-de-camaras-de-segurid
 const catalogBrands = data.catalog ? [...new Set(data.catalog.map((product) => product.brand))] : [];
 const brandAnchor = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 const productIdentifier = (product) => brandAnchor(`${product.brand}-${product.name}-${product.image}`);
+const productPrice = (product) => Number((product.price || "").replace(/[^0-9]/g, "")) || 0;
 const featureSpecification = (feature) => {
   const value = feature.toLowerCase();
   if (value === "1080p") return ["Resolución", "1080p"];
@@ -538,6 +539,34 @@ const doorbellFaqs = [
                 ))}
               </div>
             )}
+            {isCameraCatalog && (
+              <div class="marketplace-controls" data-marketplace-controls>
+                <div class="marketplace-sort">
+                  <label for="camera-sort">Ordenar por</label>
+                  <select id="camera-sort" data-camera-sort>
+                    <option value="recommended">Recomendadas</option>
+                    <option value="price-asc">Precio: menor a mayor</option>
+                    <option value="price-desc">Precio: mayor a menor</option>
+                  </select>
+                </div>
+                <div class="filter-group">
+                  <span>Marca</span>
+                  <div class="filter-options">
+                    <button class="filter-chip active" type="button" data-filter-brand="all">Todas</button>
+                    {catalogBrands.map((brand) => <button class="filter-chip" type="button" data-filter-brand={brand}>{brand === 'Nest' ? 'Google Nest' : brand}</button>)}
+                  </div>
+                </div>
+                <div class="filter-group">
+                  <span>Alimentación</span>
+                  <div class="filter-options">
+                    <button class="filter-chip active" type="button" data-filter-power="all">Todas</button>
+                    <button class="filter-chip" type="button" data-filter-power="Cable">Cable</button>
+                    <button class="filter-chip" type="button" data-filter-power="Baterías">Baterías</button>
+                  </div>
+                </div>
+                <div class="marketplace-meta"><span data-camera-count></span><button class="clear-filters" type="button" data-clear-filters>Limpiar filtros</button></div>
+              </div>
+            )}
           </div>
           {catalogGroups.map((group) => (
             <div class:list={["brand-group", { "marketplace-group": isCameraCatalog }]} id={group.id}>
@@ -571,9 +600,9 @@ const doorbellFaqs = [
                   </ul>
                 </div>
               ) : null}
-              <div class="product-grid">
+              <div class="product-grid" data-camera-grid={isCameraCatalog ? "true" : undefined}>
                 {group.products.map((product) => (
-                    <article class="product-card">
+                    <article class="product-card" data-camera-card={isCameraCatalog ? "true" : undefined} data-brand={product.brand} data-power={product.power || "Sin especificar"} data-price={productPrice(product)}>
                       <div class="product-image">
                         {isCameraCatalog && (
                           <span class="warranty-badge">
@@ -767,6 +796,59 @@ const doorbellFaqs = [
           dialog?.showModal();
         });
       });
+      const marketplaceControls = document.querySelector("[data-marketplace-controls]");
+      const cameraGrid = document.querySelector("[data-camera-grid]");
+      if (marketplaceControls && cameraGrid) {
+        const cards = Array.from(cameraGrid.querySelectorAll("[data-camera-card]"));
+        const sortSelect = marketplaceControls.querySelector("[data-camera-sort]");
+        const count = marketplaceControls.querySelector("[data-camera-count]");
+        const clearButton = marketplaceControls.querySelector("[data-clear-filters]");
+        let brand = "all";
+        let power = "all";
+
+        const updateCatalog = () => {
+          const visibleCards = cards.filter((card) => {
+            const matchesBrand = brand === "all" || card.dataset.brand === brand;
+            const matchesPower = power === "all" || card.dataset.power === power;
+            return matchesBrand && matchesPower;
+          });
+          const orderedCards = [...visibleCards].sort((first, second) => {
+            const firstPrice = Number(first.dataset.price) || Number.MAX_SAFE_INTEGER;
+            const secondPrice = Number(second.dataset.price) || Number.MAX_SAFE_INTEGER;
+            if (sortSelect.value === "price-asc") return firstPrice - secondPrice;
+            if (sortSelect.value === "price-desc") return secondPrice - firstPrice;
+            return cards.indexOf(first) - cards.indexOf(second);
+          });
+          cards.forEach((card) => { card.hidden = !visibleCards.includes(card); });
+          orderedCards.forEach((card) => cameraGrid.append(card));
+          count.textContent = `${visibleCards.length} ${visibleCards.length === 1 ? "cámara disponible" : "cámaras disponibles"}`;
+        };
+
+        marketplaceControls.querySelectorAll("[data-filter-brand]").forEach((button) => {
+          button.addEventListener("click", () => {
+            brand = button.dataset.filterBrand;
+            marketplaceControls.querySelectorAll("[data-filter-brand]").forEach((item) => item.classList.toggle("active", item === button));
+            updateCatalog();
+          });
+        });
+        marketplaceControls.querySelectorAll("[data-filter-power]").forEach((button) => {
+          button.addEventListener("click", () => {
+            power = button.dataset.filterPower;
+            marketplaceControls.querySelectorAll("[data-filter-power]").forEach((item) => item.classList.toggle("active", item === button));
+            updateCatalog();
+          });
+        });
+        sortSelect.addEventListener("change", updateCatalog);
+        clearButton.addEventListener("click", () => {
+          brand = "all";
+          power = "all";
+          sortSelect.value = "recommended";
+          marketplaceControls.querySelectorAll("[data-filter-brand='all'], [data-filter-power='all']").forEach((button) => button.classList.add("active"));
+          marketplaceControls.querySelectorAll("[data-filter-brand]:not([data-filter-brand='all']), [data-filter-power]:not([data-filter-power='all'])").forEach((button) => button.classList.remove("active"));
+          updateCatalog();
+        });
+        updateCatalog();
+      }
     </script>
 </body>
 </html>
@@ -1036,6 +1118,17 @@ const doorbellFaqs = [
     color: #666;
     max-width: 530px;
   }
+  .marketplace-controls { border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; display: grid; gap: 20px; margin-top: 34px; padding: 22px 0; }
+  .marketplace-sort { align-items: center; display: flex; gap: 13px; }
+  .marketplace-sort label, .filter-group > span { color: #555; font-size: 10px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+  .marketplace-sort select { appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%23090909' stroke-width='2'/%3E%3C/svg%3E") right 12px center/14px no-repeat; border: 1px solid #aaa; border-radius: 999px; color: #090909; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; padding: 10px 38px 10px 14px; }
+  .filter-group { align-items: center; display: flex; flex-wrap: wrap; gap: 12px; }
+  .filter-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter-chip { background: #fff; border: 1px solid #c9c9c9; border-radius: 999px; color: #202020; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; padding: 8px 12px; transition: background .18s ease, border-color .18s ease, color .18s ease; }
+  .filter-chip:hover, .filter-chip.active { background: #090909; border-color: #090909; color: #fff; }
+  .marketplace-meta { align-items: center; display: flex; gap: 16px; justify-content: space-between; }
+  .marketplace-meta span { color: #666; font-size: 11px; font-weight: 600; }
+  .clear-filters { background: transparent; border: 0; color: #e61e32; cursor: pointer; font: inherit; font-size: 11px; font-weight: 800; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
   .brand-group {
     margin: 0 5vw 85px;
   }
@@ -1158,6 +1251,10 @@ const doorbellFaqs = [
     .catalog-head {
       margin-bottom: 55px;
     }
+    .marketplace-controls { gap: 17px; margin-top: 27px; padding: 18px 0; }
+    .marketplace-sort { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .filter-group { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .filter-chip { font-size: 10px; padding: 7px 10px; }
     .brand-group {
       margin-bottom: 60px;
     }
