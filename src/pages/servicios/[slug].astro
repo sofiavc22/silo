@@ -230,14 +230,22 @@ export function getStaticPaths() {
         },
       },
     },
-  ];
+      { params: { slug: "sistemas-de-seguridad-para-casa" }, props: { data: { title: "Instalación de sistemas de seguridad para casa en CDMX y Estado de México", intro: "Cámaras, sensores y rutinas que trabajan juntos para proteger tu casa cuando estás y cuando sales.", body: "Diseñamos e instalamos sistemas de seguridad inteligentes para casas y departamentos. Integramos cámaras para interior y exterior, sensores de apertura y movimiento, iluminación y dispositivos conectados para que recibas alertas y tengas control desde tu celular.", points: ["Cámaras para los accesos y áreas importantes", "Sensores en puertas, ventanas y zonas de paso", "Rutinas de seguridad según tu horario", "Configuración en tus dispositivos móviles"] } } },
+];
 }
 const { data } = Astro.props;
 const isCameraCatalog = Astro.params.slug === "instalacion-de-camaras-de-seguridad";
+const isSecuritySystems = Astro.params.slug === "sistemas-de-seguridad-para-casa";
 const catalogBrands = data.catalog ? [...new Set(data.catalog.map((product) => product.brand))] : [];
 const brandAnchor = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 const productIdentifier = (product) => brandAnchor(`${product.brand}-${product.name}-${product.image}`);
 const productPrice = (product) => Number((product.price || "").replace(/[^0-9]/g, "")) || 0;
+const securityPackages = [
+{name:"Protección de entrada",image:"/images/security-packages/proteccion-entrada.webp",lead:"Cubre la entrada que más usas todos los días.",includes:["Sensor de apertura en puerta principal","Cámara exterior en la entrada","Cámara interior hacia el acceso","Luz de entrada por movimiento"],routine:"Cuando se abre la puerta o hay movimiento, recibes una alerta y puedes revisar el evento desde tu celular."},
+{name:"Casa protegida",image:"/images/security-packages/casa-protegida.webp",lead:"Conecta los accesos y las áreas importantes de tu hogar.",includes:["Sensores en puerta principal y patio","Cámara exterior y cámara interior","Iluminación o enchufes inteligentes","Alertas configuradas en tu celular"],routine:"La rutina Fuera de casa activa tus alertas, apaga dispositivos seleccionados y puede encender una luz si detecta movimiento por la noche."},
+{name:"Protección total",image:"/images/security-packages/proteccion-total.webp",lead:"Un sistema integral para una casa con varios accesos.",includes:["Cámaras en entrada, patio y áreas interiores","Sensores en puertas, ventanas y zonas de paso","Cerradura inteligente compatible con tu puerta","Iluminación inteligente para rutinas de seguridad"],routine:"Creamos rutinas como Fuera de casa y Noche para que tu sistema responda a tu horario y a lo que pasa en casa."}
+];
+
 const featureSpecification = (feature) => {
   const value = feature.toLowerCase();
   if (/^\d+(?:\.\d+)?\s?(mp|k)$/i.test(feature)) return ["Resolución", feature];
@@ -393,6 +401,7 @@ const seoContentBySlug = {
       ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"]
     ]
   }
+  "sistemas-de-seguridad-para-casa": {heading:"Sistemas de seguridad para casa con cámaras y sensores",paragraphs:["Un sistema de seguridad para casa funciona mejor cuando sus dispositivos cubren situaciones concretas. Una cámara exterior puede ayudarte a revisar la entrada o la cochera; una cámara interior aporta visibilidad en áreas de paso; y los sensores de apertura te avisan cuando se abre una puerta o ventana. En SILO revisamos los accesos, la distribución de tu casa y la conexión disponible para proponer una instalación que tenga sentido para tu rutina.","Puedes empezar con protección para una sola entrada o integrar cámaras, sensores, iluminación y cerraduras inteligentes en distintos espacios. Las rutinas permiten que los dispositivos trabajen en conjunto: al salir, puedes apagar equipos seleccionados y dejar activas las alertas; por la noche, una luz puede encenderse si hay movimiento en un acceso. Todo queda configurado en tus dispositivos móviles para que lo uses de forma sencilla.","Instalamos sistemas de seguridad para casas y departamentos en CDMX y Estado de México. Si ya tienes algunos equipos, revisamos cómo integrarlos; si vas empezando, te orientamos sobre las funciones que te convienen según los accesos que quieras cubrir. También podemos preparar el sistema para que puedas ampliarlo más adelante."],links:[["/servicios/instalacion-de-camaras-de-seguridad","Ver cámaras de seguridad"],["/servicios/instalacion-cerraduras-digitales","Conocer cerraduras inteligentes"],["/servicios/automatizacion-residencial","Explorar automatización residencial"]]},
 };
 const seoContent = seoContentBySlug[Astro.params.slug as keyof typeof seoContentBySlug];
 
@@ -444,7 +453,7 @@ const doorbellFaqs = [
     <title>{data.title} | SILO</title>
     <meta
       name="description"
-      content={Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalamos cámaras de seguridad para exterior e interior. Incluye equipo, instalación, material, configuración en dispositivos móviles y garantía por escrito.' : Astro.params.slug === 'automatizacion-residencial' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
+      content={Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalamos cámaras de seguridad para exterior e interior. Incluye equipo, instalación, material, configuración en dispositivos móviles y garantía por escrito.' : Astro.params.slug === 'sistemas-de-seguridad-para-casa' ? 'Instalación de sistemas de seguridad para casa en CDMX y Estado de México. Cámaras, sensores y rutinas de seguridad configuradas para tu hogar.' : Astro.params.slug === 'automatizacion-residencial' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
     />
     {pageUrl && <link rel="canonical" href={pageUrl} />}
     <meta property="og:locale" content="es_MX" />
@@ -565,6 +574,7 @@ const doorbellFaqs = [
           ))}
         </div>
       </section>
+      {isSecuritySystems && (<section class="security-packages" aria-labelledby="security-packages-title"><div class="security-packages-head"><p class="eyebrow">Paquetes de protección inteligente</p><h2 id="security-packages-title">Protege tu casa con un sistema que trabaja en conjunto</h2><p>Elige un punto de partida y adaptamos los equipos a tu casa, tus accesos y tu rutina.</p></div><div class="security-package-grid">{securityPackages.map((packageItem, index) => (<article class="security-package"><div class="security-package-visual"><img src={packageItem.image} alt="Sistema de seguridad para casa con cámaras y sensores" loading="lazy" /></div><div class="security-package-copy"><p class="security-package-number">0{index + 1}</p><h3>{packageItem.name}</h3><p class="security-package-lead">{packageItem.lead}</p><p class="security-package-label">Incluye</p><ul>{packageItem.includes.map((item) => <li>{item}</li>)}</ul><div class="security-package-routine"><b>Rutina incluida</b><span>{packageItem.routine}</span></div><a class="security-package-cta" href="https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20cotizar%20un%20sistema%20de%20seguridad%20para%20mi%20casa">Quiero este paquete</a></div></article>))}</div><p class="security-package-note">¿Necesitas otro tipo de protección? Diseñamos una propuesta según los accesos y dispositivos que quieras integrar.</p></section>)}
       {Astro.params.slug === "instalacion-de-camaras-de-seguridad" && (
         <section class="camera-capabilities" aria-labelledby="camera-capabilities-title">
           <h2 id="camera-capabilities-title">¿Qué puedes hacer con las cámaras?</h2>
@@ -1620,5 +1630,7 @@ const doorbellFaqs = [
 
 
   .camera-product-card .product-recommendation { background: #e61e32; border-radius: 999px; color: #fff; font-size: 8px; font-weight: 800; left: 8px; letter-spacing: .35px; padding: 6px 9px; position: absolute; text-transform: uppercase; top: 8px; z-index: 1; }
+
+.security-packages{background:#f5f5f3;border-top:1px solid #e2e2df;padding:104px 7vw}.security-packages-head{margin:0 auto 52px;max-width:760px;text-align:center}.security-packages-head h2{font-size:clamp(34px,4vw,55px);letter-spacing:-2.8px;line-height:.98;margin:12px 0 18px}.security-packages-head>p:last-child{color:#5e5e5e;font-size:18px;line-height:1.45;margin:0}.security-package-grid{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 auto;max-width:1320px}.security-package{background:#fff;border:1px solid #ddddda;border-radius:22px;display:flex;flex-direction:column;overflow:hidden}.security-package-visual{aspect-ratio:1.15 / 1;background:#fafafa;border-bottom:1px solid #e7e7e4;padding:12px}.security-package-visual img{display:block;height:100%;object-fit:contain;width:100%}.security-package-copy{display:flex;flex:1;flex-direction:column;padding:26px}.security-package-number{color:#e61e32;font-size:12px;font-weight:800;letter-spacing:1.8px;margin:0 0 12px}.security-package h3{font-size:31px;letter-spacing:-1.5px;line-height:1;margin:0}.security-package-lead{color:#595959;font-size:16px;line-height:1.45;margin:13px 0 25px;min-height:46px}.security-package-label{border-top:1px solid #dededb;font-size:12px;font-weight:800;letter-spacing:1.2px;margin:0;padding-top:20px;text-transform:uppercase}.security-package ul{list-style:none;margin:14px 0 22px;padding:0}.security-package li{font-size:15px;line-height:1.35;margin:0 0 10px;padding-left:20px;position:relative}.security-package li::before{color:#e61e32;content:"✓";font-weight:800;left:0;position:absolute}.security-package-routine{background:#f5f5f3;border-radius:12px;color:#575757;font-size:14px;line-height:1.4;margin-top:auto;padding:15px}.security-package-routine b{color:#111;display:block;font-size:12px;letter-spacing:.7px;margin-bottom:6px;text-transform:uppercase}.security-package-cta{align-items:center;background:linear-gradient(180deg,#f42d42 0%,#cc0f25 100%);border:1px solid #d4162a;border-radius:999px;box-shadow:0 11px 18px rgba(0,0,0,.16),inset 0 1px 1px rgba(255,255,255,.45);color:#fff;display:inline-flex;font-size:15px;font-weight:800;justify-content:center;margin-top:22px;min-height:48px;padding:12px 18px;width:fit-content}.security-package-note{color:#5e5e5e;font-size:15px;line-height:1.45;margin:30px auto 0;max-width:650px;text-align:center}@media(max-width:980px){.security-package-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.security-package:last-child{grid-column:1/-1;max-width:calc(50% - 12px)}}@media(max-width:640px){.security-packages{padding:68px 24px}.security-packages-head{margin-bottom:30px;text-align:left}.security-package-grid{grid-template-columns:1fr}.security-package:last-child{grid-column:auto;max-width:none}.security-package-copy{padding:23px}.security-package h3{font-size:29px}.security-package-note{text-align:left}}
 
 </style>
