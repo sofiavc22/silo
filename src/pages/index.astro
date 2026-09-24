@@ -53,9 +53,24 @@ const services = [
 
       <section class="benefit-strip" aria-label="Beneficios SILO">
         <article><span class="benefit-icon">▱</span><h3>Opciones de pago<br />flexibles</h3><p>Obtén la protección que necesitas con opciones de pago que se adapten a ti.</p></article>
-        <article><span class="benefit-icon">◉</span><h3>Monitoreo<br />24/7</h3><p>Protección y control para tu hogar en todo momento, incluso cuando no estás.</p></article>
+        <article><span class="benefit-icon">◉</span><h3>Control desde<br />tu celular</h3><p>Revisa tu casa, recibe alertas y controla tu sistema estés donde estés.</p></article>
         <article><span class="benefit-icon">⌁</span><h3>Instalación<br />profesional</h3><p>Nos encargamos de instalar y configurar tu sistema para que funcione desde el primer día.</p></article>
-        <article><span class="benefit-icon">⌂</span><h3>Paquetes de hogar<br />inteligente personalizables</h3><p>Diseñamos un sistema de seguridad y automatización que se ajusta a tu hogar.</p></article>
+        <article><span class="benefit-icon">⌂</span><h3>Privacidad<br />configurada</h3><p>Protegemos el acceso a tus cámaras y dispositivos para que tú controles quién puede entrar a tu sistema.</p></article>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="privacidad-title">
+        <div class="privacy-copy">
+          <p class="eyebrow">Tu privacidad</p>
+          <h2 id="privacidad-title">Protegemos tu casa.<br /><span>Y el sistema que la protege.</span></h2>
+          <p class="privacy-lead">Un sistema de seguridad no debería convertirse en otra forma de entrar a tu casa. Por eso configuramos cámaras, cuentas y dispositivos pensando también en tu privacidad digital.</p>
+          <div class="privacy-badge">Configurado para proteger tu privacidad</div>
+        </div>
+        <div class="privacy-grid">
+          <article><span>01</span><h3>Acceso protegido</h3><p>Configuramos contraseñas seguras y las opciones de autenticación disponibles para dificultar accesos no autorizados.</p></article>
+          <article><span>02</span><h3>Tú controlas los accesos</h3><p>Definimos contigo quién puede ver cámaras, recibir alertas y controlar los dispositivos de tu casa.</p></article>
+          <article><span>03</span><h3>Cámaras con privacidad en mente</h3><p>Revisamos usuarios, permisos y cuentas vinculadas para reducir accesos que no necesitas.</p></article>
+          <article><span>04</span><h3>Protección del sistema</h3><p>Revisamos la configuración de tus dispositivos y red para reducir exposición innecesaria ante intrusos digitales.</p></article>
+        </div>
       </section>
 
       <section class="section" id="soluciones"><div class="section-head"><p class="eyebrow">Nuestras soluciones</p><h2>Servicio de cámaras de seguridad y automatización<br /><span>para casas en CDMX y Estado de México.</span></h2></div><div class="service-grid">{services.map((service) => <article class="service"><span class="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><a href={`/servicios/${service.slug}`} aria-label={`Ver solución: ${service.title}`}>Ver solución</a></article>)}</div></section>
@@ -96,6 +111,7 @@ const services = [
   .benefit-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4vw;padding:88px 5vw;border-bottom:1px solid #e3e3e3}.benefit-icon{display:block;font-size:35px;line-height:1;color:#090909;margin-bottom:40px}.benefit-strip h3{font-size:clamp(22px,2vw,34px);line-height:1.18;letter-spacing:-1.6px;margin:0 0 24px}.benefit-strip p{font-size:14px;line-height:1.7;color:#555;max-width:310px;margin:0}@media(max-width:800px){.benefit-strip{grid-template-columns:1fr 1fr;padding:60px 7vw;gap:48px 28px}.benefit-icon{margin-bottom:25px}.benefit-strip h3{font-size:21px;margin-bottom:13px}.benefit-strip p{font-size:12px}}
   h1,h2,h3{font-weight:600!important}h1{font-size:clamp(38px,5vw,72px)!important;line-height:1.05!important;letter-spacing:-3px!important}h2{font-size:clamp(28px,3vw,48px)!important;line-height:1.12!important;letter-spacing:-2px!important}
   @media (min-width:801px){.hero-copy{transform:translateY(-32px)}.hero h1{font-size:clamp(46px,3.8vw,62px)!important;letter-spacing:-3px!important;max-width:760px}}
+  .privacy-section{padding:110px 5vw;display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;border-bottom:1px solid #e3e3e3;background:#090909;color:#fff}.privacy-section .eyebrow{color:#aaa}.privacy-copy h2{margin:0 0 28px}.privacy-copy h2 span{color:#e61e32}.privacy-lead{max-width:560px;font-size:15px;line-height:1.8;color:#aaa}.privacy-badge{display:inline-flex;margin-top:28px;padding:11px 15px;border:1px solid #444;border-radius:999px;font-size:11px;font-weight:700}.privacy-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #444}.privacy-grid article{padding:26px 26px 32px 0;border-bottom:1px solid #444}.privacy-grid article:nth-child(odd){border-right:1px solid #444;margin-right:26px}.privacy-grid span{font-size:10px;font-weight:800;color:#e61e32}.privacy-grid h3{font-size:19px;margin:35px 0 12px}.privacy-grid p{font-size:12px;line-height:1.75;color:#aaa;margin:0;max-width:330px}@media(max-width:800px){.privacy-section{display:block;padding:80px 7vw}.privacy-grid{margin-top:55px;grid-template-columns:1fr}.privacy-grid article:nth-child(odd){border-right:0;margin-right:0}.privacy-grid h3{margin-top:24px}}
 </style>
 <style>
   .header-call{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:999px;background:linear-gradient(180deg,#f34a5c,#e61e32 48%,#bd1023);box-shadow:0 6px 11px rgba(0,0,0,.16);color:#fff;font-weight:700}
