@@ -44,6 +44,28 @@ const accessPromotion = {
     '1 año de garantía por escrito',
   ],
 };
+
+const dualCameraPromotion = {
+  brand: 'TP-Link',
+  name: 'Paquete de 2 cámaras 1080p para exterior',
+  price: '$5,499 MXN',
+  image: '/images/promotions/tplink-2-camaras-1080p-exterior.webp',
+  features: [
+    'Resolución 1080p',
+    'Visión nocturna a color',
+    'Detección de movimiento',
+    'Audio bidireccional',
+    'Almacenamiento en nube o microSD',
+    'Resistentes a la intemperie',
+  ],
+  includes: [
+    '2 cámaras TP-Link para exterior',
+    'Instalación y material necesario',
+    'Configuración en dispositivos móviles',
+    'Almacenamiento',
+    '1 año de garantía por escrito',
+  ],
+};
 ---
 
 <!doctype html>
@@ -64,7 +86,7 @@ const accessPromotion = {
             <h1 id="promociones-title">Promociones con instalación incluida</h1>
             <p class="intro">Elige un paquete y recibe equipo, instalación, configuración, almacenamiento y garantía en un solo precio.</p>
           </div>
-          <span class="count">2 promociones disponibles</span>
+          <span class="count">3 promociones disponibles</span>
         </div>
 
         <div class="product-grid">
@@ -117,6 +139,32 @@ const accessPromotion = {
               </div>
 
               <a class="quote-button" href="https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20solicitar%20la%20promoci%C3%B3n%20de%20c%C3%A1mara%20exterior%202K%20y%20cerradura%20inteligente">Solicitar promoción</a>
+            </div>
+          </article>
+
+          <article class="promotion-card">
+            <div class="product-image">
+              <img src={dualCameraPromotion.image} alt="Dos cámaras TP-Link 1080p para exterior" />
+            </div>
+            <div class="product-copy">
+              <p class="badge">Promoción</p>
+              <p class="brand">{dualCameraPromotion.brand}</p>
+              <h2>{dualCameraPromotion.name}</h2>
+              <p class="price">{dualCameraPromotion.price}</p>
+              <p class="included-line">Instalación de 2 cámaras todo incluido</p>
+
+              <div class="product-details">
+                <div>
+                  <h3>Características</h3>
+                  <ul>{dualCameraPromotion.features.map((feature) => <li>{feature}</li>)}</ul>
+                </div>
+                <div>
+                  <h3>Incluye</h3>
+                  <ul>{dualCameraPromotion.includes.map((item) => <li>{item}</li>)}</ul>
+                </div>
+              </div>
+
+              <a class="quote-button" href="https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20solicitar%20la%20promoci%C3%B3n%20de%202%20c%C3%A1maras%20TP-Link%201080p">Solicitar promoción</a>
             </div>
           </article>
         </div>
