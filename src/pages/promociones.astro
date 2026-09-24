@@ -23,6 +23,27 @@ const promotion = {
     '1 año de garantía por escrito',
   ],
 };
+
+const accessPromotion = {
+  brand: 'TP-Link + Yale',
+  name: 'Cámara exterior 2K + cerradura inteligente',
+  price: '$6,999 MXN',
+  image: '/images/promotions/tapo-yale-2k-cerradura.webp',
+  features: [
+    'Cámara exterior TP-Link con resolución 2K',
+    'Visión nocturna a color',
+    'Audio bidireccional',
+    'Cerradura digital Yale con teclado táctil',
+    'Acceso y control desde la aplicación',
+  ],
+  includes: [
+    '1 cámara exterior 2K y 1 cerradura inteligente',
+    'Instalación y material necesario',
+    'Configuración en dispositivos móviles',
+    'Almacenamiento para la cámara',
+    '1 año de garantía por escrito',
+  ],
+};
 ---
 
 <!doctype html>
@@ -43,7 +64,7 @@ const promotion = {
             <h1 id="promociones-title">Promociones con instalación incluida</h1>
             <p class="intro">Elige un paquete y recibe equipo, instalación, configuración, almacenamiento y garantía en un solo precio.</p>
           </div>
-          <span class="count">1 promoción disponible</span>
+          <span class="count">2 promociones disponibles</span>
         </div>
 
         <div class="product-grid">
@@ -70,6 +91,32 @@ const promotion = {
               </div>
 
               <a class="quote-button" href="https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20solicitar%20la%20promoci%C3%B3n%20de%203%20c%C3%A1maras%20TP-Link%203K">Solicitar promoción</a>
+            </div>
+          </article>
+
+          <article class="promotion-card">
+            <div class="product-image">
+              <img src={accessPromotion.image} alt="Cámara exterior TP-Link 2K y cerradura inteligente Yale" />
+            </div>
+            <div class="product-copy">
+              <p class="badge">Promoción</p>
+              <p class="brand">{accessPromotion.brand}</p>
+              <h2>{accessPromotion.name}</h2>
+              <p class="price">{accessPromotion.price}</p>
+              <p class="included-line">Instalación de cámara y cerradura incluida</p>
+
+              <div class="product-details">
+                <div>
+                  <h3>Características</h3>
+                  <ul>{accessPromotion.features.map((feature) => <li>{feature}</li>)}</ul>
+                </div>
+                <div>
+                  <h3>Incluye</h3>
+                  <ul>{accessPromotion.includes.map((item) => <li>{item}</li>)}</ul>
+                </div>
+              </div>
+
+              <a class="quote-button" href="https://wa.me/526722671419?text=Hola%20SILO,%20quiero%20solicitar%20la%20promoci%C3%B3n%20de%20c%C3%A1mara%20exterior%202K%20y%20cerradura%20inteligente">Solicitar promoción</a>
             </div>
           </article>
         </div>
