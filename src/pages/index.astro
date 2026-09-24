@@ -1,5 +1,6 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
+import NextStep from '../components/NextStep.astro';
 const phone = '6722671419';
 const phoneLabel = '672 267 1419';
 const siteUrl = Astro.site?.toString().replace(/\/$/, '');
@@ -85,7 +86,7 @@ const services = [
 
       <section class="faq" id="preguntas"><div><p class="eyebrow">Preguntas frecuentes</p><h2>Preguntas frecuentes sobre cámaras de seguridad y automatización residencial</h2></div><div class="faq-list"><details><summary>¿Qué tipo de cámaras de seguridad instalan?</summary><p>Instalamos cámaras para interior y exterior. Trabajamos con Ring, Nest y TP-Link: marcas reconocidas por su calidad de imagen, diseño y aplicaciones fáciles de usar.</p></details><details><summary>¿Puedo ver las cámaras desde mi celular?</summary><p>Sí. Configuramos las cámaras en tus dispositivos móviles para que puedas ver tu hogar y recibir alertas. También incluimos el almacenamiento de las grabaciones en la nube.</p></details><details><summary>¿Cuál es el proceso de instalación?</summary><p>Nos contactas y nos cuentas qué quieres proteger. Te mostramos las mejores opciones para tu casa, elegimos el equipo adecuado y coordinamos la instalación lo más pronto posible.</p></details><details><summary>¿Las cámaras de seguridad funcionan con Alexa?</summary><p>Sí. Los productos que manejamos son compatibles con Alexa y podemos dejarlos configurados para que controles tu sistema con comandos de voz.</p></details><details><summary>¿Qué diferencia hay entre una cerradura inteligente y una cerradura normal?</summary><p>Una cerradura inteligente te permite controlar y administrar el acceso sin depender solo de llaves físicas. Puedes usar códigos, ver quién entra y crear accesos temporales; instalamos cerraduras Yale y las dejamos configuradas para tu rutina.</p></details></div></section>
 
-      <section class="cta" id="contacto"><p class="eyebrow">Tu siguiente paso</p><h2>Haz que tu casa esté<br /><span>segura y conectada 24/7.</span></h2><p>Cuéntanos qué quieres instalar y te orientamos personalmente.</p><a class="button button-red" href={`https://wa.me/52${phone}?text=Hola%20SILO,%20quiero%20informaci%C3%B3n%20sobre%20una%20instalaci%C3%B3n`}>Hablar por WhatsApp</a><a class="cta-phone" href={`tel:${phone}`}>{phoneLabel}</a></section>
+      <NextStep />
     </main>
     <footer><a class="logo" href="#inicio"><img src="/images/silo-logo.png" alt="SILO" /></a><p>Seguridad inteligente y automatización residencial.</p><p>© 2026 SILO · CDMX y Estado de México</p></footer>
     <script>
