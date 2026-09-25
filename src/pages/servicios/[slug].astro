@@ -821,6 +821,7 @@ const doorbellFaqs = [
           </aside>
         </section>
       )}
+      {data.catalog && <PromotionPopup />}
       <CoverageAndCta national={Astro.params.slug === 'automatizacion-residencial'}>
         {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && (
           <section class="camera-faq" aria-labelledby="camera-faq-title">
