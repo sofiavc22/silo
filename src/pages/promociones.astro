@@ -28,6 +28,21 @@ const promotions = [
     message: 'Hola SILO,%20quiero%20solicitar%20la%20promoción%20de%20cámara%20exterior%202K%20y%20cerradura%20inteligente',
   },
   {
+    id: '2-camaras-3k-interior-exterior',
+    brand: 'TP-Link',
+    name: '2 cámaras 3K: exterior + interior',
+    price: '$5,999 MXN',
+    installation: 'Instalación de 2 cámaras todo incluido',
+    images: [
+      '/images/cameras/tplink-exterior-alambrica-3k.webp',
+      '/images/cameras/tplink-interior-alambrica-3k.webp',
+    ],
+    alt: 'Cámara exterior TP-Link 3K y cámara interior TP-Link 3K',
+    features: ['Resolución 3K (5 MP)', 'Visión nocturna a color', 'Detección de movimiento', 'Audio bidireccional', 'Almacenamiento en nube o microSD'],
+    includes: ['1 cámara TP-Link 3K para exterior', '1 cámara TP-Link 3K para interior', 'Equipo, instalación y material necesario', 'Almacenamiento', 'Configuración en dispositivos móviles', '1 año de garantía por escrito'],
+    message: 'Hola SILO,%20quiero%20solicitar%20la%20promoción%20de%202%20cámaras%20TP-Link%203K%20para%20interior%20y%20exterior',
+  },
+  {
     id: '2-camaras-1080p',
     brand: 'TP-Link',
     name: 'Paquete de 2 cámaras 1080p para exterior',
@@ -66,8 +81,14 @@ const promotions = [
         <div class="product-grid">
           {promotions.map((promotion) => (
             <article class="promotion-card">
-              <div class="product-image">
-                <img src={promotion.image} alt={promotion.alt} />
+              <div class:list={['product-image', { 'product-image-pair': promotion.images }]}>
+                {promotion.images ? (
+                  <div class="product-pair">
+                    {promotion.images.map((image, index) => <img src={image} alt={index === 0 ? 'Cámara exterior TP-Link 3K' : 'Cámara interior TP-Link 3K'} />)}
+                  </div>
+                ) : (
+                  <img src={promotion.image} alt={promotion.alt} />
+                )}
               </div>
               <div class="product-copy">
                 <p class="badge">Promoción</p>
@@ -81,7 +102,15 @@ const promotions = [
 
               <dialog class="product-dialog" id={`details-${promotion.id}`} aria-labelledby={`details-title-${promotion.id}`}>
                 <form method="dialog"><button class="dialog-close" aria-label="Cerrar detalles">×</button></form>
-                <div class="dialog-product-image"><img src={promotion.image} alt={promotion.alt} /></div>
+                <div class:list={['dialog-product-image', { 'dialog-product-image-pair': promotion.images }]}>
+                {promotion.images ? (
+                  <div class="product-pair">
+                    {promotion.images.map((image, index) => <img src={image} alt={index === 0 ? 'Cámara exterior TP-Link 3K' : 'Cámara interior TP-Link 3K'} />)}
+                  </div>
+                ) : (
+                  <img src={promotion.image} alt={promotion.alt} />
+                )}
+              </div>
                 <div class="dialog-copy">
                   <p class="brand">{promotion.brand}</p>
                   <h2 id={`details-title-${promotion.id}`}>{promotion.name}</h2>
@@ -133,6 +162,9 @@ const promotions = [
   .promotion-card{display:flex;min-height:465px;flex-direction:column;overflow:hidden;border:1px solid #e0e0e0;border-radius:18px;background:#fff}
   .product-image{display:flex;height:240px;align-items:center;justify-content:center;padding:12px;background:#f5f5f5}
   .product-image img{display:block;width:100%;height:100%;object-fit:contain}
+  .product-image-pair,.dialog-product-image-pair{padding:18px}
+  .product-pair{align-items:center;display:grid;gap:4%;grid-template-columns:1fr 1fr;height:100%;width:100%}
+  .product-pair img{display:block;height:100%;max-height:100%;object-fit:contain;width:100%}
   .product-copy{display:flex;flex:1;flex-direction:column;padding:18px}
   .badge{align-self:flex-start;margin:0 0 14px;padding:6px 9px;border-radius:5px;background:#e61e32;color:#fff;font-size:11px;font-weight:700}
   .brand{margin-bottom:8px;font-size:10px}
