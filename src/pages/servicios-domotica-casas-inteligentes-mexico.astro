@@ -15,7 +15,7 @@ const automationPageData = {
   ],
 };
 const { data = automationPageData } = Astro.props;
-const currentSlug = currentSlug || "servicios-domotica-casas-inteligentes-mexico";
+const currentSlug = Astro.params.slug || "servicios-domotica-casas-inteligentes-mexico";
 const isCameraCatalog = currentSlug === "instalacion-de-camaras-de-seguridad";
 const isSecuritySystems = currentSlug === "sistemas-de-seguridad-para-casa";
 const catalogBrands = data.catalog ? [...new Set(data.catalog.map((product) => product.brand))] : [];
