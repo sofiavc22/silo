@@ -20,5 +20,11 @@
       "destination": "/servicios/instalacion-cerraduras-digitales",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/servicios-domotica-casas-inteligentes-mexico",
+      "destination": "/servicios/automatizacion-residencial"
+    }
   ]
 }
