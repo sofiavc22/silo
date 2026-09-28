@@ -56,6 +56,39 @@ const promotions = [
     message: 'Hola SILO,%20quiero%20solicitar%20la%20promoción%20de%202%20cámaras%20TP-Link%201080p',
   },
 ];
+
+const promotionFaqs = [
+  {
+    question: '¿Instalan cámaras de seguridad en CDMX?',
+    answer: 'Sí. Instalamos cámaras de seguridad en CDMX y Estado de México. Revisamos los accesos que deseas cubrir, recomendamos el equipo adecuado y dejamos la aplicación configurada en tu celular.',
+  },
+  {
+    question: '¿Cómo crear zonas de seguridad en casa?',
+    answer: 'Lo más efectivo es proteger los puntos de acceso: puerta principal, cochera, accesos laterales, patio y áreas comunes. Podemos combinar cámaras para interior y exterior, sensores y cerraduras inteligentes según tu rutina.',
+  },
+  {
+    question: '¿Cuánto cobran por instalar cámaras de seguridad?',
+    answer: 'Una instalación de cámara comienza desde $3,000 MXN. En cada promoción mostramos un precio final que incluye equipo, instalación, material, almacenamiento, configuración en dispositivos móviles y garantía.',
+  },
+  {
+    question: '¿Cuál es el precio por instalar cámaras de seguridad?',
+    answer: 'Depende del número de cámaras, las áreas que necesitas proteger y el tipo de equipo. Los paquetes de esta página incluyen la instalación para que conozcas el total antes de solicitar tu promoción.',
+  },
+  {
+    question: '¿Qué tan buenas son las cámaras de seguridad inalámbricas?',
+    answer: 'Son una excelente opción cuando quieres evitar cableado o cubrir un punto donde no hay una toma cercana. Graban eventos, envían alertas y permiten ver video desde tu celular; antes de instalarlas verificamos señal Wi-Fi y ubicación para que funcionen correctamente.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: promotionFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
 
 <!doctype html>
@@ -65,6 +98,7 @@ const promotions = [
     <meta name="viewport" content="width=device-width" />
     <title>Promociones de cámaras de seguridad | SILO</title>
     <meta name="description" content="Encuentra promociones de cámaras, cerraduras y paquetes de seguridad con instalación incluida. Equipo, configuración y garantía en CDMX y Estado de México." />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
   </head>
   <body>
     <SiteHeader />
@@ -135,6 +169,22 @@ const promotions = [
         </div>
       </section>
 
+
+      <section class="promotion-faq" aria-labelledby="promotion-faq-title">
+        <div>
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2 id="promotion-faq-title">Dudas sobre nuestras promociones de seguridad</h2>
+        </div>
+        <div class="promotion-faq-list">
+          {promotionFaqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <CoverageAndCta />
     </main>
     <script>
@@ -193,6 +243,16 @@ const promotions = [
   li{position:relative;padding-left:15px}
   li::before{position:absolute;left:0;color:#e61e32;content:'•'}
   .dialog-quote-button{display:inline-flex;margin-top:0;padding:14px 20px}
+  .promotion-faq{display:grid;grid-template-columns:1fr 1fr;gap:8vw;padding:94px 7vw 106px;border-top:1px solid #ddd;background:#fff}
+  .promotion-faq h2{max-width:500px;margin-top:15px;font-size:clamp(30px,3.4vw,48px);font-weight:600;line-height:1.06;letter-spacing:-.05em}
+  .promotion-faq-list details{padding:20px 0;border-top:1px solid #ccc}
+  .promotion-faq-list details:last-child{border-bottom:1px solid #ccc}
+  .promotion-faq-list summary{cursor:pointer;list-style:none;font-size:15px;font-weight:600;line-height:1.4}
+  .promotion-faq-list summary::-webkit-details-marker{display:none}
+  .promotion-faq-list summary::after{float:right;color:#e61e32;content:'+';font-size:22px;line-height:.8}
+  .promotion-faq-list details[open] summary::after{content:'−'}
+  .promotion-faq-list p{max-width:620px;margin:16px 32px 0 0;color:#666;font-size:14px;line-height:1.7}
+
   @media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media(max-width:760px){.marketplace{width:min(100% - 36px,560px);padding:46px 0 64px}.section-heading{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:24px}.intro{font-size:15px}.product-grid{grid-template-columns:1fr}.promotion-card{min-height:0}.product-image{height:270px}.product-copy{padding:22px}.product-copy h2{font-size:22px}.price{font-size:31px}.dialog-product-image{min-height:240px;padding:16px}.dialog-product-image img{height:220px}.dialog-copy{padding:28px 22px 32px}.dialog-details{grid-template-columns:1fr;gap:24px}.product-dialog form{margin-top:-46px}}
+  @media(max-width:760px){.marketplace{width:min(100% - 36px,560px);padding:46px 0 64px}.section-heading{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:24px}.intro{font-size:15px}.product-grid{grid-template-columns:1fr}.promotion-card{min-height:0}.product-image{height:270px}.product-copy{padding:22px}.product-copy h2{font-size:22px}.price{font-size:31px}.dialog-product-image{min-height:240px;padding:16px}.dialog-product-image img{height:220px}.dialog-copy{padding:28px 22px 32px}.dialog-details{grid-template-columns:1fr;gap:24px}.product-dialog form{margin-top:-46px}.promotion-faq{display:block;padding:74px 7vw}.promotion-faq-list{margin-top:40px}.promotion-faq-list p{margin-right:0}}
 </style>
