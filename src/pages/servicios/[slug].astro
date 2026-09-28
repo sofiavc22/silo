@@ -216,7 +216,7 @@ export function getStaticPaths() {
       },
     },
     {
-      params: { slug: "automatizacion-residencial" },
+      params: { slug: "domotica-casas-inteligentes-mexico" },
       props: {
         data: {
           title: "Instalación de casa inteligente y automatización residencial en México",
@@ -282,7 +282,7 @@ const serviceSchema = {
     name: "SILO",
     telephone: "+52 672 267 1419",
   },
-  areaServed: Astro.params.slug === "automatizacion-residencial" ? "México" : ["Ciudad de México", "Estado de México"],
+  areaServed: Astro.params.slug === "domotica-casas-inteligentes-mexico" ? "México" : ["Ciudad de México", "Estado de México"],
   serviceType: data.title,
 };
 const cameraFaqs = [
@@ -357,7 +357,7 @@ const seoContentBySlug = {
     links: [
       ["/servicios/timbres-inteligentes", "Ver timbres inteligentes"],
       ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"],
-      ["/servicios/automatizacion-residencial", "Explorar casa inteligente"]
+      ["/servicios/domotica-casas-inteligentes-mexico", "Explorar casa inteligente"]
     ]
   },
   "timbres-inteligentes": {
@@ -371,7 +371,7 @@ const seoContentBySlug = {
     links: [
       ["/servicios/instalacion-de-camaras-de-seguridad", "Ver cámaras de seguridad"],
       ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"],
-      ["/servicios/automatizacion-residencial", "Explorar casa inteligente"]
+      ["/servicios/domotica-casas-inteligentes-mexico", "Explorar casa inteligente"]
     ]
   },
   "instalacion-cerraduras-digitales": {
@@ -385,10 +385,10 @@ const seoContentBySlug = {
     links: [
       ["/servicios/timbres-inteligentes", "Ver timbres inteligentes"],
       ["/servicios/instalacion-de-camaras-de-seguridad", "Ver cámaras de seguridad"],
-      ["/servicios/automatizacion-residencial", "Explorar casa inteligente"]
+      ["/servicios/domotica-casas-inteligentes-mexico", "Explorar casa inteligente"]
     ]
   },
-  "automatizacion-residencial": {
+  "domotica-casas-inteligentes-mexico": {
     heading: "Instalación de casa inteligente y automatización residencial en México",
     paragraphs: [
       "La instalación de casa inteligente y automatización residencial puede empezar con algo sencillo, como iluminar una sala, controlar un enchufe o recibir una alerta de un sensor. También puede crecer hasta integrar distintas áreas de una casa completa. Lo importante es diseñar las funciones alrededor de tu rutina: qué luces usas, qué accesos quieres supervisar, qué aparatos te gustaría programar y qué situaciones quieres que se resuelvan solas. No necesitas automatizar todo desde el primer día para empezar a disfrutarlo.",
@@ -402,7 +402,7 @@ const seoContentBySlug = {
       ["/servicios/instalacion-cerraduras-digitales", "Conocer cerraduras digitales"]
     ]
   },
-  "sistemas-de-seguridad-para-casa": {heading:"Sistemas de seguridad para casa con cámaras y sensores",paragraphs:["Un sistema de seguridad para casa funciona mejor cuando sus dispositivos cubren situaciones concretas. Una cámara exterior puede ayudarte a revisar la entrada o la cochera; una cámara interior aporta visibilidad en áreas de paso; y los sensores de apertura te avisan cuando se abre una puerta o ventana. En SILO revisamos los accesos, la distribución de tu casa y la conexión disponible para proponer una instalación que tenga sentido para tu rutina.","Puedes empezar con protección para una sola entrada o integrar cámaras, sensores, iluminación y cerraduras inteligentes en distintos espacios. Las rutinas permiten que los dispositivos trabajen en conjunto: al salir, puedes apagar equipos seleccionados y dejar activas las alertas; por la noche, una luz puede encenderse si hay movimiento en un acceso. Todo queda configurado en tus dispositivos móviles para que lo uses de forma sencilla.","Instalamos sistemas de seguridad para casas y departamentos en CDMX y Estado de México. Si ya tienes algunos equipos, revisamos cómo integrarlos; si vas empezando, te orientamos sobre las funciones que te convienen según los accesos que quieras cubrir. También podemos preparar el sistema para que puedas ampliarlo más adelante."],links:[["/servicios/instalacion-de-camaras-de-seguridad","Ver cámaras de seguridad"],["/servicios/instalacion-cerraduras-digitales","Conocer cerraduras inteligentes"],["/servicios/automatizacion-residencial","Explorar automatización residencial"]]},
+  "sistemas-de-seguridad-para-casa": {heading:"Sistemas de seguridad para casa con cámaras y sensores",paragraphs:["Un sistema de seguridad para casa funciona mejor cuando sus dispositivos cubren situaciones concretas. Una cámara exterior puede ayudarte a revisar la entrada o la cochera; una cámara interior aporta visibilidad en áreas de paso; y los sensores de apertura te avisan cuando se abre una puerta o ventana. En SILO revisamos los accesos, la distribución de tu casa y la conexión disponible para proponer una instalación que tenga sentido para tu rutina.","Puedes empezar con protección para una sola entrada o integrar cámaras, sensores, iluminación y cerraduras inteligentes en distintos espacios. Las rutinas permiten que los dispositivos trabajen en conjunto: al salir, puedes apagar equipos seleccionados y dejar activas las alertas; por la noche, una luz puede encenderse si hay movimiento en un acceso. Todo queda configurado en tus dispositivos móviles para que lo uses de forma sencilla.","Instalamos sistemas de seguridad para casas y departamentos en CDMX y Estado de México. Si ya tienes algunos equipos, revisamos cómo integrarlos; si vas empezando, te orientamos sobre las funciones que te convienen según los accesos que quieras cubrir. También podemos preparar el sistema para que puedas ampliarlo más adelante."],links:[["/servicios/instalacion-de-camaras-de-seguridad","Ver cámaras de seguridad"],["/servicios/instalacion-cerraduras-digitales","Conocer cerraduras inteligentes"],["/servicios/domotica-casas-inteligentes-mexico","Explorar automatización residencial"]]},
 };
 const seoContent = seoContentBySlug[Astro.params.slug as keyof typeof seoContentBySlug];
 
@@ -454,7 +454,7 @@ const doorbellFaqs = [
     <title>{data.title} | SILO</title>
     <meta
       name="description"
-      content={Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalamos cámaras de seguridad para exterior e interior. Incluye equipo, instalación, material, configuración en dispositivos móviles y garantía por escrito.' : Astro.params.slug === 'sistemas-de-seguridad-para-casa' ? 'Instalación de sistemas de seguridad para casa en CDMX y Estado de México. Cámaras, sensores y rutinas de seguridad configuradas para tu hogar.' : Astro.params.slug === 'automatizacion-residencial' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
+      content={Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalamos cámaras de seguridad para exterior e interior. Incluye equipo, instalación, material, configuración en dispositivos móviles y garantía por escrito.' : Astro.params.slug === 'sistemas-de-seguridad-para-casa' ? 'Instalación de sistemas de seguridad para casa en CDMX y Estado de México. Cámaras, sensores y rutinas de seguridad configuradas para tu hogar.' : Astro.params.slug === 'domotica-casas-inteligentes-mexico' ? 'Instalación de casa inteligente y automatización residencial en México. Iluminación, enchufes, sensores y proyectos desde casa existente o etapa de diseño.' : `${data.title}. Instalación profesional en CDMX y Estado de México con SILO.`}
     />
     {pageUrl && <link rel="canonical" href={pageUrl} />}
     <meta property="og:locale" content="es_MX" />
@@ -517,7 +517,7 @@ const doorbellFaqs = [
         })),
       })}></script>
     )}
-    {Astro.params.slug === 'automatizacion-residencial' && (
+    {Astro.params.slug === 'domotica-casas-inteligentes-mexico' && (
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -563,7 +563,7 @@ const doorbellFaqs = [
       <section class="content">
         <div>
           <p class="eyebrow">Pensado para tu hogar</p>
-          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerraduras digitales para tu hogar' : Astro.params.slug === 'automatizacion-residencial' ? 'Automatización de iluminación, enchufes y sensores para tu hogar' : `Instalación de ${data.title} para tu hogar`}</h2>
+          <h2>{Astro.params.slug === 'timbres-inteligentes' ? 'Instalación de timbres inteligentes para tu hogar' : Astro.params.slug === 'instalacion-de-camaras-de-seguridad' ? 'Instalación de cámaras de seguridad para interior y exterior' : Astro.params.slug === 'instalacion-cerraduras-digitales' ? 'Cerraduras digitales para tu hogar' : Astro.params.slug === 'domotica-casas-inteligentes-mexico' ? 'Automatización de iluminación, enchufes y sensores para tu hogar' : `Instalación de ${data.title} para tu hogar`}</h2>
           <p>{data.body}</p>
         </div>
         <div class="points">
@@ -769,7 +769,7 @@ const doorbellFaqs = [
           ))}
         </section>
       )}
-      {Astro.params.slug === 'automatizacion-residencial' && (
+      {Astro.params.slug === 'domotica-casas-inteligentes-mexico' && (
         <section class="automation-options" aria-labelledby="automation-options-title">
           <div class="automation-options-head">
             <p class="eyebrow">Una casa que trabaja contigo</p>
@@ -822,7 +822,7 @@ const doorbellFaqs = [
         </section>
       )}
       {data.catalog && <PromotionPopup />}
-      <CoverageAndCta national={Astro.params.slug === 'automatizacion-residencial'}>
+      <CoverageAndCta national={Astro.params.slug === 'domotica-casas-inteligentes-mexico'}>
         {Astro.params.slug === 'instalacion-de-camaras-de-seguridad' && (
           <section class="camera-faq" aria-labelledby="camera-faq-title">
             <div>
@@ -855,7 +855,7 @@ const doorbellFaqs = [
             </div>
           </section>
         )}
-        {Astro.params.slug === 'automatizacion-residencial' && (
+        {Astro.params.slug === 'domotica-casas-inteligentes-mexico' && (
           <section class="camera-faq" aria-labelledby="automation-faq-title">
             <div>
               <p class="eyebrow">Preguntas frecuentes</p>
@@ -893,7 +893,7 @@ const doorbellFaqs = [
       <a class="logo" href="/">
         SILO<span>.</span>
       </a>
-      <span>{Astro.params.slug === 'automatizacion-residencial' ? 'Cobertura nacional · México' : 'CDMX · Estado de México'}</span>
+      <span>{Astro.params.slug === 'domotica-casas-inteligentes-mexico' ? 'Cobertura nacional · México' : 'CDMX · Estado de México'}</span>
     </footer>
     <script>
       const menuButton = document.querySelector(".menu");
