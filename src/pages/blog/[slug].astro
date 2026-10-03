@@ -20,11 +20,11 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
 <html lang="es">
   <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
-    <title>{post.title} | SILO</title>
+    <title>{post.seoTitle ?? `${post.title} | SILO`}</title>
     <meta name="description" content={post.description} />
     {pageUrl && <link rel="canonical" href={pageUrl} />}
     <meta property="og:type" content="article" /><meta property="og:locale" content="es_MX" />
-    <meta property="og:title" content={`${post.title} | SILO`} /><meta property="og:description" content={post.description} />
+    <meta property="og:title" content={post.seoTitle ?? `${post.title} | SILO`} /><meta property="og:description" content={post.description} />
     {pageUrl && <meta property="og:url" content={pageUrl} />}
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
