@@ -1,6 +1,7 @@
 export type BlogPost = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   datePublished: string;
   dateLabel: string;
@@ -140,6 +141,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'cuanto-cuesta-instalar-camaras-seguridad-cdmx-edomex',
     title: '¿Cuánto cuesta instalar cámaras de seguridad en CDMX y Estado de México?',
+    seoTitle: 'Cuánto cuesta instalar cámaras de seguridad en CDMX y Edomex | SILO',
     description: 'Conoce qué incluye una instalación de cámaras de seguridad y de qué depende el precio en CDMX y Estado de México.',
     datePublished: '2026-09-23',
     dateLabel: '23 de septiembre de 2026',
