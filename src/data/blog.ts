@@ -4,11 +4,18 @@ export type BlogPost = {
   seoTitle?: string;
   description: string;
   datePublished: string;
+  dateModified?: string;
   dateLabel: string;
+  updatedLabel?: string;
   category: string;
   readTime: string;
   intro: string;
-  sections: { heading: string; paragraphs: string[]; list?: string[] }[];
+  sections: {
+    heading: string;
+    paragraphs: string[];
+    list?: string[];
+    table?: { headers: string[]; rows: string[][]; caption?: string };
+  }[];
   faqs: { question: string; answer: string }[];
   relatedServices: { href: string; label: string }[];
 };
@@ -140,24 +147,35 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'cuanto-cuesta-instalar-camaras-seguridad-cdmx-edomex',
-    title: '¿Cuánto cuesta instalar cámaras de seguridad en CDMX y Estado de México?',
-    seoTitle: 'Cuánto cuesta instalar cámaras de seguridad en CDMX y Edomex | SILO',
-    description: 'Conoce qué incluye una instalación de cámaras de seguridad y de qué depende el precio en CDMX y Estado de México.',
+    title: '¿Cuánto cuesta instalar cámaras de seguridad en CDMX y Edomex?',
+    seoTitle: 'Precio de instalar cámaras de seguridad en CDMX y Edomex | SILO',
+    description: 'Instalar una cámara de seguridad cuesta desde $3,399 MXN. Compara precios para 1, 2 y 4 cámaras, qué incluyen y qué puede aumentar el costo.',
     datePublished: '2026-09-23',
+    dateModified: '2026-10-19',
     dateLabel: '23 de septiembre de 2026',
+    updatedLabel: 'Actualizado el 19 de octubre de 2026',
     category: 'Precios e instalación',
-    readTime: '6 min de lectura',
-    intro: 'El precio de instalar una cámara no es solamente el equipo. Para que el sistema funcione bien, hay que considerar el montaje, materiales, configuración y el tipo de almacenamiento que necesita tu casa.',
+    readTime: '8 min de lectura',
+    intro: 'Instalar una cámara de seguridad con SILO cuesta desde $3,399 MXN e incluye equipo, instalación, material, almacenamiento, configuración en dispositivos móviles y un año de garantía por escrito. El precio final depende del modelo, la cantidad de cámaras y el lugar donde se instalarán.',
     sections: [
       {
-        heading: '¿Desde cuánto cuesta instalar una cámara?',
+        heading: 'Precios de instalación para 1, 2 y 4 cámaras',
         paragraphs: [
-          'En SILO, la instalación de una cámara comienza desde $3,000 MXN, con instalación incluida. El total puede cambiar según el modelo que elijas, la zona donde se colocará y si necesita cableado, soporte, memoria, suscripción de nube o accesorios adicionales.',
-          'La manera más clara de comparar opciones es revisar qué incluye el precio. Un equipo barato puede terminar costando más si después hay que sumar instalación, material, configuración o almacenamiento.',
+          'Estos precios son referencias de los equipos y paquetes publicados actualmente por SILO. La cotización final se confirma después de revisar el espacio, la alimentación disponible y la cobertura que necesitas.',
+          'La manera correcta de comparar opciones es revisar el total instalado. Un equipo aparentemente barato puede terminar costando más si después debes sumar montaje, material, configuración o almacenamiento.',
         ],
+        table: {
+          caption: 'Precios de referencia con instalación incluida',
+          headers: ['Cantidad', 'Precio de referencia', 'Opción publicada'],
+          rows: [
+            ['1 cámara', 'Desde $3,399 MXN', 'Interior o exterior, según modelo'],
+            ['2 cámaras', 'Desde $5,499 MXN', 'Paquetes para exterior o interior + exterior'],
+            ['4 cámaras', 'Cotización personalizada', 'Diseño según accesos, distancias y cobertura'],
+          ],
+        },
       },
       {
-        heading: 'Qué debe incluir una instalación completa',
+        heading: '¿Qué incluye el precio de instalación?',
         paragraphs: [
           'Cuando cotizas una cámara para tu casa, pregunta por el costo total instalado. Así evitas sorpresas y sabes qué estás comprando. En los equipos con precio publicado de SILO, el total incluye el equipo, instalación, material, almacenamiento, configuración en dispositivos móviles y un año de garantía por escrito.',
           'Al terminar, dejamos la cámara funcionando y revisamos contigo lo básico de la aplicación: video en vivo, alertas y consulta de eventos. No se trata de colgar el equipo y ya; se trata de que puedas usarlo.',
@@ -171,35 +189,51 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: 'Qué factores cambian el precio',
+        heading: '¿Qué puede aumentar el costo?',
         paragraphs: [
           'El tipo de cámara es uno de los factores principales. Un equipo para interior no cuesta lo mismo que una cámara exterior con reflector, sirena, batería o panel solar. La resolución y la marca también influyen.',
-          'La instalación también cambia según el lugar. No es igual poner una cámara junto a una toma de corriente que llevar cable hasta un segundo piso, una fachada o una cochera amplia. Si necesitas varias cámaras, podemos diseñar una solución completa y ordenada.',
+          'La instalación también cambia según el lugar. No es igual colocar una cámara junto a una toma de corriente que llevar cable hasta un segundo piso, una fachada o una cochera amplia. Los soportes especiales, recorridos largos, trabajos en altura y accesorios adicionales pueden modificar la cotización.',
         ],
       },
       {
-        heading: '¿Conviene comprar la cámara por tu cuenta?',
+        heading: '¿Qué cámara conviene para cada zona?',
+        paragraphs: [
+          'Para una puerta principal suele funcionar una cámara compacta o un timbre inteligente que permita identificar visitas y entregas. En una cochera conviene priorizar visión nocturna, buen ángulo y, si hace falta, reflector o sirena.',
+          'En patios y accesos laterales recomendamos equipos para exterior resistentes a la intemperie. Si no hay una toma cercana, una cámara con batería o panel solar puede evitar cableado; si buscas vigilancia continua, una opción alámbrica suele ser más adecuada.',
+        ],
+        list: [
+          'Puerta principal: identifica personas, paquetes y visitas.',
+          'Cochera: cubre vehículos, portón y movimiento nocturno.',
+          'Patio: elige protección para exterior y una vista amplia.',
+          'Acceso lateral: prioriza alertas, visión nocturna y buena señal Wi-Fi.',
+        ],
+      },
+      {
+        heading: '¿Conviene comprar la cámara por separado?',
         paragraphs: [
           'Puedes hacerlo, pero vale la pena considerar compatibilidad, garantía y el tipo de almacenamiento. Hay muchos modelos parecidos y no todos sirven para el mismo caso. Una cámara de interior en un patio, por ejemplo, puede fallar por lluvia o por falta de alcance Wi-Fi.',
-          'Nosotros seleccionamos y probamos equipos duraderos de TP-Link, Google Nest y Amazon Ring. Te recomendamos el que tiene más sentido para tu casa, no solamente el que se ve mejor en una foto.',
+          'Cuando eliges uno de nuestros equipos publicados, el precio ya integra la instalación y la configuración. Si ya compraste una cámara, primero debemos revisar el modelo, el estado del equipo y si es compatible con el espacio y la red de tu casa.',
         ],
       },
       {
-        heading: 'Cotiza con una recomendación para tu espacio',
+        heading: '¿Cuánto cobran por instalar cámaras de seguridad?',
         paragraphs: [
-          'Para darte un precio exacto, necesitamos saber qué áreas quieres cubrir y si ya tienes una idea del equipo. Puedes enviarnos fotos o explicarnos si se trata de puerta principal, cochera, patio o acceso lateral.',
-          'Atendemos instalaciones en Ciudad de México y Estado de México. Te orientamos desde el inicio para que elijas una opción que cuide bien tu hogar y se ajuste a lo que necesitas.',
+          'El precio publicado comienza en $3,399 MXN para una cámara y en $5,499 MXN para un paquete de dos. Para darte una cifra exacta necesitamos saber cuántas zonas quieres cubrir y si se trata de puerta principal, cochera, patio, interior o acceso lateral.',
+          'Atendemos instalaciones en Ciudad de México y Estado de México. Puedes enviarnos fotos por WhatsApp para recibir una recomendación inicial y comparar el catálogo o las promociones vigentes antes de decidir.',
         ],
       },
     ],
     relatedServices: [
       { href: '/servicios/instalacion-de-camaras-de-seguridad', label: 'Ver catálogo de cámaras' },
-      { href: '/servicios/timbres-inteligentes', label: 'Complementar con un timbre inteligente' },
-      { href: '/servicios/instalacion-cerraduras-digitales', label: 'Conocer cerraduras digitales' },
+      { href: '/promociones', label: 'Comparar promociones vigentes' },
+      { href: '/zonas/toluca', label: 'Consultar cobertura en Toluca' },
     ],
     faqs: [
-      { question: '¿El precio incluye configuración en el celular?', answer: 'Sí. Configuramos la aplicación en tus dispositivos móviles compatibles y dejamos el sistema listo para usarse.' },
-      { question: '¿Puedo instalar más de una cámara?', answer: 'Sí. Podemos cotizar una sola cámara o un sistema completo para cubrir puerta, cochera, patio y otros accesos.' },
+      { question: '¿Cuánto cuesta instalar una cámara de seguridad?', answer: 'El precio publicado comienza desde $3,399 MXN e incluye equipo, instalación, material, almacenamiento, configuración en dispositivos móviles y un año de garantía por escrito.' },
+      { question: '¿Cuánto cuesta instalar dos cámaras de seguridad?', answer: 'Los paquetes publicados de dos cámaras comienzan desde $5,499 MXN con instalación incluida. El precio cambia según la resolución, el uso interior o exterior y las condiciones del lugar.' },
+      { question: '¿El precio incluye configuración en el celular?', answer: 'Sí. Configuramos la aplicación en tus dispositivos móviles compatibles y dejamos el sistema listo para ver video, recibir alertas y consultar eventos.' },
+      { question: '¿Qué puede aumentar el precio de instalación?', answer: 'El modelo de cámara, el número de equipos, los recorridos de cable, la altura, los soportes especiales, el almacenamiento y otros accesorios pueden modificar la cotización.' },
+      { question: '¿Puedo comprar la cámara por separado?', answer: 'Sí, pero antes de instalar debemos revisar el modelo, su estado, la compatibilidad con tu red y si es adecuado para interior o exterior. Los equipos publicados por SILO ya incluyen instalación y garantía.' },
     ],
   },
 ];
