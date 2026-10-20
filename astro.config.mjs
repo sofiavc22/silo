@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://siloseguridadmx.site',
+  site: 'https://www.siloseguridadmx.site',
   prefetch: true,
 });

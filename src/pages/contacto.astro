@@ -1,6 +1,8 @@
 ---
 import CoverageAndCta from '../components/CoverageAndCta.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '');
+const pageUrl = siteUrl ? `${siteUrl}/contacto` : undefined;
 ---
 ---
 
@@ -14,6 +16,7 @@ import SiteHeader from '../components/SiteHeader.astro';
       name="description"
       content="Contacta a SILO para instalar cámaras de seguridad, timbres, cerraduras inteligentes y automatización residencial."
     />
+    {pageUrl && <link rel="canonical" href={pageUrl} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"

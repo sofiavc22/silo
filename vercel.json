@@ -6,6 +6,16 @@
       "permanent": true
     },
     {
+      "source": "/domotica-casas-inteligentes-mexico",
+      "destination": "/servicios/automatizacion-residencial",
+      "permanent": true
+    },
+    {
+      "source": "/servicios-domotica-casas-inteligentes-mexico",
+      "destination": "/servicios/automatizacion-residencial",
+      "permanent": true
+    },
+    {
       "source": "/servicios/cerraduras-yale",
       "destination": "/servicios/instalacion-cerraduras-digitales",
       "permanent": true

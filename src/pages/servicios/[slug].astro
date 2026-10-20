@@ -271,7 +271,8 @@ const catalogGroups = data.catalog
       }))
   : [];
 const siteUrl = Astro.site?.toString().replace(/\/$/, "");
-const pageUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : undefined;
+const canonicalPath = Astro.url.pathname.replace(/\/$/, "");
+const pageUrl = siteUrl ? `${siteUrl}${canonicalPath}` : undefined;
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",

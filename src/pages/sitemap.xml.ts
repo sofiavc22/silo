@@ -6,12 +6,12 @@ const pages = [
   { path: 'contacto', priority: '0.8', changefreq: 'monthly' },
   { path: 'blog', priority: '0.8', changefreq: 'weekly' },
   ...['donde-instalar-camaras-de-seguridad-casa', 'camaras-alambricas-vs-inalambricas', 'cuanto-cuesta-instalar-camaras-seguridad-cdmx-edomex'].map((slug) => ({ path: `blog/${slug}`, priority: '0.7', changefreq: 'monthly' })),
-  ...['instalacion-de-camaras-de-seguridad', 'timbres-inteligentes', 'instalacion-cerraduras-digitales'].map((slug) => ({ path: `servicios/${slug}`, priority: '0.9', changefreq: 'monthly' })),
-  { path: 'domotica-casas-inteligentes-mexico', priority: '0.9', changefreq: 'monthly' },
+  ...['instalacion-de-camaras-de-seguridad', 'timbres-inteligentes', 'instalacion-cerraduras-digitales', 'automatizacion-residencial', 'sistemas-de-seguridad-para-casa'].map((slug) => ({ path: `servicios/${slug}`, priority: '0.9', changefreq: 'monthly' })),
+  { path: 'promociones', priority: '0.8', changefreq: 'weekly' },
   ...['huixquilucan', 'naucalpan', 'metepec', 'toluca', 'tlalnepantla', 'miguel-hidalgo', 'benito-juarez', 'cuauhtemoc', 'alvaro-obregon', 'coyoacan'].map((slug) => ({ path: `zonas/${slug}`, priority: '0.8', changefreq: 'monthly' })),
 ];
 export const GET: APIRoute = ({ site }) => {
-  const origin = site?.toString().replace(/\/$/, '') || 'https://siloseguridadmx.site';
+  const origin = site?.toString().replace(/\/$/, '') || 'https://www.siloseguridadmx.site';
   const lastmod = new Date().toISOString().slice(0, 10);
   return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map((page) => `<url><loc>${origin}/${page.path}</loc><lastmod>${lastmod}</lastmod><changefreq>${page.changefreq}</changefreq><priority>${page.priority}</priority></url>`).join('')}</urlset>`, { headers: { 'Content-Type': 'application/xml' } });
 };
