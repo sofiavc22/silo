@@ -22,7 +22,8 @@ export function getStaticPaths() {
 const { name, state } = Astro.props;
 const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${name}, ${state}, México`)}&output=embed`;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "");
-const pageUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : undefined;
+const canonicalPath = Astro.url.pathname.replace(/\/$/, "");
+const pageUrl = siteUrl ? `${siteUrl}${canonicalPath}` : undefined;
 const description = `Instalación de cámaras de seguridad, timbres, cerraduras inteligentes y automatización residencial en ${name}, ${state}.`;
 ---
 

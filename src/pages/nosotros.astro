@@ -1,6 +1,8 @@
 ---
 import CoverageAndCta from '../components/CoverageAndCta.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '');
+const pageUrl = siteUrl ? `${siteUrl}/nosotros` : undefined;
 ---
 ---
 
@@ -14,6 +16,7 @@ import SiteHeader from '../components/SiteHeader.astro';
       name="description"
       content="SILO instala soluciones de seguridad y automatización residencial en CDMX y Estado de México."
     />
+    {pageUrl && <link rel="canonical" href={pageUrl} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"

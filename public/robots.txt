@@ -16,4 +16,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://siloseguridadmx.site/sitemap.xml
+Sitemap: https://www.siloseguridadmx.site/sitemap.xml
