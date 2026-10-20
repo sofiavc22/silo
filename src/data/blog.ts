@@ -85,26 +85,42 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'camaras-alambricas-vs-inalambricas',
-    title: 'Cámaras alámbricas vs. inalámbricas: ¿cuál conviene para tu hogar?',
-    description: 'Te ayudamos a elegir entre una cámara alámbrica o inalámbrica según la zona, alimentación, grabación y tipo de instalación.',
+    title: 'Cámaras alámbricas vs. inalámbricas: diferencias, precios y cuál elegir',
+    seoTitle: 'Cámaras alámbricas vs. inalámbricas: diferencias y precios | SILO',
+    description: 'Compara cámaras alámbricas e inalámbricas: precio, batería, Wi-Fi, grabación y mantenimiento. Elige la mejor para puerta, cochera o patio.',
     datePublished: '2026-09-23',
+    dateModified: '2026-10-19',
     dateLabel: '23 de septiembre de 2026',
+    updatedLabel: 'Actualizado el 19 de octubre de 2026',
     category: 'Guías para elegir',
-    readTime: '7 min de lectura',
-    intro: 'No se trata de que una sea mejor que la otra. Una cámara alámbrica o inalámbrica puede ser la opción correcta según el lugar donde la vas a instalar y lo que esperas de ella.',
+    readTime: '9 min de lectura',
+    intro: 'Elige una cámara alámbrica si buscas alimentación continua, menos mantenimiento y la posibilidad de grabar durante periodos largos. Elige una inalámbrica si no hay una toma cercana o quieres una instalación flexible. Ambas necesitan una conexión estable para consultar video y alertas a distancia.',
     sections: [
       {
-        heading: 'La diferencia principal: alimentación y forma de instalación',
+        heading: 'Comparación rápida: alámbricas vs. inalámbricas',
         paragraphs: [
-          'Una cámara alámbrica se conecta a una toma de corriente o se instala con cableado, según el modelo. Esto le permite mantenerse encendida de manera continua sin depender de que recargues una batería. Es muy buena para puntos fijos como cochera, entrada o patio.',
-          'Una cámara inalámbrica normalmente se conecta al Wi-Fi y se alimenta con batería. Es práctica cuando no hay una toma de corriente cerca o cuando quieres evitar una instalación con cable visible. Algunas también pueden complementarse con panel solar.',
+          'La diferencia más importante no es la conexión a internet, sino la alimentación. En este catálogo, tanto las cámaras con cable como las de batería usan Wi-Fi para enviar alertas y permitirte consultar la aplicación.',
+          'Los precios publicados con instalación incluida comienzan desde $3,399 MXN. El costo exacto depende del modelo, la resolución, las funciones y las condiciones del lugar.',
         ],
+        table: {
+          caption: 'Diferencias principales antes de elegir',
+          headers: ['Aspecto', 'Alámbrica', 'Inalámbrica'],
+          rows: [
+            ['Alimentación', 'Corriente continua', 'Batería recargable o panel solar'],
+            ['Instalación', 'Requiere una toma o recorrido de cable', 'Más flexible cuando no hay toma cercana'],
+            ['Autonomía', 'No necesita recarga', 'Varía según movimiento, clima y configuración'],
+            ['Grabación', 'Puede admitir grabación continua según modelo y almacenamiento', 'Normalmente graba eventos para ahorrar batería'],
+            ['Wi-Fi', 'Necesario para funciones remotas en los modelos del catálogo', 'Necesario para funciones remotas'],
+            ['Mantenimiento', 'Bajo una vez instalada', 'Requiere revisar o recargar la batería'],
+            ['Precio instalado', 'Desde $3,399 MXN', 'Desde $3,899 MXN'],
+          ],
+        },
       },
       {
-        heading: 'Cuándo conviene una cámara alámbrica',
+        heading: '¿Cuándo conviene una cámara alámbrica?',
         paragraphs: [
-          'Una cámara con cable suele ser la mejor opción para zonas donde hay movimiento frecuente o donde quieres una vigilancia constante. Al no depender de batería, requiere menos atención en el día a día.',
-          'También es recomendable si quieres grabación continua, siempre que el modelo y el almacenamiento elegido lo permitan. Por eso se usa mucho en cocheras, negocios pequeños, portones y patios amplios.',
+          'Una cámara con cable suele ser la mejor opción para una cochera, patio, portón o entrada con movimiento frecuente. Como recibe energía de forma continua, no tienes que desmontarla para cargarla y puede ser más adecuada si consultas el video varias veces al día.',
+          'También es la primera opción cuando buscas grabación continua, siempre que el modelo y el almacenamiento la admitan. A cambio, la instalación debe planear el recorrido del cable o aprovechar una toma cercana para conservar un acabado limpio.',
         ],
         list: [
           'Hay una toma de corriente cerca o se puede hacer una instalación limpia.',
@@ -114,35 +130,51 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: 'Cuándo conviene una cámara inalámbrica',
+        heading: '¿Cuándo conviene una cámara inalámbrica?',
         paragraphs: [
-          'Una cámara con batería puede resolver muy bien lugares donde no es práctico llevar cable. Por ejemplo, una reja alejada, un pasillo exterior, una terraza o un punto temporal que quieres vigilar.',
-          'Su instalación puede ser más rápida, pero necesita buena señal Wi-Fi. La batería dura más o menos tiempo según el movimiento que detecte, el uso de luces, el clima y la configuración. No es algo malo; simplemente es importante elegirla para el lugar correcto.',
+          'Una cámara con batería resuelve lugares donde no es práctico llevar corriente, como una reja alejada, un pasillo exterior, una terraza o un punto que quieras vigilar sin cable visible. Para un departamento rentado también puede reducir las adaptaciones necesarias.',
+          'Necesita buena señal Wi-Fi y mantenimiento periódico. La autonomía cambia según cuánto movimiento detecta, la frecuencia con que ves el video en vivo, el uso de luces, el clima y la configuración de alertas.',
         ],
       },
       {
-        heading: '¿Y las cámaras solares?',
+        heading: 'Qué elegir para puerta, cochera, patio y departamento',
         paragraphs: [
-          'Las cámaras solares son inalámbricas, pero reciben apoyo de un panel solar para mantener la batería cargada. Funcionan muy bien en exteriores con varias horas de sol y son una opción cómoda para espacios alejados de una toma eléctrica.',
-          'Antes de elegir una, hay que revisar que el panel reciba luz suficiente y que la cámara tenga una conexión estable. Si el área es muy sombreada, quizá convenga otra alternativa.',
+          'Para una puerta con toma cercana, una cámara alámbrica o un timbre con cable ofrece alimentación constante. Si no existe una conexión disponible, una opción con batería facilita la instalación.',
+          'En una cochera o patio con movimiento frecuente recomendamos cable cuando sea posible. Para un pasillo o jardín alejado, una cámara con batería y panel solar puede ser más práctica si recibe suficiente luz. En un departamento, ambas funcionan: la decisión depende de las modificaciones permitidas y de la toma disponible.',
+        ],
+        list: [
+          'Puerta: alámbrica si hay corriente; batería cuando buscas flexibilidad.',
+          'Cochera: alámbrica para uso frecuente, reflector y vigilancia constante.',
+          'Patio: alámbrica si hay toma; solar si está alejado y recibe buen sol.',
+          'Departamento: batería para reducir adaptaciones o cable para olvidarte de recargas.',
         ],
       },
       {
-        heading: 'La mejor cámara es la que se adapta a tu casa',
+        heading: '¿Las cámaras graban las 24 horas?',
         paragraphs: [
-          'Además de la alimentación, importa la resolución, el ángulo, la visión nocturna, el audio bidireccional y el tipo de almacenamiento. Una cámara 2K puede darte mayor detalle; un reflector puede ayudarte en una cochera oscura; y el audio puede ser útil para hablar con una visita.',
-          'En SILO te ayudamos a elegir equipos Ring, Google Nest o TP-Link según el espacio. Instalamos, configuramos la aplicación en tus dispositivos y dejamos todo probado para que lo uses desde el primer día.',
+          'No todas las cámaras graban de forma continua. Muchas guardan clips cuando detectan movimiento; esto reduce el uso de almacenamiento y, en equipos inalámbricos, ayuda a conservar la batería. Algunos modelos alámbricos admiten grabación continua con una memoria, dispositivo o plan compatible.',
+          'Antes de comprar, define si necesitas evidencia de cada evento o un registro permanente. Revisamos contigo la función disponible y el costo de almacenamiento para evitar asumir que cualquier modelo graba 24/7.',
+        ],
+      },
+      {
+        heading: '¿Qué pasa si se va la luz o el internet?',
+        paragraphs: [
+          'Si se va la luz, una cámara alámbrica se apaga salvo que cuente con respaldo eléctrico. Una cámara con batería puede seguir encendida, pero el módem también necesita energía para que recibas alertas o veas el video desde fuera de casa.',
+          'Si solo falla el internet, algunos modelos pueden seguir guardando eventos localmente en una tarjeta o dispositivo compatible. La consulta remota y las notificaciones se reanudan cuando vuelve la conexión. El comportamiento exacto depende del equipo y del almacenamiento configurado.',
         ],
       },
     ],
     relatedServices: [
-      { href: '/servicios/instalacion-de-camaras-de-seguridad', label: 'Comparar cámaras con instalación' },
-      { href: '/servicios/automatizacion-residencial', label: 'Explorar casa inteligente' },
-      { href: '/servicios/timbres-inteligentes', label: 'Ver timbres inteligentes' },
+      { href: '/servicios/instalacion-de-camaras-de-seguridad#equipos-disponibles', label: 'Comparar cámaras alámbricas, de batería y solares' },
+      { href: '/blog/cuanto-cuesta-instalar-camaras-seguridad-cdmx-edomex', label: 'Consultar precios de instalación' },
+      { href: '/promociones', label: 'Ver promociones con instalación' },
     ],
     faqs: [
+      { question: '¿Qué es mejor, una cámara alámbrica o inalámbrica?', answer: 'La alámbrica conviene para vigilancia frecuente, alimentación continua y menor mantenimiento. La inalámbrica conviene cuando no hay una toma cercana o quieres una instalación flexible. La mejor depende del espacio y del tipo de grabación que necesitas.' },
       { question: '¿Las cámaras inalámbricas necesitan Wi-Fi?', answer: 'Sí. El Wi-Fi permite ver video en vivo, recibir alertas y consultar grabaciones desde la aplicación. Antes de instalar revisamos que la señal llegue bien al punto elegido.' },
-      { question: '¿Qué pasa si se va la luz?', answer: 'Depende del modelo y de la red Wi-Fi. Las cámaras con batería pueden seguir encendidas, pero para enviar alertas o verlas a distancia también necesitas que el internet funcione.' },
+      { question: '¿Las cámaras de seguridad graban las 24 horas?', answer: 'Depende del modelo y del almacenamiento. Muchas cámaras guardan eventos de movimiento, mientras algunos equipos alámbricos admiten grabación continua con una memoria, dispositivo o plan compatible.' },
+      { question: '¿Qué pasa si se va la luz o el internet?', answer: 'Una cámara con batería puede seguir encendida durante un corte de luz, pero necesitas energía en el módem para verla a distancia. Si falla el internet, algunos modelos continúan guardando eventos localmente según su configuración.' },
+      { question: '¿Cuánto cuesta instalar una cámara alámbrica o inalámbrica?', answer: 'Las opciones alámbricas con instalación publicada comienzan desde $3,399 MXN y las inalámbricas desde $3,899 MXN. El precio cambia según el modelo, el montaje, la resolución y los accesorios.' },
     ],
   },
   {
